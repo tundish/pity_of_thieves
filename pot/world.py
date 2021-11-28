@@ -40,6 +40,23 @@ class Map(MapType):
         "woodshed":  ["wood shed", "woodshed", "shed"],
     }
 
+    Arriving = enum.Enum("Arriving", spots, type=Waypoint)
+    Departed = enum.Enum("Departed", spots, type=Waypoint)
+    Location = enum.Enum("Location", spots, type=Waypoint)
+
+    def __init__(self, exit=None, into=None, **kwargs):
+        super().__init__(exit, into, **kwargs)
+        exit, into = self.exit, self.into
+
+        self.transits = [
+            Transit(label="shed door").set_state(exit.tower_st_w, Compass.S, into.woodshed, Via.bidir),
+        ]
+
 
 class World(WorldType):
     pass
+
+
+Arriving = Map.Arriving
+Departed = Map.Departed
+Location = Map.Location
