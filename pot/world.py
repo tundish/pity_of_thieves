@@ -34,7 +34,10 @@ class Map(MapType):
         "dingwood":  ["dingwood"],
         "gardens":  ["public gardens", "gardens"],
         "mordiford_quay":  ["mordiford quay", "quay"],
+        "tower_street_e":  ["upper tower street", "tower st e"],
         "tower_street":  ["tower street", "tower st"],
+        "tower_street_w":  ["lower tower street", "tower st w"],
+        "woodshed":  ["wood shed", "woodshed", "shed"],
     }
 
 
