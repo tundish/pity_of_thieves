@@ -84,6 +84,7 @@ class Map(MapType):
         ]
 
 
+# NEXT TODO. Add a Character
 class World(WorldType):
     pass
 
