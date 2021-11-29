@@ -84,9 +84,15 @@ class Map(MapType):
         ]
 
 
+from balladeer import Stateful
+
 # NEXT TODO. Add a Character
 class World(WorldType):
-    pass
+
+    def build(self):
+        return [
+            Stateful()
+        ]
 
 
 Arriving = Map.Arriving

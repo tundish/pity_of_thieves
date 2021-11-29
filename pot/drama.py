@@ -17,22 +17,16 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-import bisect
-from collections import Counter
-from collections import defaultdict
-from collections import namedtuple
-import functools
+import importlib.resources
 import itertools
 import random
-import re
-import textwrap
 
 from balladeer import CommandParser
-from balladeer import Drama
-from balladeer import Fruition
-from balladeer import Gesture
+from balladeer import Drama as DramaType
 from balladeer import SceneScript
 
+
+"""
 from tas.types import Availability
 from tas.types import Character
 from tas.types import Container
@@ -41,7 +35,7 @@ from tas.types import Location
 from tas.types import Motivation
 from tas.types import Operation
 from tas.world import Tea
-
+"""
 
 class Drama(DramaType):
 
@@ -51,13 +45,7 @@ class Drama(DramaType):
 
     @property
     def folder(self):
-        return SceneScript.Folder(
-            pkg=self.package,
-            description="Tea and Sympathy",
-            metadata={},
-            paths=importlib.resources.files(self.package)
-            interludes=None
-        )
+        return sorted(importlib.resources.files(self.package).glob("*.rst"))
 
     def __init__(self, package, world, *args, **kwargs):
         super().__init__(*args, **kwargs)
