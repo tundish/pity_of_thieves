@@ -17,13 +17,15 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import enum
 
 from balladeer import Grouping
+from balladeer import World as WorldType
 from balladeer.cartography import Compass
 from balladeer.cartography import Map as MapType
 from balladeer.cartography import Transit
+from balladeer.cartography import Via
 from balladeer.cartography import Waypoint
-from balladeer.world import World as WorldType
 
 
 class Map(MapType):
