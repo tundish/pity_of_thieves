@@ -30,13 +30,23 @@ class Map(MapType):
 
     spots = {
         "beggars_ash":  ["beggar's ash", "beggars ash"],
+        "bridge_street":  ["bridge street", "bridge st"],
+        "butchers_row":  ["butcher's row", "butchers row"],
         "cutthroat_lane":  ["cut throat lane", "cutthroat lane"],
         "dingwood":  ["dingwood"],
         "gardens":  ["public gardens", "gardens"],
+        "market":  ["market"],
+        "market_house":  ["market house"],
         "mordiford_quay":  ["mordiford quay", "quay"],
+        "north_gate":  ["north gate", "northgate"],
+        "orchard":  ["the orchard", "orchard"],
+        "ross_road":  ["ross road", "ross rd"],
+        "south_end":  ["south end", "southend"],
+        "top_cross":  ["top cross"],
         "tower_street_e":  ["upper tower street", "tower st e"],
         "tower_street":  ["tower street", "tower st"],
         "tower_street_w":  ["lower tower street", "tower st w"],
+        "tower_wall":  ["tower wall"],
         "woodshed":  ["wood shed", "woodshed", "shed"],
     }
 
@@ -49,7 +59,26 @@ class Map(MapType):
         exit, into = self.exit, self.into
 
         self.transits = [
-            Transit(label="shed door").set_state(exit.tower_st_w, Compass.S, into.woodshed, Via.bidir),
+            Transit().set_state(exit.north_gate, Compass.E, into.beggars_ash, Via.bidir),
+            Transit().set_state(exit.north_gate, Compass.W, into.orchard, Via.bidir),
+            Transit(label="shed door").set_state(exit.butchers_row, Compass.E, into.woodshed, Via.bidir),
+            Transit().set_state(exit.butchers_row, Compass.N, into.north_gate, Via.bidir),
+            Transit().set_state(exit.butchers_row, Compass.E, into.market, Via.bidir),
+            Transit().set_state(exit.butchers_row, Compass.S, into.top_cross, Via.bidir),
+            Transit().set_state(exit.butchers_row, Compass.W, into.bridge_street, Via.bidir),
+            Transit().set_state(exit.market, Compass.E, into.tower_street_w, Via.bidir),
+            Transit().set_state(exit.market, Compass.S, into.market_house, Via.bidir),
+            Transit().set_state(exit.top_cross, Compass.E, into.market_house, Via.bidir),
+            Transit().set_state(exit.top_cross, Compass.S, into.south_end, Via.bidir),
+            Transit().set_state(exit.top_cross, Compass.SW, into.ross_road, Via.bidir),
+            Transit().set_state(exit.ross_road, Compass.SW, into.mordiford_quay, Via.bidir),
+            Transit().set_state(exit.south_end, Compass.S, into.dingwood, Via.bidir),
+            Transit().set_state(exit.tower_street_w, Compass.E, into.tower_street, Via.bidir),
+            Transit().set_state(exit.tower_street, Compass.E, into.tower_street_e, Via.bidir),
+            Transit().set_state(exit.tower_street_e, Compass.E, into.tower_wall, Via.bidir),
+            Transit().set_state(exit.tower_street_e, Compass.N, into.gardens, Via.bidir),
+            Transit().set_state(exit.gardens, Compass.NE, into.cutthroat_lane, Via.bidir),
+            Transit(label="muddy path").set_state(exit.cutthroat_lane, Compass.W, into.north_gate, Via.bidir),
         ]
 
 
