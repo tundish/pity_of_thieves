@@ -26,6 +26,7 @@ from balladeer import Story as StoryType
 import pot
 from pot.drama import Drama
 from pot.types import Operation
+from pot.world import Map
 from pot.world import World
 
 version = pot.__version__
@@ -35,7 +36,8 @@ class Story(StoryType):
 
     def __init__(self, cfg=None, **kwargs):
         super().__init__(**kwargs)
-        world = World(**kwargs)
+        m = Map()
+        world = World(m, **kwargs)
         self.drama = {
             "interior": Drama("pot.interior", world, **kwargs)
             "exterior": Drama("pot.exterior", world, **kwargs)

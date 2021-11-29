@@ -20,6 +20,8 @@
 import enum
 
 from balladeer import Grouping
+from balladeer import Stateful
+from balladeer import Named
 from balladeer import World as WorldType
 from balladeer.cartography import Compass
 from balladeer.cartography import Map as MapType
@@ -83,18 +85,35 @@ class Map(MapType):
             Transit(label="muddy path").set_state(exit.cutthroat_lane, Compass.W, into.north_gate, Via.bidir),
         ]
 
-
-from balladeer import Stateful
-
-# NEXT TODO. Add a Character
-class World(WorldType):
-
-    def build(self):
-        return [
-            Stateful()
-        ]
-
-
 Arriving = Map.Arriving
 Departed = Map.Departed
 Location = Map.Location
+
+
+class Mobile(Stateful):
+
+    @property
+    def in_transit(self):
+        return (self.get_state(Arriving)
+            and self.get_state(Arriving).name != self.get_state(Location).name
+        )
+
+
+class Character(Named, Mobile): pass
+
+
+class World(WorldType):
+
+    def __init__(self, map_, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.map = map_
+
+    def build(self):
+        return [
+            Character(
+                names=[Name("Louise", Article("", ""), Pronoun("she", "her", "herself", "hers"))],
+                description="{0.name} is a young woman from Manchester. She works as a nurse."
+            ).set_state(Motivation.player, Location.bedroom),
+        ]
+
+

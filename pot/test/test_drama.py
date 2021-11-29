@@ -19,17 +19,54 @@
 
 import unittest
 
-from balladeer import Stateful
+from balladeer import World
 
 from pot.drama import Drama
+from pot.world import Map
+from pot.world import Mobile
 from pot.world import World
 
 
 class DramaTests(unittest.TestCase):
 
+    class TestWorld(World):
+
+        def build(self):
+            return [Mobile()]
+
     def setUp(self):
-        self.drama = Drama("pot.interior", World())
+        world = DramaTests.TestWorld(Map())
+        self.drama = Drama("pot.interior", world)
 
     def test_spots(self):
-        print(self.drama.folder)
         self.assertEqual(19, len(self.drama.folder), self.drama.folder)
+
+    def test_if_mobile(self):
+        player = next(iter(self.drama.ensemble))
+        player.set_state(
+            self.drama.world.map.Departed.mordiford_quay,
+            self.drama.world.map.Location.mordiford_quay,
+            self.drama.world.map.Arriving.cutthroat_lane,
+        )
+        Location = self.drama.world.map.Location
+        for n in range(6):
+            rv = next(self.drama.if_mobile(self.drama.ensemble), None)
+            with self.subTest(n=n):
+                if n == 4:
+                    self.assertIs(player, rv)
+                    self.assertEqual(
+                        Location.cutthroat_lane,
+                        player.get_state(Location)
+                    )
+                elif n == 5:
+                    self.assertIsNone(rv)
+                    self.assertEqual(
+                        Location.cutthroat_lane,
+                        player.get_state(Location)
+                    )
+                else:
+                    self.assertIs(player, rv)
+                    self.assertNotEqual(
+                        Location.cutthroat_lane,
+                        player.get_state(Location)
+                    )

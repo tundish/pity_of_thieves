@@ -25,6 +25,7 @@ from balladeer import CommandParser
 from balladeer import Drama as DramaType
 from balladeer import SceneScript
 
+from pot.world import Mobile
 
 """
 from tas.types import Availability
@@ -58,6 +59,17 @@ class Drama(DramaType):
             self.do_quit
         })
         self.default_fn = self.do_next
+
+    def if_mobile(self, ensemble=None):
+        ensemble = ensemble or self.ensemble
+        for i in ensemble:
+            if isinstance(i, Mobile) and i.in_transit:
+                route = list(self.world.map.route(
+                    i.get_state(self.world.map.Location), i.get_state(self.world.map.Arriving)
+                ))
+                if len(route) > 1:
+                    i.state = route[1]
+                yield i
 
     def interlude(self, folder, index, *args, **kwargs):
         return {}
