@@ -24,7 +24,7 @@ Open
 
 There is a thud. From above.
 
-|PLAYER_NAME| sits up in bed. She listens for a moment, confused.
+|PLAYER_NAME| sits up in bed. He listens for a moment, confused.
 
 Then looks toward the door.
 
@@ -40,10 +40,9 @@ Listen
 {0}
 
 |PLAYER_NAME| listens for a moment.
-She's not alone in the house. Is there going to be a problem?
+He's not alone in the hut. Is there going to be a problem?
 
 .. property:: DRAMA.prompt Type a command to continue.
 .. property:: DRAMA.state 0
 
-.. |NPC_NAME| property:: NPC.name
 .. |PLAYER_NAME| property:: PLAYER.name

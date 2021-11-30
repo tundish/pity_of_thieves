@@ -39,8 +39,8 @@ class Story(StoryType):
         m = Map()
         world = World(m, **kwargs)
         self.drama = {
-            "interior": Drama("pot.interior", world, **kwargs),
-            "exterior": Drama("pot.exterior", world, **kwargs)
+            "interior": Drama("pot.interior", world, **kwargs).set_state(Operation.prompt),
+            "exterior": Drama("pot.exterior", world, **kwargs).set_state(Operation.prompt)
         }
         self.context = self.drama["interior"]
 

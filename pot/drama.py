@@ -18,6 +18,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import importlib.resources
+import functools
 import itertools
 import random
 
@@ -25,18 +26,10 @@ from balladeer import CommandParser
 from balladeer import Drama as DramaType
 from balladeer import SceneScript
 
+from pot.types import Motivation
+from pot.world import Map
 from pot.world import Mobile
 
-"""
-from tas.types import Availability
-from tas.types import Character
-from tas.types import Container
-from tas.types import Journey
-from tas.types import Location
-from tas.types import Motivation
-from tas.types import Operation
-from tas.world import Tea
-"""
 
 class Drama(DramaType):
 
@@ -47,6 +40,13 @@ class Drama(DramaType):
     @property
     def folder(self):
         return sorted(importlib.resources.files(self.package).glob("*.rst"))
+
+    @functools.cached_property
+    def player(self):
+        return next(
+            i for s in self.world.lookup.values() for i in s
+            if i.get_state(Motivation) == Motivation.player
+        )
 
     def __init__(self, package, world, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -198,10 +198,11 @@ class Drama(DramaType):
         except Exception:
             pass
 
+        location = self.player.get_state(Map.Location)
         return random.choice([
-            f"{self.world.player.name} hesitates.",
-            f"{self.world.player.name} pauses.",
-            f"{self.world.player.name} waits in the {self.world.player.location.title} for a moment.",
+            f"{self.player.name} hesitates.",
+            f"{self.player.name} pauses.",
+            f"{self.player.name} waits in the {location.title} for a moment.",
         ])
 
     def do_quit(self, this, text, presenter, *args, **kwargs):
