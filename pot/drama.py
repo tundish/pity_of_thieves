@@ -28,6 +28,7 @@ from balladeer import Grouping
 from balladeer import SceneScript
 
 from pot.types import Motivation
+from pot.types import Operation
 from pot.world import Map
 from pot.world import Mobile
 
@@ -44,8 +45,9 @@ class Drama(DramaType):
 
     @property
     def local(self):
-        reach = (self.player.location, Map.Location.inventory)
-        grouped = self.arrange(i for i in self.world.lookup.each if i.get_state(Map.Location) in reach)
+        # reach = (self.player.location, Map.Location.inventory)
+        reach = (self.player.location,)
+        grouped = self.world.arrange(i for i in self.world.lookup.each if i.get_state(Map.Location) in reach)
         return Grouping(list, {k.__name__: v for k, v in grouped.items()})
 
     @functools.cached_property
@@ -195,14 +197,14 @@ class Drama(DramaType):
         self.active.add(self.do_get)
         self.active.add(self.do_go)
         self.active.add(self.do_inspect)
-        for i in self.world.visible.each:
-            if i is not self.world.player:
+        for i in self.local.each:
+            if i is not self.player:
                 try:
                     yield "* {0.names[0].noun}".format(i)
                 except AttributeError:
                     pass  # Expect a gesture
 
-        yield from ("* {0}".format(i.label.title()) for i in self.world.player.location.options)
+        yield from ("* {0}".format(l.label.capitalize()) for c, l, t in self.world.map.options(self.player.location))
 
     def do_next(self, this, text, presenter, *args, **kwargs):
         """
