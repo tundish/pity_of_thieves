@@ -42,6 +42,8 @@ Listen
 |PLAYER_NAME| listens for a moment.
 He's not alone in the hut. Is there going to be a problem?
 
+{exits}
+
 .. property:: DRAMA.prompt Type a command to continue.
 .. property:: DRAMA.state 0
 
