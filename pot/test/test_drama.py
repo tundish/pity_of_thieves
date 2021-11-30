@@ -20,10 +20,13 @@
 import unittest
 
 from balladeer import World
+from balladeer.speech import Name
 
 from pot.drama import Drama
+from pot.types import Motivation
+from pot.world import Character
+from pot.world import Location
 from pot.world import Map
-from pot.world import Mobile
 from pot.world import World
 
 
@@ -32,7 +35,7 @@ class DramaTests(unittest.TestCase):
     class TestWorld(World):
 
         def build(self):
-            return [Mobile()]
+            return [Character(names=[Name("test")]).set_state(Motivation.player, Location.woodshed)]
 
     def setUp(self):
         world = DramaTests.TestWorld(Map())
@@ -70,3 +73,11 @@ class DramaTests(unittest.TestCase):
                         Location.cutthroat_lane,
                         player.get_state(Location)
                     )
+
+    def test_interlude(self):
+        print(self.drama.world.lookup)
+        facts = self.drama.interlude(self.drama.folder, 0)
+        self.assertIsInstance(facts, dict)
+        self.assertIn("exits", facts)
+        self.assertIn("**W**", facts["exits"], facts)
+        self.assertIn("shed door", facts["exits"].lower(), facts)

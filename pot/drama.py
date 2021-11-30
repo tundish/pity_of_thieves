@@ -24,6 +24,7 @@ import random
 
 from balladeer import CommandParser
 from balladeer import Drama as DramaType
+from balladeer import Grouping
 from balladeer import SceneScript
 
 from pot.types import Motivation
@@ -40,6 +41,12 @@ class Drama(DramaType):
     @property
     def folder(self):
         return sorted(importlib.resources.files(self.package).glob("*.rst"))
+
+    @property
+    def local(self):
+        reach = (self.player.location, Map.Location.inventory)
+        grouped = self.arrange(i for i in self.world.lookup.each if i.get_state(Map.Location) in reach)
+        return Grouping(list, {k.__name__: v for k, v in grouped.items()})
 
     @functools.cached_property
     def player(self):
@@ -72,7 +79,16 @@ class Drama(DramaType):
                 yield i
 
     def interlude(self, folder, index, *args, **kwargs):
-        return {}
+        exits = [(c, t) for c, _, t in self.world.map.options(self.player.location)]
+        return {
+            "exits": "{0}{1}.".format(
+                random.choice(["Exits are: ", "From here you can go "]),
+                ", ".join([
+                    ("**{0.name}** via {1.label}" if getattr(i[1], "label", "") else "**{0.name}**").format(*i)
+                    for i in exits
+                ])
+            )
+        }
 
     def do_again(self, this, text, presenter, *args, **kwargs):
         """
@@ -198,11 +214,10 @@ class Drama(DramaType):
         except Exception:
             pass
 
-        location = self.player.get_state(Map.Location)
         return random.choice([
             f"{self.player.name} hesitates.",
             f"{self.player.name} pauses.",
-            f"{self.player.name} waits in the {location.title} for a moment.",
+            f"{self.player.name} waits in the {self.player.location.title} for a moment.",
         ])
 
     def do_quit(self, this, text, presenter, *args, **kwargs):

@@ -105,7 +105,11 @@ class Mobile(Stateful):
         )
 
 
-class Character(Named, Mobile): pass
+class Character(Named, Mobile):
+
+    @property
+    def location(self):
+        return self.get_state(Location)
 
 
 class World(WorldType):
