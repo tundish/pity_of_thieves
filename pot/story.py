@@ -39,7 +39,7 @@ class Story(StoryType):
         m = Map()
         world = World(m, **kwargs)
         self.drama = {
-            "interior": Drama("pot.interior", world, **kwargs)
+            "interior": Drama("pot.interior", world, **kwargs),
             "exterior": Drama("pot.exterior", world, **kwargs)
         }
         self.context = self.drama["interior"]
@@ -63,7 +63,7 @@ def parser():
 
 
 def main(opts):
-    story = TeaAndSympathy(**vars(opts))
+    story = Story(**vars(opts))
     text = ""
     presenter = None
     while story.active:

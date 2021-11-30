@@ -28,6 +28,12 @@ from balladeer.cartography import Map as MapType
 from balladeer.cartography import Transit
 from balladeer.cartography import Via
 from balladeer.cartography import Waypoint
+from balladeer.speech import Article
+from balladeer.speech import Name
+from balladeer.speech import Pronoun
+
+from pot.types import Motivation
+from pot.types import Operation
 
 
 class Map(MapType):
@@ -111,9 +117,9 @@ class World(WorldType):
     def build(self):
         return [
             Character(
-                names=[Name("Louise", Article("", ""), Pronoun("she", "her", "herself", "hers"))],
-                description="{0.name} is a young woman from Manchester. She works as a nurse."
-            ).set_state(Motivation.player, Location.bedroom),
+                names=[Name("Hod", Article("", ""), Pronoun("he", "him", "himself", "his"))],
+                description="{0.name} is a young orphan."
+            ).set_state(Motivation.player, Location.woodshed),
         ]
 
 
