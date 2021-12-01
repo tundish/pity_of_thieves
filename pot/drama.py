@@ -75,16 +75,16 @@ class Drama(DramaType):
         ensemble = ensemble or self.ensemble
         for i in ensemble:
             if isinstance(i, Mobile) and i.in_transit:
-                location = i.get_state(self.world.map.Location)
+                location = i.get_state(Map.Location)
                 route = list(self.world.map.route(
-                    location, i.get_state(self.world.map.Arriving)
+                    location, i.get_state(Map.Arriving)
                 ))
                 if len(route) > 1:
                     # Still moving
                     i.set_state(route[1])
                 else:
                     # Arrived
-                    i.set_state(self.world.map.Departed[location.name])
+                    i.set_state(Map.Departed[location.name])
                 yield i
 
     def interlude(self, folder, index, *args, **kwargs):
@@ -125,6 +125,7 @@ class Drama(DramaType):
 
     def do_go(self, this, text, presenter, *args, locn: Map.Arriving, **kwargs):
         """
+        go to {locn.value[0]} | go to {locn.value[1]} | go to {locn.value[2]}
         go {locn.value[0]} | go {locn.value[1]} | go {locn.value[2]}
         {locn.value[0]} | {locn.value[1]} | {locn.value[2]}
 
@@ -165,9 +166,9 @@ class Drama(DramaType):
                     continue
 
                 if all(
-                    isinstance(i, Location) or
-                    i is self.world.player or
-                    i in self.world.visible.each
+                    isinstance(i, Map.Location) or
+                    i is self.player or
+                    True #i in self.visible.each
                     for i in kwargs.values()
                 ):
                     cmds.append(cmd)
@@ -191,9 +192,6 @@ class Drama(DramaType):
         inspect {obj.names[0].noun}
 
         """
-        if obj.names[0].noun.lower() == "mug":
-            self.active.add(self.do_propose)
-
         self.state = Operation.paused
         yield obj.description.format(obj, **self.facts)
 

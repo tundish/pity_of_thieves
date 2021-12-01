@@ -60,4 +60,4 @@ Play
 .. property:: DRAMA.state 1
 
 .. |PLAYER_NAME| property:: PLAYER.name
-.. |PLAYER_LOCN| property:: PLAYER.location.name
+.. |PLAYER_LOCN| property:: PLAYER.location.title
