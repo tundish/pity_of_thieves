@@ -47,4 +47,17 @@ He's not alone in the hut. Is there going to be a problem?
 .. property:: DRAMA.prompt Type a command to continue.
 .. property:: DRAMA.state 0
 
+Play
+----
+
+{0}
+
+|PLAYER_LOCN|.
+
+{exits}
+
+.. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
+.. property:: DRAMA.state 1
+
 .. |PLAYER_NAME| property:: PLAYER.name
+.. |PLAYER_LOCN| property:: PLAYER.location.name

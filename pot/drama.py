@@ -89,13 +89,13 @@ class Drama(DramaType):
 
     def interlude(self, folder, index, *args, **kwargs):
         moved = list(self.if_mobile())
-        exits = [(c, t) for c, _, t in self.world.map.options(self.player.location)]
+        exits = {c: t for c, _, t in self.world.map.options(self.player.location)}
         return {
             "exits": "{0}{1}.".format(
                 random.choice(["Exits are: ", "From here you can go "]),
                 ", ".join([
-                    ("**{0.name}** via {1.label}" if getattr(i[1], "label", "") else "**{0.name}**").format(*i)
-                    for i in exits
+                    ("**{0.name}** via {1.label}" if getattr(v, "label", "") else "**{0.name}**").format(k, v)
+                    for k, v in exits.items()
                 ])
             )
         }

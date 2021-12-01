@@ -73,7 +73,7 @@ class Map(MapType):
             Transit().set_state(exit.north_gate, Compass.W, into.orchard, Via.bidir),
             Transit(label="shed door").set_state(exit.butchers_row, Compass.E, into.woodshed, Via.bidir),
             Transit().set_state(exit.butchers_row, Compass.N, into.north_gate, Via.bidir),
-            Transit().set_state(exit.butchers_row, Compass.E, into.market, Via.bidir),
+            Transit().set_state(exit.butchers_row, Compass.SE, into.market, Via.bidir),
             Transit().set_state(exit.butchers_row, Compass.S, into.top_cross, Via.bidir),
             Transit().set_state(exit.butchers_row, Compass.W, into.bridge_street, Via.bidir),
             Transit().set_state(exit.market, Compass.E, into.tower_street_w, Via.bidir),
