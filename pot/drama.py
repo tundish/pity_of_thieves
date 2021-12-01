@@ -123,18 +123,14 @@ class Drama(DramaType):
         self.active.discard(this)
         return f"{self.world.player.name} picks up {obj.names[0].article.definite} {obj.names[0].noun}.",
 
-    def do_go(self, this, text, presenter, *args, locn: "player.location", **kwargs):
+    def do_go(self, this, text, presenter, *args, locn: Map.Arriving, **kwargs):
         """
-        enter {locn.value[0]} | enter {locn.value[1]}
-        go {locn.value[0]} | go {locn.value[1]} | go {locn.value[2]} | go {locn.value[3]} | go {locn.value[4]}
-        {locn.value[0]} | {locn.value[1]} | {locn.value[2]} | {locn.value[3]} | {locn.value[4]}
+        go {locn.value[0]} | go {locn.value[1]} | go {locn.value[2]}
+        {locn.value[0]} | {locn.value[1]} | {locn.value[2]}
 
         """
-        gone = (i for i in self.history if i.name == this.__name__)
-        never_been = locn != Location.bedroom and not any(i for i in gone if i.kwargs["locn"] == locn)
-        self.state = 0 if never_been else 1
-        self.world.player.state = locn
-        yield f"{self.world.player.name} goes into the {locn.title}."
+        self.player.set_state(locn, self.world.map.Departed[self.player.location.name])
+        yield f"Heading to {locn.title}."
 
     def do_hop(self, this, text, presenter, *args, dirn: Compass, **kwargs):
         """

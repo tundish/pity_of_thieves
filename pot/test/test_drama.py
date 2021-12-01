@@ -106,3 +106,27 @@ class DramaTests(unittest.TestCase):
         self.assertIn("W", response)
         self.assertEqual(Departed.woodshed, self.drama.player.get_state(Departed))
         self.assertEqual(Arriving.butchers_row, self.drama.player.get_state(Arriving))
+
+    def test_go(self):
+        Arriving = self.drama.world.map.Arriving
+        Location = self.drama.world.map.Location
+        Departed = self.drama.world.map.Departed
+
+        self.assertEqual(Location.woodshed, self.drama.player.get_state(Location))
+        rv = CommandParser.expand_commands(self.drama.do_go, ensemble=self.drama.ensemble, parent=self.drama)
+        commands = {i[0] for i in rv}
+        self.assertIn("butchers row", commands)
+        self.assertIn("go butchers row", commands)
+        self.assertIn("cutthroat lane", commands)
+        self.assertIn("go cutthroat lane", commands)
+
+        fn, args, kwargs = self.drama.interpret(self.drama.match("butchers row"))
+        self.assertEqual(self.drama.do_go, fn)
+
+        fn, args, kwargs =self.drama.interpret(self.drama.match("go butchers row"))
+        self.assertEqual(self.drama.do_go, fn)
+
+        response = self.drama(fn, *args, **kwargs)
+        self.assertIn("Butchers' Row", response)
+        self.assertEqual(Departed.woodshed, self.drama.player.get_state(Departed))
+        self.assertEqual(Arriving.butchers_row, self.drama.player.get_state(Arriving))

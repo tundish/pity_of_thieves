@@ -41,7 +41,7 @@ class Map(MapType):
     spots = {
         "beggars_ash":  ["beggar's ash", "beggars ash"],
         "bridge_street":  ["bridge street", "bridge st"],
-        "butchers_row":  ["butcher's row", "butchers row"],
+        "butchers_row":  ["butchers' row", "butchers row"],
         "cutthroat_lane":  ["cut throat lane", "cutthroat lane"],
         "dingwood":  ["dingwood"],
         "gardens":  ["public gardens", "gardens"],
