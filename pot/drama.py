@@ -93,10 +93,10 @@ class Drama(DramaType):
         return {
             "exits": "{0}{1}.".format(
                 random.choice(["Exits are: ", "From here you can go "]),
-                ", ".join([
+                ", ".join(sorted(
                     ("**{0.name}** via {1.label}" if getattr(v, "label", "") else "**{0.name}**").format(k, v)
                     for k, v in exits.items()
-                ])
+                ))
             )
         }
 
@@ -211,9 +211,6 @@ class Drama(DramaType):
 
         """
         self.state = Operation.paused
-        self.active.add(self.do_get)
-        self.active.add(self.do_go)
-        self.active.add(self.do_inspect)
         for i in self.local.each:
             if i is not self.player:
                 try:
@@ -221,7 +218,11 @@ class Drama(DramaType):
                 except AttributeError:
                     pass  # Expect a gesture
 
-        yield from ("* {0}".format(l.label.capitalize()) for c, l, t in self.world.map.options(self.player.location))
+        yield from (
+            "* {0}".format(t.label.title())
+            for c, l, t in self.world.map.options(self.player.location)
+            if hasattr(t, "label")
+        )
 
     def do_next(self, this, text, presenter, *args, **kwargs):
         """

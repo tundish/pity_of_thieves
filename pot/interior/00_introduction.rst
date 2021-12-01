@@ -22,9 +22,9 @@ Open
 .. condition:: PLAYER.state pot.world.Location.woodshed
 .. condition:: DRAMA.state 0
 
-There is a thud. From above.
-
 |PLAYER_NAME| sits up in bed. He listens for a moment, confused.
+
+|PLAYER_LOCN|.
 
 Then looks toward the door.
 
@@ -39,13 +39,13 @@ Listen
 
 {0}
 
-|PLAYER_NAME| listens for a moment.
-He's not alone in the hut. Is there going to be a problem?
+|PLAYER_LOCN|.
+
+|PLAYER_NAME| listens for a moment. Is there going to be a problem?
 
 {exits}
 
 .. property:: DRAMA.prompt Type a command to continue.
-.. property:: DRAMA.state 0
 
 Play
 ----

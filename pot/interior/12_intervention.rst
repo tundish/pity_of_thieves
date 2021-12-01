@@ -58,8 +58,8 @@ Look
 
 [DRAMA]_
 
-    |PLAYER_NAME| is in the |PLAYER_LOCN|.
-    Looking around, he is aware of:
+    |PLAYER_LOCN|. We are with |PLAYER_NAME| .
+    Looking around, |PLAYER_SUBJECT| is aware of:
 
 {0}
 
@@ -68,3 +68,4 @@ Look
 .. |INPUT_TEXT| property:: DRAMA.input_text
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |PLAYER_LOCN| property:: PLAYER.location.title
+.. |PLAYER_SUBJECT| property:: PLAYER.names[0].pronoun.subject
