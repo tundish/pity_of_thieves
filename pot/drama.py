@@ -26,6 +26,7 @@ from balladeer import CommandParser
 from balladeer import Drama as DramaType
 from balladeer import Grouping
 from balladeer import SceneScript
+from balladeer.cartography import Compass
 
 from pot.types import Motivation
 from pot.types import Operation
@@ -64,6 +65,7 @@ class Drama(DramaType):
 
         self.active = self.active.union({
             self.do_again, self.do_look,
+            self.do_go, self.do_hop,
             self.do_help, self.do_history,
             self.do_quit
         })
@@ -73,14 +75,20 @@ class Drama(DramaType):
         ensemble = ensemble or self.ensemble
         for i in ensemble:
             if isinstance(i, Mobile) and i.in_transit:
+                location = i.get_state(self.world.map.Location)
                 route = list(self.world.map.route(
-                    i.get_state(self.world.map.Location), i.get_state(self.world.map.Arriving)
+                    location, i.get_state(self.world.map.Arriving)
                 ))
                 if len(route) > 1:
-                    i.state = route[1]
+                    # Still moving
+                    i.set_state(route[1])
+                else:
+                    # Arrived
+                    i.set_state(self.world.map.Departed[location.name])
                 yield i
 
     def interlude(self, folder, index, *args, **kwargs):
+        moved = list(self.if_mobile())
         exits = [(c, t) for c, _, t in self.world.map.options(self.player.location)]
         return {
             "exits": "{0}{1}.".format(
@@ -115,7 +123,7 @@ class Drama(DramaType):
         self.active.discard(this)
         return f"{self.world.player.name} picks up {obj.names[0].article.definite} {obj.names[0].noun}.",
 
-    def do_go(self, this, text, presenter, *args, locn: "world.player.location.options", **kwargs):
+    def do_go(self, this, text, presenter, *args, locn: "player.location", **kwargs):
         """
         enter {locn.value[0]} | enter {locn.value[1]}
         go {locn.value[0]} | go {locn.value[1]} | go {locn.value[2]} | go {locn.value[3]} | go {locn.value[4]}
@@ -127,6 +135,21 @@ class Drama(DramaType):
         self.state = 0 if never_been else 1
         self.world.player.state = locn
         yield f"{self.world.player.name} goes into the {locn.title}."
+
+    def do_hop(self, this, text, presenter, *args, dirn: Compass, **kwargs):
+        """
+        {dirn.name}
+        go {dirn.name}
+
+        """
+        options = {c: l for c, l, t in self.world.map.options(self.player.location)}
+        if dirn not in options:
+            return f"There is no {dirn.name} from here."
+        else:
+            a = self.world.map.Arriving[options[dirn].name]
+            d = self.world.map.Departed[self.player.location.name]
+            self.player.set_state(a, d)
+            return f"Going {dirn.name}."
 
     def do_help(self, this, text, presenter, *args, **kwargs):
         """

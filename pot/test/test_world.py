@@ -43,8 +43,8 @@ class MapTests(unittest.TestCase):
         self.assertIn("north gate", [v for i in rv for v in i.value])
 
     def test_routes_rhs(self):
-        dep = self.map.exit.market
+        dep = self.map.exit.tower_street_w
         arr = self.map.into.gardens
         rv = self.map.route(dep, arr)
-        self.assertEqual(5, len(rv), rv)
+        self.assertEqual(4, len(rv), rv)
         self.assertIn("upper tower street", [v for i in rv for v in i.value])

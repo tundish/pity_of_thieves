@@ -22,6 +22,8 @@ import unittest
 from balladeer import World
 from balladeer.speech import Name
 
+from turberfield.catchphrase.parser import CommandParser
+
 from pot.drama import Drama
 from pot.types import Motivation
 from pot.world import Character
@@ -42,7 +44,7 @@ class DramaTests(unittest.TestCase):
         self.drama = Drama("pot.interior", world)
 
     def test_spots(self):
-        self.assertEqual(19, len(self.drama.folder), self.drama.folder)
+        self.assertEqual(2, len(self.drama.folder), self.drama.folder)
 
     def test_if_mobile(self):
         player = next(iter(self.drama.ensemble))
@@ -75,9 +77,32 @@ class DramaTests(unittest.TestCase):
                     )
 
     def test_interlude(self):
-        print(self.drama.world.lookup)
         facts = self.drama.interlude(self.drama.folder, 0)
         self.assertIsInstance(facts, dict)
         self.assertIn("exits", facts)
         self.assertIn("**W**", facts["exits"], facts)
         self.assertIn("shed door", facts["exits"].lower(), facts)
+
+    def test_hop(self):
+        Arriving = self.drama.world.map.Arriving
+        Location = self.drama.world.map.Location
+        Departed = self.drama.world.map.Departed
+
+        self.assertEqual(Location.woodshed, self.drama.player.get_state(Location))
+        rv = CommandParser.expand_commands(self.drama.do_hop, ensemble=self.drama.ensemble, parent=self.drama)
+        commands = {i[0] for i in rv}
+        self.assertIn("n", commands)
+        self.assertIn("go n", commands)
+        self.assertIn("w", commands)
+        self.assertIn("go w", commands)
+
+        fn, args, kwargs = self.drama.interpret(self.drama.match("w"))
+        self.assertEqual(self.drama.do_hop, fn)
+
+        fn, args, kwargs =self.drama.interpret(self.drama.match("go w"))
+        self.assertEqual(self.drama.do_hop, fn)
+
+        response = self.drama(fn, *args, **kwargs)
+        self.assertIn("W", response)
+        self.assertEqual(Departed.woodshed, self.drama.player.get_state(Departed))
+        self.assertEqual(Arriving.butchers_row, self.drama.player.get_state(Arriving))
