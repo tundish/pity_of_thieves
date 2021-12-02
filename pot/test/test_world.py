@@ -30,10 +30,10 @@ class MapTests(unittest.TestCase):
         self.map = Map()
 
     def test_spots(self):
-        self.assertEqual(19, len(self.map.Location))
+        self.assertEqual(20, len(self.map.Location))
 
     def test_vias(self):
-        self.assertEqual(19, len(self.map.Location))
+        self.assertEqual(20, len(self.map.Location))
 
     def test_routes_lhs(self):
         dep = self.map.exit.mordiford_quay

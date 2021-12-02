@@ -42,12 +42,14 @@ class Story(StoryType):
             "interior": Drama("pot.interior", world, **kwargs).set_state(Operation.prompt),
             "exterior": Drama("pot.exterior", world, **kwargs).set_state(Operation.prompt)
         }
-        self.context = self.drama["interior"]
 
     @property
     def active(self):
         return [i for i in self.drama.values() if i.active]
 
+    @property
+    def context(self):
+        return self.drama["interior"]
 
 def parser():
     rv = argparse.ArgumentParser()

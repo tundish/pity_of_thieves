@@ -1,6 +1,6 @@
 :author:    D E Haynes
 :made_at:   2021-11-30
-:project:   Pity of Thieves
+:project:   The Pity of Thieves
 :dwell:     0
 :pause:     0
 

@@ -143,7 +143,7 @@ class Drama(DramaType):
         if dirn not in options:
             return f"There is no {dirn.name} from here."
         else:
-            a = self.world.map.Arriving[options[dirn].name]
+            a = Map.Arriving[options[dirn].name]
             d = self.world.map.Departed[self.player.location.name]
             self.player.set_state(a, d)
             return f"Going {dirn.name}."

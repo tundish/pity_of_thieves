@@ -52,6 +52,7 @@ class Map(MapType):
         "orchard":  ["the orchard", "orchard"],
         "ross_road":  ["ross road", "ross rd"],
         "south_end":  ["south end", "southend"],
+        "tavern":  ["tavern"],
         "top_cross":  ["top cross"],
         "tower_street_e":  ["upper tower street", "tower st e"],
         "tower_street":  ["tower street", "tower st"],
@@ -85,6 +86,7 @@ class Map(MapType):
             Transit().set_state(exit.south_end, Compass.S, into.dingwood, Via.bidir),
             Transit().set_state(exit.tower_street_w, Compass.E, into.tower_street, Via.bidir),
             Transit().set_state(exit.tower_street, Compass.E, into.tower_street_e, Via.bidir),
+            Transit(label="oak door").set_state(exit.tower_street, Compass.N, into.tavern, Via.bidir),
             Transit().set_state(exit.tower_street_e, Compass.E, into.tower_wall, Via.bidir),
             Transit().set_state(exit.tower_street_e, Compass.N, into.gardens, Via.bidir),
             Transit().set_state(exit.gardens, Compass.NE, into.cutthroat_lane, Via.bidir),
@@ -121,7 +123,7 @@ class World(WorldType):
     def build(self):
         return [
             Character(
-                names=[Name("Hod", Article("", ""), Pronoun("he", "him", "himself", "his"))],
+                names=[Name("Odric", Article("", ""), Pronoun("he", "him", "himself", "his"))],
                 description="{0.name} is a young orphan."
             ).set_state(Motivation.player, Location.woodshed),
         ]
