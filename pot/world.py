@@ -59,6 +59,7 @@ class Map(MapType):
         "tower_street_w":  ["lower tower street", "tower st w"],
         "tower_wall":  ["tower wall"],
         "woodshed":  ["wood shed", "woodshed", "shed"],
+        "inventory": []
     }
 
     Arriving = enum.Enum("Arriving", spots, type=Waypoint)

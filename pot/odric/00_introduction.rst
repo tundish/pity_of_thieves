@@ -1,6 +1,8 @@
 :author:    D E Haynes
 :made_at:   2021-11-30
 :project:   The Pity of Thieves
+:dwell: 0.08
+:pause: 0.7
 
 .. entity:: PLAYER
    :types:  pot.world.Character

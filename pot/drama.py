@@ -46,8 +46,7 @@ class Drama(DramaType):
 
     @property
     def local(self):
-        # reach = (self.player.location, Map.Location.inventory)
-        reach = (self.player.location,)
+        reach = (self.player.location, Map.Location.inventory)
         grouped = self.world.arrange(i for i in self.world.lookup.each if i.get_state(Map.Location) in reach)
         return Grouping(list, {k.__name__: v for k, v in grouped.items()})
 
@@ -65,7 +64,8 @@ class Drama(DramaType):
 
         self.active = self.active.union({
             self.do_again, self.do_look,
-            self.do_go, self.do_hop,
+            # self.do_go, self.do_hop,
+            self.do_hop,
             self.do_help, self.do_history,
             self.do_quit
         })

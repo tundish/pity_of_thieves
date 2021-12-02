@@ -39,8 +39,11 @@ class Story(StoryType):
         m = Map()
         world = World(m, **kwargs)
         self.drama = {
-            "interior": Drama("pot.interior", world, **kwargs).set_state(Operation.prompt),
-            "exterior": Drama("pot.exterior", world, **kwargs).set_state(Operation.prompt)
+            "freda": Drama("pot.freda", world, **kwargs).set_state(Operation.prompt),
+            "hod": Drama("pot.hod", world, **kwargs).set_state(Operation.prompt),
+            "isla": Drama("pot.isla", world, **kwargs).set_state(Operation.prompt),
+            "niall": Drama("pot.niall", world, **kwargs).set_state(Operation.prompt),
+            "odric": Drama("pot.odric", world, **kwargs).set_state(Operation.prompt),
         }
 
     @property
@@ -49,7 +52,7 @@ class Story(StoryType):
 
     @property
     def context(self):
-        return self.drama["interior"]
+        return self.drama["odric"]
 
 def parser():
     rv = argparse.ArgumentParser()
