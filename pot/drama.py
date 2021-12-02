@@ -39,7 +39,7 @@ class Drama(DramaType):
     @property
     def ensemble(self):
         transits = {t for c, l, t in self.world.map.options(self.player.location)}
-        return list(self.world.lookup.each) + list(transits)
+        return list(self.world.lookup.each) + [Map.Location] + list(transits)
 
     @property
     def folder(self):
@@ -117,7 +117,7 @@ class Drama(DramaType):
         self.state = self.next_states(n)[0]
         return "again..."
 
-    def do_get(self, this, text, presenter, obj: "world.visible[Container]", *args, **kwargs):
+    def do_get(self, this, text, presenter, obj: "world.local[Container]", *args, **kwargs):
         """
         get {obj.names[0].noun}
         grab {obj.names[0].noun}
@@ -197,7 +197,7 @@ class Drama(DramaType):
         self.state = Operation.paused
         yield from ("* {0.args[0]}".format(i) for i in self.history if i.args[0])
 
-    def do_inspect(self, this, text, presenter, obj: "world.visible.each", *args, **kwargs):
+    def do_inspect(self, this, text, presenter, obj: "world.local.each", *args, **kwargs):
         """
         inspect {obj.names[0].noun}
 

@@ -35,6 +35,7 @@ His place is the |PLAYER_LOCN|. Where he sleeps, and when sleep is gone, where h
 He looks toward the door.
 
 .. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
+.. property:: LOCATION.description It's cold.
 .. property:: DRAMA.state 1
 
 Listen
@@ -64,6 +65,16 @@ Play
 
 .. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
 .. property:: DRAMA.state 1
+
+Hurry
+-----
+
+.. condition:: PLAYER.in_transit True
+
+{0}
+
+|PLAYER_NAME| hurries past |PLAYER_LOCN|.
+
 
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |PLAYER_LOCN| property:: PLAYER.location.title
