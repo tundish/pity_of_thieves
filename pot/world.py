@@ -134,7 +134,7 @@ class World(WorldType):
         return [
             Character(
                 names=[Name("Odric", Article("", ""), Pronoun("he", "him", "himself", "his"))],
-                description="{0.name} is a young orphan."
+                description="{0.names[0].noun} is a young orphan."
             ).set_state(Engagement.player, Location.woodshed),
         ]
 

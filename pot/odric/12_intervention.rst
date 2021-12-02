@@ -58,10 +58,12 @@ Look
 
 [DRAMA]_
 
-    You are playing |PLAYER_NAME|; |PLAYER_POSS| location is |PLAYER_LOCN|.
+    You are |PLAYER_NAME|. |PLAYER_LOCN| is |PLAYER_POSS| location.
     Looking around, |PLAYER_SUBJECT| is aware of:
 
 {0}
+
+{exits}
 
 .. property:: DRAMA.state pot.types.Operation.prompt
 

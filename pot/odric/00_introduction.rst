@@ -1,8 +1,8 @@
 :author:    D E Haynes
 :made_at:   2021-11-30
 :project:   The Pity of Thieves
-:dwell: 0.08
-:pause: 0.7
+:dwell: 0.2
+:pause: 0.9
 
 .. entity:: PLAYER
    :types:  pot.world.Character
@@ -24,11 +24,15 @@ Open
 .. condition:: PLAYER.state pot.world.Location.woodshed
 .. condition:: DRAMA.state 0
 
-|PLAYER_NAME| sits up in bed. He listens for a moment, confused.
+Have you ever heard the sound of Rooks in early dawn?
+The devilish cackle of hundreds of birds - they should call them a Mockery.
+Harsh critics of anyone still in their bed.
 
-|PLAYER_LOCN|.
+So wakes |PLAYER_NAME|.
 
-Then looks toward the door.
+His place is the |PLAYER_LOCN|. Where he sleeps, and when sleep is gone, where he must work.
+
+He looks toward the door.
 
 .. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
 .. property:: DRAMA.state 1
