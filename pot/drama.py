@@ -28,7 +28,7 @@ from balladeer import Grouping
 from balladeer import SceneScript
 from balladeer.cartography import Compass
 
-from pot.types import Motivation
+from pot.types import Engagement
 from pot.types import Operation
 from pot.world import Map
 from pot.world import Mobile
@@ -38,7 +38,8 @@ class Drama(DramaType):
 
     @property
     def ensemble(self):
-        return list(self.world.lookup.each)
+        transits = {t for c, l, t in self.world.map.options(self.player.location)}
+        return list(self.world.lookup.each) + list(transits)
 
     @property
     def folder(self):
@@ -47,14 +48,19 @@ class Drama(DramaType):
     @property
     def local(self):
         reach = (self.player.location, Map.Location.inventory)
-        grouped = self.world.arrange(i for i in self.world.lookup.each if i.get_state(Map.Location) in reach)
-        return Grouping(list, {k.__name__: v for k, v in grouped.items()})
+        transits = {t for c, l, t in self.world.map.options(self.player.location)}
+        objects = [
+            i for i in self.world.lookup.each
+            if i.get_state(Engagement) not in (Engagement.hidden, Engagement.player)
+            and i.get_state(Map.Location) in reach
+        ] + list(transits)
+        return Grouping(list, {k.__name__: v for k, v in self.world.arrange(objects).items()})
 
     @functools.cached_property
     def player(self):
         return next(
             i for s in self.world.lookup.values() for i in s
-            if i.get_state(Motivation) == Motivation.player
+            if i.get_state(Engagement) == Engagement.player
         )
 
     def __init__(self, package, world, *args, **kwargs):
@@ -65,7 +71,7 @@ class Drama(DramaType):
         self.active = self.active.union({
             self.do_again, self.do_look,
             # self.do_go, self.do_hop,
-            self.do_hop,
+            self.do_hop, self.do_transit,
             self.do_help, self.do_history,
             self.do_quit
         })
@@ -94,7 +100,7 @@ class Drama(DramaType):
             "exits": "{0}{1}.".format(
                 random.choice(["Exits are: ", "From here you can go "]),
                 ", ".join(sorted(
-                    ("**{0.name}** via {1.label}" if getattr(v, "label", "") else "**{0.name}**").format(k, v)
+                    ("**{0.name}** via {1.name}" if getattr(v, "names", None) else "**{0.name}**").format(k, v)
                     for k, v in exits.items()
                 ))
             )
@@ -146,12 +152,16 @@ class Drama(DramaType):
             a = Map.Arriving[options[dirn].name]
             d = self.world.map.Departed[self.player.location.name]
             self.player.set_state(a, d)
-            return f"Going {dirn.name}."
+            t = kwargs.pop("transit", None)
+            if t:
+                return f"Using {t.names[0].article.definite} {t.names[0].noun} to go {dirn.name}."
+            else:
+                return f"Going {dirn.name}."
 
     def do_help(self, this, text, presenter, *args, **kwargs):
         """
         help
-        what | what do i do
+        what do i do
 
         """
         self.state = Operation.paused
@@ -212,17 +222,10 @@ class Drama(DramaType):
         """
         self.state = Operation.paused
         for i in self.local.each:
-            if i is not self.player:
-                try:
-                    yield "* {0.names[0].noun}".format(i)
-                except AttributeError:
-                    pass  # Expect a gesture
-
-        yield from (
-            "* {0}".format(t.label.title())
-            for c, l, t in self.world.map.options(self.player.location)
-            if hasattr(t, "label")
-        )
+            try:
+                yield "* {0.names[0].noun}".format(i)
+            except AttributeError:
+                pass  # Expect a gesture
 
     def do_next(self, this, text, presenter, *args, **kwargs):
         """
@@ -239,6 +242,19 @@ class Drama(DramaType):
             f"{self.player.name} pauses.",
             f"{self.player.name} waits in the {self.player.location.title} for a moment.",
         ])
+
+    def do_transit(self, this, text, presenter, transit: "local[Transit]", *args, **kwargs):
+        """
+        follow {transit.names[0].noun} | follow {transit.names[1].noun}
+        go {transit.names[0].noun} | go {transit.names[1].noun}
+        open {transit.names[0].noun} | open {transit.names[1].noun}
+        try {transit.names[0].noun} | try {transit.names[1].noun}
+        use {transit.names[0].noun} | use {transit.names[1].noun}
+
+        """
+        directions = {t: c for c, l, t in self.world.map.options(self.player.location)}
+        dirn = directions[transit]
+        return self.do_hop(self.do_hop, text, presenter, *args, dirn=dirn, transit=transit, **kwargs)
 
     def do_quit(self, this, text, presenter, *args, **kwargs):
         """

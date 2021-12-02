@@ -25,7 +25,7 @@ from balladeer.speech import Name
 from turberfield.catchphrase.parser import CommandParser
 
 from pot.drama import Drama
-from pot.types import Motivation
+from pot.types import Engagement
 from pot.world import Character
 from pot.world import Location
 from pot.world import Map
@@ -37,11 +37,11 @@ class DramaTests(unittest.TestCase):
     class TestWorld(World):
 
         def build(self):
-            return [Character(names=[Name("test")]).set_state(Motivation.player, Location.woodshed)]
+            return [Character(names=[Name("test")]).set_state(Engagement.player, Location.woodshed)]
 
     def setUp(self):
-        world = DramaTests.TestWorld(Map())
-        self.drama = Drama("pot.interior", world)
+        world = World(Map())
+        self.drama = Drama("pot.odric", world)
 
     def test_spots(self):
         self.assertEqual(2, len(self.drama.folder), self.drama.folder)
@@ -81,7 +81,7 @@ class DramaTests(unittest.TestCase):
         self.assertIsInstance(facts, dict)
         self.assertIn("exits", facts)
         self.assertIn("**W**", facts["exits"], facts)
-        self.assertIn("shed door", facts["exits"].lower(), facts)
+        self.assertIn("door", facts["exits"].lower(), facts)
 
     def test_hop(self):
         Arriving = self.drama.world.map.Arriving
@@ -120,6 +120,8 @@ class DramaTests(unittest.TestCase):
         self.assertIn("cutthroat lane", commands)
         self.assertIn("go cutthroat lane", commands)
 
+        self.assertNotIn(self.drama.do_go, self.drama.active)
+        self.drama.active.add(self.drama.do_go)
         fn, args, kwargs = self.drama.interpret(self.drama.match("butchers row"))
         self.assertEqual(self.drama.do_go, fn)
 
@@ -128,5 +130,27 @@ class DramaTests(unittest.TestCase):
 
         response = self.drama(fn, *args, **kwargs)
         self.assertIn("Butchers' Row", response)
+        self.assertEqual(Departed.woodshed, self.drama.player.get_state(Departed))
+        self.assertEqual(Arriving.butchers_row, self.drama.player.get_state(Arriving))
+
+    def test_transit(self):
+        Arriving = self.drama.world.map.Arriving
+        Location = self.drama.world.map.Location
+        Departed = self.drama.world.map.Departed
+
+        self.assertEqual(Location.woodshed, self.drama.player.get_state(Location))
+        rv = CommandParser.expand_commands(self.drama.do_transit, ensemble=self.drama.ensemble, parent=self.drama)
+        commands = {i[0] for i in rv}
+        self.assertIn("open door", commands, self.drama.ensemble)
+        self.assertIn("try shed door", commands)
+
+        fn, args, kwargs = self.drama.interpret(self.drama.match("open door"))
+        self.assertEqual(self.drama.do_transit, fn)
+
+        fn, args, kwargs =self.drama.interpret(self.drama.match("try shed door"))
+        self.assertEqual(self.drama.do_transit, fn)
+
+        response = self.drama(fn, *args, **kwargs)
+        self.assertIn("W", response)
         self.assertEqual(Departed.woodshed, self.drama.player.get_state(Departed))
         self.assertEqual(Arriving.butchers_row, self.drama.player.get_state(Arriving))

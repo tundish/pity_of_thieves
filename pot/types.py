@@ -20,9 +20,11 @@
 import enum
 
 
-class Motivation(enum.Enum):
+class Engagement(enum.Enum):
 
     acting = enum.auto()
+    silent = enum.auto()
+    hidden = enum.auto()
     player = enum.auto()
 
 

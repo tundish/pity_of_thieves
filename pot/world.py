@@ -25,15 +25,18 @@ from balladeer import Named
 from balladeer import World as WorldType
 from balladeer.cartography import Compass
 from balladeer.cartography import Map as MapType
-from balladeer.cartography import Transit
+from balladeer.cartography import Transit as TransitType
 from balladeer.cartography import Via
 from balladeer.cartography import Waypoint
 from balladeer.speech import Article
 from balladeer.speech import Name
 from balladeer.speech import Pronoun
 
-from pot.types import Motivation
+from pot.types import Engagement
 from pot.types import Operation
+
+
+class Transit(Named, TransitType): pass
 
 
 class Map(MapType):
@@ -73,7 +76,9 @@ class Map(MapType):
         self.transits = [
             Transit().set_state(exit.north_gate, Compass.E, into.beggars_ash, Via.bidir),
             Transit().set_state(exit.north_gate, Compass.W, into.orchard, Via.bidir),
-            Transit(label="shed door").set_state(exit.butchers_row, Compass.E, into.woodshed, Via.bidir),
+            Transit(
+                names=[Name("Shed door"), Name("Door")]
+            ).set_state(exit.butchers_row, Compass.E, into.woodshed, Via.bidir),
             Transit().set_state(exit.butchers_row, Compass.N, into.north_gate, Via.bidir),
             Transit().set_state(exit.butchers_row, Compass.SE, into.market, Via.bidir),
             Transit().set_state(exit.butchers_row, Compass.S, into.top_cross, Via.bidir),
@@ -87,11 +92,15 @@ class Map(MapType):
             Transit().set_state(exit.south_end, Compass.S, into.dingwood, Via.bidir),
             Transit().set_state(exit.tower_street_w, Compass.E, into.tower_street, Via.bidir),
             Transit().set_state(exit.tower_street, Compass.E, into.tower_street_e, Via.bidir),
-            Transit(label="oak door").set_state(exit.tower_street, Compass.N, into.tavern, Via.bidir),
+            Transit(
+                names=[Name("Oak door"), Name("Door")]
+            ).set_state(exit.tower_street, Compass.N, into.tavern, Via.bidir),
             Transit().set_state(exit.tower_street_e, Compass.E, into.tower_wall, Via.bidir),
             Transit().set_state(exit.tower_street_e, Compass.N, into.gardens, Via.bidir),
             Transit().set_state(exit.gardens, Compass.NE, into.cutthroat_lane, Via.bidir),
-            Transit(label="muddy path").set_state(exit.cutthroat_lane, Compass.W, into.north_gate, Via.bidir),
+            Transit(
+                names=[Name("Muddy path"), Name("Path")]
+            ).set_state(exit.cutthroat_lane, Compass.W, into.north_gate, Via.bidir),
         ]
 
 Arriving = Map.Arriving
@@ -126,7 +135,7 @@ class World(WorldType):
             Character(
                 names=[Name("Odric", Article("", ""), Pronoun("he", "him", "himself", "his"))],
                 description="{0.name} is a young orphan."
-            ).set_state(Motivation.player, Location.woodshed),
+            ).set_state(Engagement.player, Location.woodshed),
         ]
 
 

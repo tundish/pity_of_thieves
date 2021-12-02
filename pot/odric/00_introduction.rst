@@ -6,7 +6,7 @@
 
 .. entity:: PLAYER
    :types:  pot.world.Character
-   :states: pot.types.Motivation.player
+   :states: pot.types.Engagement.player
 
 .. entity:: DRAMA
    :types:  balladeer.Drama
