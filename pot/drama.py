@@ -72,7 +72,7 @@ class Drama(DramaType):
             self.do_again, self.do_look,
             # self.do_go, self.do_hop,
             self.do_hop, self.do_transit,
-            self.do_help, self.do_history,
+            self.do_help, self.do_hint, self.do_history,
             self.do_quit
         })
         self.default_fn = self.do_next
@@ -188,6 +188,13 @@ class Drama(DramaType):
                     yield from ("* {0}".format(i) for i in cmds if i != str(tuple()))
                 else:
                     yield "* {0}".format(random.choice(cmds))
+
+    def do_hint(self, this, text, presenter, *args, **kwargs):
+        """
+        hint
+
+        """
+        return
 
     def do_history(self, this, text, presenter, *args, **kwargs):
         """

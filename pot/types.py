@@ -23,9 +23,10 @@ import enum
 class Engagement(enum.Enum):
 
     acting = enum.auto()
-    silent = enum.auto()
     hidden = enum.auto()
+    placed = enum.auto()
     player = enum.auto()
+    silent = enum.auto()
 
 
 class Operation(enum.Enum):
@@ -37,3 +38,8 @@ class Operation(enum.Enum):
     ending = enum.auto()
     finish = enum.auto()
 
+
+class Signifier(enum.Enum):
+
+    hand = ["fingers", "hand", "stumps"]
+    veil = ["mask", "veil"]

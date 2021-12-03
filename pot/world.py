@@ -108,7 +108,14 @@ Departed = Map.Departed
 Location = Map.Location
 
 
-class Mobile(Stateful):
+class Located(Stateful):
+
+    @property
+    def location(self):
+        return self.get_state(Location)
+
+
+class Mobile(Located):
 
     @property
     def in_transit(self):
@@ -117,11 +124,8 @@ class Mobile(Stateful):
         )
 
 
-class Character(Named, Mobile):
-
-    @property
-    def location(self):
-        return self.get_state(Location)
+class Character(Named, Mobile): pass
+class Item(Named, Located): pass
 
 
 class World(WorldType):
@@ -134,8 +138,20 @@ class World(WorldType):
         return [
             Character(
                 names=[Name("Odric", Article("", ""), Pronoun("he", "him", "himself", "his"))],
-                description="{0.names[0].noun} is a young orphan."
+                description="{0.names[0].noun} is a scruffy young orphan."
             ).set_state(Engagement.player, Location.woodshed),
+            Item(
+                names=[Name("Arsenic"), Name("Poison"), Name("Powder")],
+                description="A small waxed leather bag, full of crunchy white powder."
+            ).set_state(Engagement.placed, Location.woodshed),
+            Item(
+                names=[Name("Knife"), Name("Seax")],
+                description="A hefty blade. A tool rather than a weapon; it has a plain wooden handle."
+            ).set_state(Engagement.placed, Location.orchard),
+            Item(
+                names=[Name("Cheese"), Name("Food")],
+                description="A chunk of hard {0.names[0].noun}, about the size of a fist."
+            ).set_state(Engagement.placed, Location.tavern),
         ]
 
 
