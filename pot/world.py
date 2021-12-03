@@ -145,9 +145,17 @@ class World(WorldType):
                 description="{0.names[0].noun} is a fit young man with long hair and wild eyes."
             ).set_state(Engagement.acting, Location.top_cross),
             Character(
-                names=[Name("Freda", Article("", ""), Pronoun("he", "him", "himself", "his"))],
+                names=[Name("Freda", Article("", ""), Pronoun("she", "her", "herself", "her"))],
                 description="{0.names[0].noun} is a tall girl, graceful and fair."
             ).set_state(Engagement.acting, Location.tavern),
+            Character(
+                names=[Name("Isla", Article("", ""), Pronoun("she", "her", "herself", "her"))],
+                description="{0.names[0].noun} is sharp and nimble. Because she's a Rat."
+            ).set_state(Engagement.acting, Location.woodshed),
+            Character(
+                names=[Name("Hod", Article("", ""), Pronoun("he", "him", "himself", "his"))],
+                description="{0.names[0].noun} is sharp and nimble."
+            ).set_state(Engagement.acting, Location.woodshed),
             Item(
                 names=[Name("Arsenic"), Name("Poison"), Name("Powder")],
                 description="A small waxed leather bag, full of crunchy white powder."
