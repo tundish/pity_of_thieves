@@ -35,7 +35,6 @@ His place is the |PLAYER_LOCN|. Where he sleeps, and when sleep is gone, where h
 He looks toward the door.
 
 .. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
-.. property:: LOCATION.description It's cold.
 .. property:: DRAMA.state 1
 
 Listen
@@ -51,6 +50,10 @@ Listen
 |PLAYER_NAME| listens for a moment. Is there going to be a problem?
 
 {exits}
+
+.. fx:: pot.img |LOCN_NAME|.png
+   :offset: 1
+   :duration: 3
 
 .. property:: DRAMA.prompt Type a command to continue.
 
@@ -78,3 +81,4 @@ Hurry
 
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |PLAYER_LOCN| property:: PLAYER.location.title
+.. |LOCN_NAME| property:: PLAYER.location.name

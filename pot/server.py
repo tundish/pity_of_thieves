@@ -180,6 +180,10 @@ def build_app(args):
         "/css/theme/",
         pkg_resources.resource_filename("pot", "css")
     )
+    app.router.add_static(
+        "/img/",
+        pkg_resources.resource_filename("pot", "img")
+    )
     app["sessions"] = {}
     app.on_startup.append(start_tasks)
     app.on_cleanup.append(cleanup_tasks)

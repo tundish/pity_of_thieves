@@ -11,6 +11,7 @@
 .. entity:: DRAMA
    :types:  balladeer.Drama
    :states: pot.types.Operation.prompt
+            99
 
 .. entity:: SETTINGS
    :types:  balladeer.Settings

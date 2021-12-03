@@ -6,6 +6,13 @@
 Change Log
 ::::::::::
 
+0.4.0
+=====
+
+* Add placeholder images.
+* Add `/img` endpoint.
+* Basic styling for revealed graphics.
+
 0.3.0
 =====
 

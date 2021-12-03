@@ -56,6 +56,12 @@ font-size: 1.1rem;
 font-weight: lighter;
 }
 
+.catchphrase-reveal div {
+animation-name: fadein;
+animation-fill-mode: var(--catchphrase-reveal-extends, both);
+margin-right: 3rem;
+}
+
 .catchphrase-reveal li {
 animation-fill-mode: var(--catchphrase-reveal-extends, both);
 }
