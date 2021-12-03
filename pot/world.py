@@ -138,8 +138,16 @@ class World(WorldType):
         return [
             Character(
                 names=[Name("Odric", Article("", ""), Pronoun("he", "him", "himself", "his"))],
-                description="{0.names[0].noun} is a scruffy young orphan."
+                description="{0.names[0].noun} is a scruffy little orphan."
             ).set_state(Engagement.player, Location.woodshed),
+            Character(
+                names=[Name("Niall", Article("", ""), Pronoun("he", "him", "himself", "his"))],
+                description="{0.names[0].noun} is a fit young man with long hair and wild eyes."
+            ).set_state(Engagement.acting, Location.top_cross),
+            Character(
+                names=[Name("Freda", Article("", ""), Pronoun("he", "him", "himself", "his"))],
+                description="{0.names[0].noun} is a tall girl, graceful and fair."
+            ).set_state(Engagement.acting, Location.tavern),
             Item(
                 names=[Name("Arsenic"), Name("Poison"), Name("Powder")],
                 description="A small waxed leather bag, full of crunchy white powder."

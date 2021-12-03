@@ -22,6 +22,7 @@ import unittest
 from balladeer import Stateful
 
 from pot.world import Map
+from pot.world import World
 
 
 class MapTests(unittest.TestCase):
@@ -48,3 +49,12 @@ class MapTests(unittest.TestCase):
         rv = self.map.route(dep, arr)
         self.assertEqual(4, len(rv), rv)
         self.assertIn("upper tower street", [v for i in rv for v in i.value])
+
+class WorldTests(unittest.TestCase):
+
+    def setUp(self):
+        self.world = World(Map())
+
+    def test_build(self):
+        print(self.world.lookup.keys())
+
