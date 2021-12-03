@@ -40,7 +40,7 @@ Harsh critics of anyone still in their bed.
 
 So wakes |PLAYER_NAME|.
 
-His place is the |PLAYER_LOCN|. Where he sleeps, and when sleep is gone, where he must work.
+His place is the |PLAYER_LOCN|. Where he sleeps, and when sleep leaves him, where he must work.
 
 .. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
 .. property:: DRAMA.state 1
@@ -58,10 +58,6 @@ Listen
 |PLAYER_NAME| listens for a moment. The Rooks are settling down again. There's no other sound to be heard.
 
 {exits}
-
-.. fx:: pot.img |LOCN_NAME|.png
-   :offset: 1
-   :duration: 3
 
 .. property:: DRAMA.prompt Type a command to continue.
 .. property:: DRAMA.state 2
@@ -87,6 +83,7 @@ Exit
 
 |PLAYER_NAME| steps out and breathes the early mist of the new day.
 
+.. property:: DRAMA.state 0
 .. property:: RAT.state pot.types.Engagement.acting
 .. property:: POISON.state pot.types.Engagement.placed
 .. property:: DRAMA.prompt Type a command or press Return to wait

@@ -32,6 +32,10 @@ Hurry
 
 |PLAYER_NAME| hurries past |PLAYER_LOCN|.
 
+.. fx:: pot.img |LOCN_NAME|.png
+   :offset: 1
+   :duration: 3
+
 Play
 ----
 
@@ -41,8 +45,13 @@ Play
 
 {exits}
 
+.. fx:: pot.img |LOCN_NAME|.png
+   :offset: 1
+   :duration: 3
+
 .. property:: DRAMA.state 1
 
 
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |PLAYER_LOCN| property:: PLAYER.location.title
+.. |LOCN_NAME| property:: PLAYER.location.name
