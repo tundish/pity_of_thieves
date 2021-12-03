@@ -8,10 +8,14 @@
    :types:  pot.world.Character
    :states: pot.types.Engagement.player
 
+.. entity:: RAT
+   :types:  pot.world.Character
+   :states: pot.types.Engagement.acting
+            pot.world.Location.woodshed
+
 .. entity:: DRAMA
    :types:  balladeer.Drama
    :states: pot.types.Operation.prompt
-            99
 
 .. entity:: SETTINGS
    :types:  balladeer.Settings
@@ -27,6 +31,17 @@ Hurry
 {0}
 
 |PLAYER_NAME| hurries past |PLAYER_LOCN|.
+
+Play
+----
+
+{0}
+
+|PLAYER_LOCN|.
+
+{exits}
+
+.. property:: DRAMA.state 1
 
 
 .. |PLAYER_NAME| property:: PLAYER.name

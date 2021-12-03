@@ -8,6 +8,16 @@
    :types:  pot.world.Character
    :states: pot.types.Engagement.player
 
+.. entity:: RAT
+   :types:  pot.world.Character
+   :states: pot.types.Engagement.hidden
+            pot.world.Location.woodshed
+
+.. entity:: POISON
+   :types:  pot.world.Item
+   :states: pot.types.Engagement.hidden
+            pot.world.Location.woodshed
+
 .. entity:: DRAMA
    :types:  balladeer.Drama
    :states: pot.types.Operation.prompt
@@ -32,8 +42,6 @@ So wakes |PLAYER_NAME|.
 
 His place is the |PLAYER_LOCN|. Where he sleeps, and when sleep is gone, where he must work.
 
-He looks toward the door.
-
 .. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
 .. property:: DRAMA.state 1
 
@@ -45,9 +53,9 @@ Listen
 
 {0}
 
-|PLAYER_LOCN|.
+|PLAYER_NAME| climbs to his feet and sniffs the stale air of the  |PLAYER_LOCN|.
 
-|PLAYER_NAME| listens for a moment. Is there going to be a problem?
+|PLAYER_NAME| listens for a moment. The Rooks are settling down again. There's no other sound to be heard.
 
 {exits}
 
@@ -56,28 +64,32 @@ Listen
    :duration: 3
 
 .. property:: DRAMA.prompt Type a command to continue.
+.. property:: DRAMA.state 2
 
-Play
-----
+Bored
+-----
 
-{0}
+.. condition:: PLAYER.state pot.world.Location.woodshed
+.. condition:: DRAMA.state 2
 
-|PLAYER_LOCN|.
+|PLAYER_NAME| isn't doing anything. He looks toward the door.
 
 {exits}
 
-.. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
 .. property:: DRAMA.state 1
 
-Hurry
------
+Exit
+----
 
-.. condition:: PLAYER.in_transit True
+.. condition:: PLAYER.state pot.world.Location.butchers_row
 
 {0}
 
-|PLAYER_NAME| hurries past |PLAYER_LOCN|.
+|PLAYER_NAME| steps out and breathes the early mist of the new day.
 
+.. property:: RAT.state pot.types.Engagement.acting
+.. property:: POISON.state pot.types.Engagement.placed
+.. property:: DRAMA.prompt Type a command or press Return to wait
 
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |PLAYER_LOCN| property:: PLAYER.location.title

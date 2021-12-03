@@ -39,7 +39,7 @@ class Drama(DramaType):
     @property
     def ensemble(self):
         transits = {t for c, l, t in self.world.map.options(self.player.location)}
-        return list(self.world.lookup.each) + [Map.Location] + list(transits)
+        return list(self.world.lookup.each) + list(transits)
 
     @property
     def folder(self):
@@ -97,6 +97,7 @@ class Drama(DramaType):
         moved = list(self.if_mobile())
         exits = {c: t for c, _, t in self.world.map.options(self.player.location)}
         return {
+            "events": "", # eg: mobile arrives
             "exits": "{0}{1}.".format(
                 random.choice(["Exits are: ", "From here you can go "]),
                 ", ".join(sorted(

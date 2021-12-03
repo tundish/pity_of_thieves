@@ -29,6 +29,7 @@ from pot.types import Engagement
 from pot.world import Character
 from pot.world import Location
 from pot.world import Map
+from pot.world import Mobile
 from pot.world import World
 
 
@@ -47,7 +48,8 @@ class DramaTests(unittest.TestCase):
         self.assertEqual(2, len(self.drama.folder), self.drama.folder)
 
     def test_if_mobile(self):
-        player = next(iter(self.drama.ensemble))
+        player = next(iter(self.drama.world.lookup["odric"]))
+        self.assertIsInstance(player, Mobile)
         player.set_state(
             self.drama.world.map.Departed.mordiford_quay,
             self.drama.world.map.Location.mordiford_quay,

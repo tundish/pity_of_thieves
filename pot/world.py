@@ -151,15 +151,15 @@ class World(WorldType):
             Character(
                 names=[Name("Isla", Article("", ""), Pronoun("she", "her", "herself", "her"))],
                 description="{0.names[0].noun} is sharp and nimble. Because she's a Rat."
-            ).set_state(Engagement.acting, Location.woodshed),
+            ).set_state(Engagement.hidden, Location.woodshed),
             Character(
                 names=[Name("Hod", Article("", ""), Pronoun("he", "him", "himself", "his"))],
                 description="{0.names[0].noun} is sharp and nimble."
-            ).set_state(Engagement.acting, Location.woodshed),
+            ).set_state(Engagement.acting, Location.beggars_ash),
             Item(
-                names=[Name("Arsenic"), Name("Poison"), Name("Powder")],
-                description="A small waxed leather bag, full of crunchy white powder."
-            ).set_state(Engagement.placed, Location.woodshed),
+                names=[Name("Arsenic"), Name("Poison"), Name("Granules")],
+                description="A small waxed leather bag, full of crunchy white granules."
+            ).set_state(Engagement.hidden, Location.woodshed),
             Item(
                 names=[Name("Knife"), Name("Seax")],
                 description="A hefty blade. A tool rather than a weapon; it has a plain wooden handle."
