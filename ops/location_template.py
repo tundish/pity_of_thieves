@@ -23,24 +23,51 @@ Usage:
 ~/py3.9-dev/bin/python -m ops.location_template >> pot/odric/13_exploration.rst
 
 """
+import argparse
+import sys
+
 from pot.world import Location
 
 template = """
-Play
-----
+.. condition:: PLAYER.state pot.world.{2}
+.. condition:: DRAMA.state {0}
 
-{0}
+{{0}}
 
 |PLAYER_LOCN|.
 
-{exits}
+{{exits}}
 
 .. fx:: pot.img |LOCN_NAME|.png
    :offset: 1
    :duration: 3
 
-.. property:: DRAMA.state 1
+.. property:: DRAMA.state {1}
 """
 
+p = argparse.ArgumentParser()
+p.add_argument(
+    "--repeat", type=int, default=3,
+    help="Set the number of times to repeat a location section [3]"
+)
+p.add_argument(
+    "--loop-to", type=int, default=1,
+    help="Loop back to section number [1]"
+)
+
+args = p.parse_args()
+
+l = 0
 for i in list(Location):
-    print(i)
+    if not i.value:
+        continue
+    else:
+        l += 1
+
+    for n in range(args.repeat):
+        name = f"{i.name}_{n}"
+        print(name)
+        print("-" * len(name))
+        print(template.format(n, max((n + 1) % args.repeat, args.loop_to % args.repeat), i))
+
+print("Wrote {0} sections.".format(args.repeat * l), file=sys.stderr)
