@@ -26,6 +26,1266 @@
 Exploration
 ===========
 
+beggars_ash_0
+-------------
+
+.. condition:: LOCAL.state pot.world.Spot.beggars_ash
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+beggars_ash_1
+-------------
+
+.. condition:: LOCAL.state pot.world.Spot.beggars_ash
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+beggars_ash_2
+-------------
+
+.. condition:: LOCAL.state pot.world.Spot.beggars_ash
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+bridge_street_0
+---------------
+
+.. condition:: LOCAL.state pot.world.Spot.bridge_street
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+bridge_street_1
+---------------
+
+.. condition:: LOCAL.state pot.world.Spot.bridge_street
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+bridge_street_2
+---------------
+
+.. condition:: LOCAL.state pot.world.Spot.bridge_street
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+butchers_row_0
+--------------
+
+.. condition:: LOCAL.state pot.world.Spot.butchers_row
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+butchers_row_1
+--------------
+
+.. condition:: LOCAL.state pot.world.Spot.butchers_row
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+butchers_row_2
+--------------
+
+.. condition:: LOCAL.state pot.world.Spot.butchers_row
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+cutthroat_lane_0
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.cutthroat_lane
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+cutthroat_lane_1
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.cutthroat_lane
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+cutthroat_lane_2
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.cutthroat_lane
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+dingwood_0
+----------
+
+.. condition:: LOCAL.state pot.world.Spot.dingwood
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+dingwood_1
+----------
+
+.. condition:: LOCAL.state pot.world.Spot.dingwood
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+dingwood_2
+----------
+
+.. condition:: LOCAL.state pot.world.Spot.dingwood
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+gardens_0
+---------
+
+.. condition:: LOCAL.state pot.world.Spot.gardens
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+gardens_1
+---------
+
+.. condition:: LOCAL.state pot.world.Spot.gardens
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+gardens_2
+---------
+
+.. condition:: LOCAL.state pot.world.Spot.gardens
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+market_0
+--------
+
+.. condition:: LOCAL.state pot.world.Spot.market
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+market_1
+--------
+
+.. condition:: LOCAL.state pot.world.Spot.market
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+market_2
+--------
+
+.. condition:: LOCAL.state pot.world.Spot.market
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+market_house_0
+--------------
+
+.. condition:: LOCAL.state pot.world.Spot.market_house
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+market_house_1
+--------------
+
+.. condition:: LOCAL.state pot.world.Spot.market_house
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+market_house_2
+--------------
+
+.. condition:: LOCAL.state pot.world.Spot.market_house
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+mordiford_quay_0
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.mordiford_quay
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+mordiford_quay_1
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.mordiford_quay
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+mordiford_quay_2
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.mordiford_quay
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+north_gate_0
+------------
+
+.. condition:: LOCAL.state pot.world.Spot.north_gate
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+north_gate_1
+------------
+
+.. condition:: LOCAL.state pot.world.Spot.north_gate
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+north_gate_2
+------------
+
+.. condition:: LOCAL.state pot.world.Spot.north_gate
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+orchard_0
+---------
+
+.. condition:: LOCAL.state pot.world.Spot.orchard
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+orchard_1
+---------
+
+.. condition:: LOCAL.state pot.world.Spot.orchard
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+orchard_2
+---------
+
+.. condition:: LOCAL.state pot.world.Spot.orchard
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+ross_road_0
+-----------
+
+.. condition:: LOCAL.state pot.world.Spot.ross_road
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+ross_road_1
+-----------
+
+.. condition:: LOCAL.state pot.world.Spot.ross_road
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+ross_road_2
+-----------
+
+.. condition:: LOCAL.state pot.world.Spot.ross_road
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+south_end_0
+-----------
+
+.. condition:: LOCAL.state pot.world.Spot.south_end
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+south_end_1
+-----------
+
+.. condition:: LOCAL.state pot.world.Spot.south_end
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+south_end_2
+-----------
+
+.. condition:: LOCAL.state pot.world.Spot.south_end
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+tavern_0
+--------
+
+.. condition:: LOCAL.state pot.world.Spot.tavern
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+tavern_1
+--------
+
+.. condition:: LOCAL.state pot.world.Spot.tavern
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+tavern_2
+--------
+
+.. condition:: LOCAL.state pot.world.Spot.tavern
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+top_cross_0
+-----------
+
+.. condition:: LOCAL.state pot.world.Spot.top_cross
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+top_cross_1
+-----------
+
+.. condition:: LOCAL.state pot.world.Spot.top_cross
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+top_cross_2
+-----------
+
+.. condition:: LOCAL.state pot.world.Spot.top_cross
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+tower_street_e_0
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_street_e
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+tower_street_e_1
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_street_e
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+tower_street_e_2
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_street_e
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+tower_street_0
+--------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_street
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+tower_street_1
+--------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_street
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+tower_street_2
+--------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_street
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+tower_street_w_0
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_street_w
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+tower_street_w_1
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_street_w
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+tower_street_w_2
+----------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_street_w
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+tower_wall_0
+------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_wall
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+tower_wall_1
+------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_wall
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+tower_wall_2
+------------
+
+.. condition:: LOCAL.state pot.world.Spot.tower_wall
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+yard_0
+------
+
+.. condition:: LOCAL.state pot.world.Spot.yard
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+yard_1
+------
+
+.. condition:: LOCAL.state pot.world.Spot.yard
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+yard_2
+------
+
+.. condition:: LOCAL.state pot.world.Spot.yard
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+woodshed_0
+----------
+
+.. condition:: LOCAL.state pot.world.Spot.woodshed
+.. condition:: LOCAL.state 0
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
+woodshed_1
+----------
+
+.. condition:: LOCAL.state pot.world.Spot.woodshed
+.. condition:: LOCAL.state 1
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 2
+
+woodshed_2
+----------
+
+.. condition:: LOCAL.state pot.world.Spot.woodshed
+.. condition:: LOCAL.state 2
+
+{0}
+
+.. todo
+
+|PLAYER_SPOT|.
+
+{exits}
+
+.. fx:: pot.img |SPOT_NAME|.png
+   :offset: 1
+   :duration: 3
+
+.. property:: LOCAL.state 1
+
 Hurry
 -----
 

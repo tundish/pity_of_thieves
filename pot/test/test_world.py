@@ -38,7 +38,7 @@ class MapTests(unittest.TestCase):
 
     def test_transits(self):
         transits = [t for c, l, t in self.map.options(self.map.Spot.north_gate)]
-        self.assertIn("muddy path", [i.lower() for t in transits for i in str(t).splitlines()])
+        self.assertIn("woodland path", [i.lower() for t in transits for i in str(t).splitlines()])
 
     def test_routes_lhs(self):
         dep = self.map.exit.mordiford_quay
