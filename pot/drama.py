@@ -236,8 +236,8 @@ class Drama(DramaType):
         for i in self.local.each:
             try:
                 yield "* {0.names[0].noun}".format(i)
-            except AttributeError:
-                pass  # Expect a gesture
+            except (AttributeError, IndexError):
+                pass  # Expect inventory
 
     def do_next(self, this, text, presenter, *args, **kwargs):
         """

@@ -136,7 +136,7 @@ class World(WorldType):
         self.map = map_
 
     def build(self):
-        yield from (Location(names=[Name(i) for i in s.value]).set_state(s) for s in Spot)
+        yield from (Location(names=[Name(i.title()) for i in s.value]).set_state(s) for s in Spot)
         yield from [
             Character(
                 names=[Name("Odric", Article("", ""), Pronoun("he", "him", "himself", "his"))],
