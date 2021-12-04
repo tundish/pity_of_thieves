@@ -29,11 +29,11 @@ import sys
 from pot.world import Location
 
 template = """
-.. condition:: PLAYER.state pot.world.{2}
-.. condition:: DRAMA.state {0}
+.. condition:: PLAYER.state pot.world.{0}
+.. condition:: DRAMA.state {1}
 
 {{0}}
-
+{2}
 |PLAYER_LOCN|.
 
 {{exits}}
@@ -42,7 +42,7 @@ template = """
    :offset: 1
    :duration: 3
 
-.. property:: DRAMA.state {1}
+.. property:: DRAMA.state {3}
 """
 
 p = argparse.ArgumentParser()
@@ -53,6 +53,14 @@ p.add_argument(
 p.add_argument(
     "--loop-to", type=int, default=1,
     help="Loop back to section number [1]"
+)
+p.add_argument(
+    "--tag", action="store_true", default=False,
+    help="Add text to display the section name [False]"
+)
+p.add_argument(
+    "--todo", action="store_true", default=False,
+    help="Add text to display a 'TODO' message [False]"
 )
 
 args = p.parse_args()
@@ -68,6 +76,11 @@ for i in list(Location):
         name = f"{i.name}_{n}"
         print(name)
         print("-" * len(name))
-        print(template.format(n, max((n + 1) % args.repeat, args.loop_to % args.repeat), i))
+        print(template.format(
+            i,
+            n,
+            "\n.. todo\n" if args.todo else name if args.tag else "",
+            max((n + 1) % args.repeat, args.loop_to % args.repeat),
+        ))
 
 print("Wrote {0} sections.".format(args.repeat * l), file=sys.stderr)
