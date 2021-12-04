@@ -11,7 +11,7 @@
 .. entity:: RAT
    :types:  pot.world.Character
    :states: pot.types.Engagement.acting
-            pot.world.Location.woodshed
+            pot.world.Spot.woodshed
 
 .. entity:: DRAMA
    :types:  balladeer.Drama
@@ -53,5 +53,5 @@ Fallback
 
 
 .. |PLAYER_NAME| property:: PLAYER.name
-.. |PLAYER_LOCN| property:: PLAYER.location.title
-.. |LOCN_NAME| property:: PLAYER.location.name
+.. |PLAYER_LOCN| property:: PLAYER.spot.title
+.. |LOCN_NAME| property:: PLAYER.spot.name

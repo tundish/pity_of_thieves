@@ -58,7 +58,7 @@ Look
 
 [DRAMA]_
 
-    You are |PLAYER_NAME|. |PLAYER_LOCN| is |PLAYER_POSS| location.
+    You are |PLAYER_NAME|. |PLAYER_LOCN| is |PLAYER_POSS| spot.
     Looking around, |PLAYER_SUBJECT| is aware of:
 
 {0}
@@ -69,6 +69,6 @@ Look
 
 .. |INPUT_TEXT| property:: DRAMA.input_text
 .. |PLAYER_NAME| property:: PLAYER.name
-.. |PLAYER_LOCN| property:: PLAYER.location.title
+.. |PLAYER_LOCN| property:: PLAYER.spot.title
 .. |PLAYER_POSS| property:: PLAYER.names[0].pronoun.genitive
 .. |PLAYER_SUBJECT| property:: PLAYER.names[0].pronoun.subject

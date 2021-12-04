@@ -11,12 +11,12 @@
 .. entity:: RAT
    :types:  pot.world.Character
    :states: pot.types.Engagement.hidden
-            pot.world.Location.woodshed
+            pot.world.Spot.woodshed
 
 .. entity:: POISON
    :types:  pot.world.Item
    :states: pot.types.Engagement.hidden
-            pot.world.Location.woodshed
+            pot.world.Spot.woodshed
 
 .. entity:: DRAMA
    :types:  balladeer.Drama
@@ -31,7 +31,7 @@ Introduction
 Open
 ----
 
-.. condition:: PLAYER.state pot.world.Location.woodshed
+.. condition:: PLAYER.state pot.world.Spot.woodshed
 .. condition:: DRAMA.state 0
 
 Have you ever heard the sound of Rooks in early dawn?
@@ -48,7 +48,7 @@ His place is the |PLAYER_LOCN|. Where he sleeps, and when sleep leaves him, wher
 Listen
 ------
 
-.. condition:: PLAYER.state pot.world.Location.woodshed
+.. condition:: PLAYER.state pot.world.Spot.woodshed
 .. condition:: DRAMA.state 1
 
 {0}
@@ -65,7 +65,7 @@ Listen
 Bored
 -----
 
-.. condition:: PLAYER.state pot.world.Location.woodshed
+.. condition:: PLAYER.state pot.world.Spot.woodshed
 .. condition:: DRAMA.state 2
 
 |PLAYER_NAME| isn't doing anything. He looks toward the door.
@@ -77,7 +77,7 @@ Bored
 Exit
 ----
 
-.. condition:: PLAYER.state pot.world.Location.butchers_row
+.. condition:: PLAYER.state pot.world.Spot.butchers_row
 
 {0}
 
@@ -89,5 +89,5 @@ Exit
 .. property:: DRAMA.prompt Type a command or press Return to wait
 
 .. |PLAYER_NAME| property:: PLAYER.name
-.. |PLAYER_LOCN| property:: PLAYER.location.title
-.. |LOCN_NAME| property:: PLAYER.location.name
+.. |PLAYER_LOCN| property:: PLAYER.spot.title
+.. |LOCN_NAME| property:: PLAYER.spot.name

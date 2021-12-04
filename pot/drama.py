@@ -38,7 +38,7 @@ class Drama(DramaType):
 
     @property
     def ensemble(self):
-        transits = {t for c, l, t in self.world.map.options(self.player.location)}
+        transits = {t for c, l, t in self.world.map.options(self.player.spot)}
         return list(self.world.lookup.each) + list(transits)
 
     @property
@@ -47,12 +47,12 @@ class Drama(DramaType):
 
     @property
     def local(self):
-        reach = (self.player.location, Map.Location.inventory)
-        transits = {t for c, l, t in self.world.map.options(self.player.location)}
+        reach = (self.player.spot, Map.Spot.inventory)
+        transits = {t for c, l, t in self.world.map.options(self.player.spot)}
         objects = [
             i for i in self.world.lookup.each
             if i.get_state(Engagement) not in (Engagement.hidden, Engagement.player)
-            and i.get_state(Map.Location) in reach
+            and i.get_state(Map.Spot) in reach
         ] + list(transits)
         return Grouping(list, {k.__name__: v for k, v in self.world.arrange(objects).items()})
 
@@ -81,21 +81,21 @@ class Drama(DramaType):
         ensemble = ensemble or self.ensemble
         for i in ensemble:
             if isinstance(i, Mobile) and i.in_transit:
-                location = i.get_state(Map.Location)
+                spot = i.get_state(Map.Spot)
                 route = list(self.world.map.route(
-                    location, i.get_state(Map.Arriving)
+                    spot, i.get_state(Map.Into)
                 ))
                 if len(route) > 1:
                     # Still moving
                     i.set_state(route[1])
                 else:
                     # Arrived
-                    i.set_state(Map.Departed[location.name])
+                    i.set_state(Map.Exit[spot.name])
                 yield i
 
     def interlude(self, folder, index, *args, **kwargs):
         moved = list(self.if_mobile())
-        exits = {c: t for c, _, t in self.world.map.options(self.player.location)}
+        exits = {c: t for c, _, t in self.world.map.options(self.player.spot)}
         return {
             "events": "", # eg: mobile arrives
             "exits": "{0}{1}.".format(
@@ -126,19 +126,19 @@ class Drama(DramaType):
         pick up {obj.names[0].noun}
 
         """
-        obj.state = Location.inventory
+        obj.state = Spot.inventory
         self.active.discard(this)
         return f"{self.world.player.name} picks up {obj.names[0].article.definite} {obj.names[0].noun}.",
 
-    def do_go(self, this, text, presenter, *args, locn: Map.Arriving, **kwargs):
+    def do_go(self, this, text, presenter, *args, spot: Map.Into, **kwargs):
         """
-        go to {locn.value[0]} | go to {locn.value[1]} | go to {locn.value[2]}
-        go {locn.value[0]} | go {locn.value[1]} | go {locn.value[2]}
-        {locn.value[0]} | {locn.value[1]} | {locn.value[2]}
+        go to {spot.value[0]} | go to {spot.value[1]} | go to {spot.value[2]}
+        go {spot.value[0]} | go {spot.value[1]} | go {spot.value[2]}
+        {spot.value[0]} | {spot.value[1]} | {spot.value[2]}
 
         """
-        self.player.set_state(locn, self.world.map.Departed[self.player.location.name])
-        yield f"Heading to {locn.title}."
+        self.player.set_state(spot, self.world.map.Exit[self.player.spot.name])
+        yield f"Heading to {spot.title}."
 
     def do_hop(self, this, text, presenter, *args, dirn: Compass, **kwargs):
         """
@@ -146,12 +146,12 @@ class Drama(DramaType):
         go {dirn.name}
 
         """
-        options = {c: l for c, l, t in self.world.map.options(self.player.location)}
+        options = {c: l for c, l, t in self.world.map.options(self.player.spot)}
         if dirn not in options:
             return f"There is no {dirn.name} from here."
         else:
-            a = Map.Arriving[options[dirn].name]
-            d = self.world.map.Departed[self.player.location.name]
+            a = Map.Into[options[dirn].name]
+            d = self.world.map.Exit[self.player.spot.name]
             self.player.set_state(a, d)
             t = kwargs.pop("transit", None)
             if t:
@@ -177,7 +177,7 @@ class Drama(DramaType):
                     continue
 
                 if all(
-                    isinstance(i, Map.Location) or
+                    isinstance(i, Map.Spot) or
                     i is self.player or
                     True #i in self.visible.each
                     for i in kwargs.values()
@@ -216,7 +216,7 @@ class Drama(DramaType):
         if obj is self.world.player:
             items = [
                 i for i in self.ensemble
-                if i.get_state(Location) == Location.inventory and i.get_state(Availability) == Availability.allowed
+                if i.get_state(Spot) == Spot.inventory and i.get_state(Availability) == Availability.allowed
             ]
             if items:
                 yield "\nCarrying:\n"
@@ -248,7 +248,7 @@ class Drama(DramaType):
         return random.choice([
             f"{self.player.name} hesitates.",
             f"{self.player.name} pauses.",
-            f"{self.player.name} waits in the {self.player.location.title} for a moment.",
+            f"{self.player.name} waits in the {self.player.spot.title} for a moment.",
         ])
 
     def do_transit(self, this, text, presenter, transit: "local[Transit]", *args, **kwargs):
@@ -260,7 +260,7 @@ class Drama(DramaType):
         use {transit.names[0].noun} | use {transit.names[1].noun}
 
         """
-        directions = {t: c for c, l, t in self.world.map.options(self.player.location)}
+        directions = {t: c for c, l, t in self.world.map.options(self.player.spot)}
         dirn = directions[transit]
         return self.do_hop(self.do_hop, text, presenter, *args, dirn=dirn, transit=transit, **kwargs)
 

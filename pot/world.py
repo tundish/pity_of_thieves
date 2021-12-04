@@ -65,9 +65,9 @@ class Map(MapType):
         "inventory": []
     }
 
-    Arriving = enum.Enum("Arriving", spots, type=Waypoint)
-    Departed = enum.Enum("Departed", spots, type=Waypoint)
-    Location = enum.Enum("Location", spots, type=Waypoint)
+    Into = enum.Enum("Into", spots, type=Waypoint)
+    Exit = enum.Enum("Exit", spots, type=Waypoint)
+    Spot = enum.Enum("Spot", spots, type=Waypoint)
 
     def __init__(self, exit=None, into=None, **kwargs):
         super().__init__(exit, into, **kwargs)
@@ -103,29 +103,30 @@ class Map(MapType):
             ).set_state(exit.cutthroat_lane, Compass.W, into.north_gate, Via.bidir),
         ]
 
-Arriving = Map.Arriving
-Departed = Map.Departed
-Location = Map.Location
+Into = Map.Into
+Exit = Map.Exit
+Spot = Map.Spot
 
 
 class Located(Stateful):
 
     @property
-    def location(self):
-        return self.get_state(Location)
+    def spot(self):
+        return self.get_state(Spot)
 
 
 class Mobile(Located):
 
     @property
     def in_transit(self):
-        return (self.get_state(Arriving)
-            and self.get_state(Arriving).name != self.get_state(Location).name
+        return (self.get_state(Into)
+            and self.get_state(Into).name != self.get_state(Spot).name
         )
 
 
 class Character(Named, Mobile): pass
 class Item(Named, Located): pass
+class Location(Named, Located): pass
 
 
 class World(WorldType):
@@ -139,35 +140,35 @@ class World(WorldType):
             Character(
                 names=[Name("Odric", Article("", ""), Pronoun("he", "him", "himself", "his"))],
                 description="{0.names[0].noun} is a scruffy little orphan."
-            ).set_state(Engagement.player, Location.woodshed),
+            ).set_state(Engagement.player, Spot.woodshed),
             Character(
                 names=[Name("Niall", Article("", ""), Pronoun("he", "him", "himself", "his"))],
                 description="{0.names[0].noun} is a fit young man with long hair and wild eyes."
-            ).set_state(Engagement.acting, Location.top_cross),
+            ).set_state(Engagement.acting, Spot.top_cross),
             Character(
                 names=[Name("Freda", Article("", ""), Pronoun("she", "her", "herself", "her"))],
                 description="{0.names[0].noun} is a tall girl, graceful and fair."
-            ).set_state(Engagement.acting, Location.tavern),
+            ).set_state(Engagement.acting, Spot.tavern),
             Character(
                 names=[Name("Isla", Article("", ""), Pronoun("she", "her", "herself", "her"))],
                 description="{0.names[0].noun} is sharp and nimble. Because she's a Rat."
-            ).set_state(Engagement.hidden, Location.woodshed),
+            ).set_state(Engagement.hidden, Spot.woodshed),
             Character(
                 names=[Name("Hod", Article("", ""), Pronoun("he", "him", "himself", "his"))],
                 description="{0.names[0].noun} is sharp and nimble."
-            ).set_state(Engagement.acting, Location.beggars_ash),
+            ).set_state(Engagement.acting, Spot.beggars_ash),
             Item(
                 names=[Name("Arsenic"), Name("Poison"), Name("Granules")],
                 description="A small waxed leather bag, full of crunchy white granules."
-            ).set_state(Engagement.hidden, Location.woodshed),
+            ).set_state(Engagement.hidden, Spot.woodshed),
             Item(
                 names=[Name("Knife"), Name("Seax")],
                 description="A hefty blade. A tool rather than a weapon; it has a plain wooden handle."
-            ).set_state(Engagement.placed, Location.orchard),
+            ).set_state(Engagement.placed, Spot.orchard),
             Item(
                 names=[Name("Cheese"), Name("Food")],
                 description="A chunk of hard {0.names[0].noun}, about the size of a fist."
-            ).set_state(Engagement.placed, Location.tavern),
+            ).set_state(Engagement.placed, Spot.tavern),
         ]
 
 

@@ -20,13 +20,13 @@
 """
 Usage:
 
-~/py3.9-dev/bin/python -m ops.location_template >> pot/odric/13_exploration.rst
+~/py3.9-dev/bin/python -m ops.spot_template >> pot/odric/13_exploration.rst
 
 """
 import argparse
 import sys
 
-from pot.world import Location
+from pot.world import Spot
 
 template = """
 .. condition:: PLAYER.state pot.world.{0}
@@ -48,7 +48,7 @@ template = """
 p = argparse.ArgumentParser()
 p.add_argument(
     "--repeat", type=int, default=3,
-    help="Set the number of times to repeat a location section [3]"
+    help="Set the number of times to repeat a spot section [3]"
 )
 p.add_argument(
     "--loop-to", type=int, default=1,
@@ -66,7 +66,7 @@ p.add_argument(
 args = p.parse_args()
 
 l = 0
-for i in list(Location):
+for i in list(Spot):
     if not i.value:
         continue
     else:
