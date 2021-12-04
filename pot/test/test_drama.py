@@ -19,7 +19,6 @@
 
 import unittest
 
-from balladeer import World
 from balladeer.speech import Name
 
 from turberfield.catchphrase.parser import CommandParser
@@ -42,10 +41,17 @@ class DramaTests(unittest.TestCase):
 
     def setUp(self):
         world = World(Map())
+        self.assertTrue(world.map)
         self.drama = Drama("pot.odric", world)
 
     def test_spots(self):
         self.assertEqual(2, len(self.drama.folder), self.drama.folder)
+
+    def test_location(self):
+        player = next(iter(self.drama.world.lookup["odric"]))
+        player.set_state(self.drama.world.map.Spot.mordiford_quay)
+        local = next(iter(self.drama.world.lookup["quay"]))
+        self.assertIn(local, self.drama.ensemble)
 
     def test_if_mobile(self):
         player = next(iter(self.drama.world.lookup["odric"]))

@@ -6,6 +6,12 @@
 Change Log
 ::::::::::
 
+0.5.0 unreleased
+================
+
+* Aligned with balladeer 0.20.0
+* Good basis for a new project.
+
 0.4.0
 =====
 
@@ -18,7 +24,6 @@ Change Log
 
 * Web module fully working.
 * Map fully navigable.
-* Good basis for a new project.
 
 0.2.0
 =====

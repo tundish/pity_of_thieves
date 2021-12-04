@@ -31,6 +31,7 @@ from balladeer.cartography import Compass
 from pot.types import Engagement
 from pot.types import Operation
 from pot.world import Map
+from pot.world import Location
 from pot.world import Mobile
 
 
@@ -39,7 +40,10 @@ class Drama(DramaType):
     @property
     def ensemble(self):
         transits = {t for c, l, t in self.world.map.options(self.player.spot)}
-        return list(self.world.lookup.each) + list(transits)
+        return [
+            i for i in self.world.lookup.each
+            if not isinstance(i, Location) or i.get_state(Map.Spot) == self.player.spot
+        ] + list(transits)
 
     @property
     def folder(self):

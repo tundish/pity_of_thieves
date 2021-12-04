@@ -30,9 +30,9 @@ Hurry
 
 {0}
 
-|PLAYER_NAME| hurries past |PLAYER_LOCN|.
+|PLAYER_NAME| hurries past |PLAYER_SPOT|.
 
-.. fx:: pot.img |LOCN_NAME|.png
+.. fx:: pot.img |SPOT_NAME|.png
    :offset: 1
    :duration: 3
 
@@ -41,11 +41,11 @@ Fallback
 
 {0}
 
-|PLAYER_LOCN|.
+|PLAYER_SPOT|.
 
 {exits}
 
-.. fx:: pot.img |LOCN_NAME|.png
+.. fx:: pot.img |SPOT_NAME|.png
    :offset: 1
    :duration: 3
 
@@ -53,5 +53,5 @@ Fallback
 
 
 .. |PLAYER_NAME| property:: PLAYER.name
-.. |PLAYER_LOCN| property:: PLAYER.spot.title
-.. |LOCN_NAME| property:: PLAYER.spot.name
+.. |PLAYER_SPOT| property:: PLAYER.spot.title
+.. |SPOT_NAME| property:: PLAYER.spot.name

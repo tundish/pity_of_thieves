@@ -54,11 +54,15 @@ class MapTests(unittest.TestCase):
         self.assertEqual(4, len(rv), rv)
         self.assertIn("upper tower street", [v for i in rv for v in i.value])
 
+
 class WorldTests(unittest.TestCase):
 
     def setUp(self):
         self.world = World(Map())
 
     def test_build(self):
-        print(self.world.lookup.keys())
+        self.assertTrue(list(self.world.lookup.keys()))
+
+    def test_locations(self):
+        self.assertIn("tower st", self.world.lookup)
 

@@ -8,6 +8,9 @@
    :types:  pot.world.Character
    :states: pot.types.Engagement.player
 
+.. entity:: LOCAL
+   :types:  pot.world.Location
+
 .. entity:: RAT
    :types:  pot.world.Character
    :states: pot.types.Engagement.hidden
@@ -40,7 +43,7 @@ Harsh critics of anyone still in their bed.
 
 So wakes |PLAYER_NAME|.
 
-His place is the |PLAYER_LOCN|. Where he sleeps, and when sleep leaves him, where he must work.
+His place is the |PLAYER_SPOT|. Where he sleeps, and when sleep leaves him, where he must work.
 
 .. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
 .. property:: DRAMA.state 1
@@ -53,7 +56,7 @@ Listen
 
 {0}
 
-|PLAYER_NAME| climbs to his feet and sniffs the stale air of the  |PLAYER_LOCN|.
+|PLAYER_NAME| climbs to his feet and sniffs the stale air of the  |PLAYER_SPOT|.
 
 |PLAYER_NAME| listens for a moment. The Rooks are settling down again. There's no other sound to be heard.
 
@@ -89,5 +92,5 @@ Exit
 .. property:: DRAMA.prompt Type a command or press Return to wait
 
 .. |PLAYER_NAME| property:: PLAYER.name
-.. |PLAYER_LOCN| property:: PLAYER.spot.title
-.. |LOCN_NAME| property:: PLAYER.spot.name
+.. |PLAYER_SPOT| property:: PLAYER.spot.title
+.. |SPOT_NAME| property:: PLAYER.spot.name

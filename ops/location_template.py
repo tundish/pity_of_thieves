@@ -20,7 +20,7 @@
 """
 Usage:
 
-~/py3.9-dev/bin/python -m ops.spot_template >> pot/odric/13_exploration.rst
+~/py3.9-dev/bin/python -m ops.location_template >> pot/odric/13_exploration.rst
 
 """
 import argparse
@@ -34,11 +34,11 @@ template = """
 
 {{0}}
 {2}
-|PLAYER_LOCN|.
+|PLAYER_SPOT|.
 
 {{exits}}
 
-.. fx:: pot.img |LOCN_NAME|.png
+.. fx:: pot.img |SPOT_NAME|.png
    :offset: 1
    :duration: 3
 
