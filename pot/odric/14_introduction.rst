@@ -80,7 +80,7 @@ Bored
 Exit
 ----
 
-.. condition:: PLAYER.state pot.world.Spot.butchers_row
+.. condition:: PLAYER.state pot.world.Into.yard
 
 {0}
 

@@ -75,14 +75,14 @@ class Map(MapType):
         exit, into = self.exit, self.into
 
         self.transits = [
-            Transit(names=[]).set_state(exit.north_gate, Compass.N, into.beggars_ash, Via.bidir),
-            Transit(names=[]).set_state(exit.north_gate, Compass.W, into.orchard, Via.bidir),
+            Transit(names=[Name("Road")]).set_state(exit.north_gate, Compass.N, into.beggars_ash, Via.bidir),
+            Transit(names=[Name("Orchard Lane")]).set_state(exit.north_gate, Compass.W, into.orchard, Via.bidir),
             Transit(
                 names=[Name("Shed door"), Name("Door")]
             ).set_state(exit.yard, Compass.E, into.woodshed, Via.bidir),
             Transit(names=[]).set_state(exit.yard, Compass.N, into.north_gate, Via.bidir),
             Transit(names=[]).set_state(exit.butchers_row, Compass.N, into.yard, Via.bidir),
-            Transit(names=[]).set_state(exit.butchers_row, Compass.E, into.market, Via.bidir),
+            Transit(names=[Name("Muddy way")]).set_state(exit.butchers_row, Compass.E, into.market, Via.bidir),
             Transit(names=[]).set_state(exit.butchers_row, Compass.S, into.top_cross, Via.bidir),
             Transit(names=[]).set_state(exit.butchers_row, Compass.W, into.bridge_street, Via.bidir),
             Transit(names=[]).set_state(exit.market, Compass.E, into.tower_street_w, Via.bidir),
@@ -101,7 +101,7 @@ class Map(MapType):
             Transit(names=[]).set_state(exit.tower_street_e, Compass.N, into.gardens, Via.bidir),
             Transit(names=[]).set_state(exit.gardens, Compass.NE, into.cutthroat_lane, Via.bidir),
             Transit(
-                names=[Name("Muddy path"), Name("Path")]
+                names=[Name("Woodland path"), Name("Path")]
             ).set_state(exit.cutthroat_lane, Compass.W, into.north_gate, Via.bidir),
         ]
 

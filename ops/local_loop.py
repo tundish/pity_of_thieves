@@ -31,7 +31,7 @@ import sys
 from pot.world import Spot
 
 template = """
-.. condition:: PLAYER.state pot.world.{0}
+.. condition:: LOCAL.state pot.world.{0}
 .. condition:: LOCAL.state {1}
 
 {{0}}
