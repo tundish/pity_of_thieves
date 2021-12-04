@@ -35,7 +35,7 @@ Open
 ----
 
 .. condition:: PLAYER.state pot.world.Spot.woodshed
-.. condition:: DRAMA.state 0
+.. condition:: LOCAL.state 0
 
 Have you ever heard the sound of Rooks in early dawn?
 The devilish cackle of hundreds of birds - they should call them a Mockery.
@@ -46,13 +46,13 @@ So wakes |PLAYER_NAME|.
 His place is the |PLAYER_SPOT|. Where he sleeps, and when sleep leaves him, where he must work.
 
 .. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
-.. property:: DRAMA.state 1
+.. property:: LOCAL.state 1
 
 Listen
 ------
 
 .. condition:: PLAYER.state pot.world.Spot.woodshed
-.. condition:: DRAMA.state 1
+.. condition:: LOCAL.state 1
 
 {0}
 
@@ -63,19 +63,19 @@ Listen
 {exits}
 
 .. property:: DRAMA.prompt Type a command to continue.
-.. property:: DRAMA.state 2
+.. property:: LOCAL.state 2
 
 Bored
 -----
 
 .. condition:: PLAYER.state pot.world.Spot.woodshed
-.. condition:: DRAMA.state 2
+.. condition:: LOCAL.state 2
 
 |PLAYER_NAME| isn't doing anything. He looks toward the door.
 
 {exits}
 
-.. property:: DRAMA.state 1
+.. property:: LOCAL.state 1
 
 Exit
 ----
@@ -86,7 +86,7 @@ Exit
 
 |PLAYER_NAME| steps out and breathes the early mist of the new day.
 
-.. property:: DRAMA.state 0
+.. property:: LOCAL.state 0
 .. property:: RAT.state pot.types.Engagement.acting
 .. property:: POISON.state pot.types.Engagement.placed
 .. property:: DRAMA.prompt Type a command or press Return to wait

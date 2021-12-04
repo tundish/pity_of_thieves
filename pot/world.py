@@ -47,7 +47,7 @@ class Map(MapType):
         "butchers_row":  ["butchers' row", "butchers row"],
         "cutthroat_lane":  ["cut throat lane", "cutthroat lane"],
         "dingwood":  ["dingwood"],
-        "gardens":  ["public gardens", "gardens"],
+        "gardens":  ["public gardens", "garden"],
         "market":  ["market"],
         "market_house":  ["market house"],
         "mordiford_quay":  ["mordiford quay", "quay"],

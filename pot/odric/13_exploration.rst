@@ -8,6 +8,9 @@
    :types:  pot.world.Character
    :states: pot.types.Engagement.player
 
+.. entity:: LOCAL
+   :types:  pot.world.Location
+
 .. entity:: RAT
    :types:  pot.world.Character
    :states: pot.types.Engagement.acting
@@ -49,7 +52,7 @@ Fallback
    :offset: 1
    :duration: 3
 
-.. property:: DRAMA.state 1
+.. property:: LOCAL.state 1
 
 
 .. |PLAYER_NAME| property:: PLAYER.name

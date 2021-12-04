@@ -18,9 +18,11 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 """
+Generates a number of shots which loop by storing state on the Location object.
+
 Usage:
 
-~/py3.9-dev/bin/python -m ops.location_template >> pot/odric/13_exploration.rst
+~/py3.9-dev/bin/python -m ops.local_loop >> pot/odric/13_exploration.rst
 
 """
 import argparse
@@ -30,7 +32,7 @@ from pot.world import Spot
 
 template = """
 .. condition:: PLAYER.state pot.world.{0}
-.. condition:: DRAMA.state {1}
+.. condition:: LOCAL.state {1}
 
 {{0}}
 {2}
@@ -42,7 +44,7 @@ template = """
    :offset: 1
    :duration: 3
 
-.. property:: DRAMA.state {3}
+.. property:: LOCAL.state {3}
 """
 
 p = argparse.ArgumentParser()
