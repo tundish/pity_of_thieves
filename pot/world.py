@@ -42,7 +42,7 @@ class Transit(Named, TransitType): pass
 class Map(MapType):
 
     spots = {
-        "beggars_ash":  ["beggar's ash", "beggars ash"],
+        "beggars_ash":  ["beggars ash"],
         "bridge_street":  ["bridge street", "bridge st"],
         "butchers_row":  ["butchers' row", "butchers row"],
         "cutthroat_lane":  ["cut throat lane", "cutthroat lane"],
@@ -61,6 +61,7 @@ class Map(MapType):
         "tower_street":  ["tower street", "tower st"],
         "tower_street_w":  ["lower tower street", "tower st w"],
         "tower_wall":  ["tower wall"],
+        "yard":  ["yard", "wood yard"],
         "woodshed":  ["wood shed", "woodshed", "shed"],
         "inventory": []
     }
@@ -74,13 +75,14 @@ class Map(MapType):
         exit, into = self.exit, self.into
 
         self.transits = [
-            Transit(names=[]).set_state(exit.north_gate, Compass.E, into.beggars_ash, Via.bidir),
+            Transit(names=[]).set_state(exit.north_gate, Compass.N, into.beggars_ash, Via.bidir),
             Transit(names=[]).set_state(exit.north_gate, Compass.W, into.orchard, Via.bidir),
             Transit(
                 names=[Name("Shed door"), Name("Door")]
-            ).set_state(exit.butchers_row, Compass.E, into.woodshed, Via.bidir),
-            Transit(names=[]).set_state(exit.butchers_row, Compass.N, into.north_gate, Via.bidir),
-            Transit(names=[]).set_state(exit.butchers_row, Compass.SE, into.market, Via.bidir),
+            ).set_state(exit.yard, Compass.E, into.woodshed, Via.bidir),
+            Transit(names=[]).set_state(exit.yard, Compass.N, into.north_gate, Via.bidir),
+            Transit(names=[]).set_state(exit.butchers_row, Compass.N, into.yard, Via.bidir),
+            Transit(names=[]).set_state(exit.butchers_row, Compass.E, into.market, Via.bidir),
             Transit(names=[]).set_state(exit.butchers_row, Compass.S, into.top_cross, Via.bidir),
             Transit(names=[]).set_state(exit.butchers_row, Compass.W, into.bridge_street, Via.bidir),
             Transit(names=[]).set_state(exit.market, Compass.E, into.tower_street_w, Via.bidir),

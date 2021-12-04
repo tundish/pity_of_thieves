@@ -62,16 +62,16 @@ class DramaTests(unittest.TestCase):
             self.drama.world.map.Into.cutthroat_lane,
         )
         Spot = self.drama.world.map.Spot
-        for n in range(6):
+        for n in range(7):
             rv = next(self.drama.if_mobile(self.drama.ensemble), None)
             with self.subTest(n=n):
-                if n == 4:
+                if n == 5:
                     self.assertIs(player, rv)
                     self.assertEqual(
                         Spot.cutthroat_lane,
                         player.get_state(Spot)
                     )
-                elif n == 5:
+                elif n == 6:
                     self.assertIsNone(rv)
                     self.assertEqual(
                         Spot.cutthroat_lane,
@@ -113,7 +113,7 @@ class DramaTests(unittest.TestCase):
         response = self.drama(fn, *args, **kwargs)
         self.assertIn("W", response)
         self.assertEqual(Exit.woodshed, self.drama.player.get_state(Exit))
-        self.assertEqual(Into.butchers_row, self.drama.player.get_state(Into))
+        self.assertEqual(Into.yard, self.drama.player.get_state(Into))
 
     def test_go(self):
         Into = self.drama.world.map.Into
@@ -161,4 +161,4 @@ class DramaTests(unittest.TestCase):
         response = self.drama(fn, *args, **kwargs)
         self.assertIn("W", response)
         self.assertEqual(Exit.woodshed, self.drama.player.get_state(Exit))
-        self.assertEqual(Into.butchers_row, self.drama.player.get_state(Into))
+        self.assertEqual(Into.yard, self.drama.player.get_state(Into))

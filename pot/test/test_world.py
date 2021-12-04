@@ -31,10 +31,10 @@ class MapTests(unittest.TestCase):
         self.map = Map()
 
     def test_spots(self):
-        self.assertEqual(21, len(self.map.Spot))
+        self.assertEqual(22, len(self.map.Spot))
 
     def test_vias(self):
-        self.assertEqual(21, len(self.map.Spot))
+        self.assertEqual(22, len(self.map.Spot))
 
     def test_transits(self):
         transits = [t for c, l, t in self.map.options(self.map.Spot.north_gate)]
@@ -44,7 +44,7 @@ class MapTests(unittest.TestCase):
         dep = self.map.exit.mordiford_quay
         arr = self.map.into.beggars_ash
         rv = self.map.route(dep, arr)
-        self.assertEqual(6, len(rv), rv)
+        self.assertEqual(7, len(rv), rv)
         self.assertIn("north gate", [v for i in rv for v in i.value])
 
     def test_routes_rhs(self):
