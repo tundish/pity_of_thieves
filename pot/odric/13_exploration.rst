@@ -89,9 +89,8 @@ bridge_street_0
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+Up to now, the path has been strewn with rushes to keep down the mud.
+Here it is a wooden boardwalk, which becomes a bridge across the river.
 
 {exits}
 
@@ -109,9 +108,7 @@ bridge_street_1
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+|PLAYER_SPOT| leads to a gate, and beyond that the bridge across the river.
 
 {exits}
 
@@ -129,9 +126,7 @@ bridge_street_2
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+There is a gate at the end of |PLAYER_SPOT|, to hold the animals before they come to Market.
 
 {exits}
 
