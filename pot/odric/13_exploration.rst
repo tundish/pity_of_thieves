@@ -378,9 +378,13 @@ market_0
 
 {0}
 
-.. todo
+It is so early, that no one is yet at the |PLAYER_SPOT|.
 
-|PLAYER_SPOT|.
+It is a square stockade; there is a single-barred fence at waist height.
+Behind that a shamble of stout cages and pens.
+
+The whole assembly is a baffling maze; some pathways blocked by
+barrels or toolboxes or coils of heavy hemp ropes.
 
 {exits}
 
@@ -398,9 +402,8 @@ market_1
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+The |PLAYER_SPOT| is a square stockade. There is a solid fence at waist height.
+Behind that a shamble of stout cages and pens.
 
 {exits}
 
@@ -418,9 +421,8 @@ market_2
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+The |PLAYER_SPOT| is a baffling maze; some pathways blocked by
+barrels and coils of heavy hemp ropes.
 
 {exits}
 
