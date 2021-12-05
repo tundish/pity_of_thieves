@@ -204,9 +204,8 @@ cutthroat_lane_0
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+|PLAYER_NAME| takes a moment to stop and listen. There is a Woodpecker somewhere
+above. His knocking echoes around the trees here on |PLAYER_SPOT|.
 
 {exits}
 
@@ -224,9 +223,8 @@ cutthroat_lane_1
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+|PLAYER_SPOT| climbs and winds between ancient trees.
+Here and there are pathways off to remote dwellings.
 
 {exits}
 
@@ -244,9 +242,8 @@ cutthroat_lane_2
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+|PLAYER_SPOT| is a little-used track which runs from the North Gate.
+It can take you back into the village if you go far enough.
 
 {exits}
 

@@ -38,14 +38,16 @@ Open
 .. condition:: DRAMA.state 0
 
 Do you know the sound of Rooks at dawn?
-They should call that cackle a Mockery.
+
 Harsh critics of anyone still in their bed.
+
+They should call that cackle a Mockery.
 
 So wakes |PLAYER_NAME|.
 
-His place is the |PLAYER_SPOT|. Where he sleeps, and when sleep leaves him, where he does work.
+He is in the |PLAYER_SPOT|. Where he sleeps, and when not sleeping, where he works.
 
-.. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
+.. property:: DRAMA.prompt Type 'look'. Or 'help' for other commands.
 .. property:: DRAMA.state 1
 
 Listen
