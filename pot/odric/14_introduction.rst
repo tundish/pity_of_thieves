@@ -37,13 +37,13 @@ Open
 .. condition:: PLAYER.state pot.world.Spot.woodshed
 .. condition:: DRAMA.state 0
 
-Have you ever heard the sound of Rooks in early dawn?
-The devilish cackle of hundreds of birds - they should call them a Mockery.
+Do you know the sound of Rooks in early dawn?
+The rousing cackle of birds in their hundreds - they should call them a Mockery.
 Harsh critics of anyone still in their bed.
 
 So wakes |PLAYER_NAME|.
 
-His place is the |PLAYER_SPOT|. Where he sleeps, and when sleep leaves him, where he must work.
+His place is the |PLAYER_SPOT|. Where he sleeps, and when sleep leaves him, where he does work.
 
 .. property:: DRAMA.prompt Type 'help'. Or 'again' to read once more.
 .. property:: DRAMA.state 1
