@@ -1169,14 +1169,17 @@ tower_wall_2
 yard_0
 ------
 
+.. The best building logs are traditionally cut near a new moon in the Winter.
+
 .. condition:: LOCAL.state pot.world.Spot.yard
 .. condition:: LOCAL.state 0
 
 {0}
 
-.. todo
+The |PLAYER_SPOT| is damp and hung with mist. Stacks of
+logs line the way out into the village.
 
-|PLAYER_SPOT|.
+It is Winter and the |PLAYER_SPOT| has been busy.
 
 {exits}
 
@@ -1194,9 +1197,10 @@ yard_1
 
 {0}
 
-.. todo
+In the |PLAYER_SPOT|.
 
-|PLAYER_SPOT|.
+The wood piles are neat and evenly spaced.
+The largest logs over a foot in diameter.
 
 {exits}
 
@@ -1214,9 +1218,10 @@ yard_2
 
 {0}
 
-.. todo
+In the |PLAYER_SPOT|.
 
-|PLAYER_SPOT|.
+The green is kept separate from the dead.
+All sorted according to bow, grain and taper.
 
 {exits}
 

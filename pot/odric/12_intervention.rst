@@ -8,6 +8,9 @@
    :types:  pot.world.Character
    :states: pot.types.Engagement.player
 
+.. entity:: LOCAL
+   :types:  pot.world.Location
+
 .. entity:: DRAMA
    :types:  balladeer.Drama
    :states: pot.types.Operation.paused
@@ -58,7 +61,7 @@ Look
 
 [DRAMA]_
 
-    You are |PLAYER_NAME|. |PLAYER_SPOT| is |PLAYER_POSS| location.
+    |PLAYER_NAME| is by |LOCN_ARTICLE| |LOCN_NAME|.
     Looking around, |PLAYER_SUBJECT| is aware of:
 
 {0}
@@ -69,6 +72,7 @@ Look
 
 .. |INPUT_TEXT| property:: DRAMA.input_text
 .. |PLAYER_NAME| property:: PLAYER.name
-.. |PLAYER_SPOT| property:: PLAYER.spot.title
+.. |LOCN_NAME| property:: LOCAL.names[0].noun
+.. |LOCN_ARTICLE| property:: LOCAL.names[0].article.definite
 .. |PLAYER_POSS| property:: PLAYER.names[0].pronoun.genitive
 .. |PLAYER_SUBJECT| property:: PLAYER.names[0].pronoun.subject

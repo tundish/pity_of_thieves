@@ -38,7 +38,7 @@ Open
 .. condition:: DRAMA.state 0
 
 Do you know the sound of Rooks in early dawn?
-The rousing cackle of birds in their hundreds - they should call them a Mockery.
+They should call that cackle a Mockery.
 Harsh critics of anyone still in their bed.
 
 So wakes |PLAYER_NAME|.
