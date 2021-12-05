@@ -261,9 +261,8 @@ dingwood_0
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+|PLAYER_NAME| rarely ventures down this way. It is the road
+South, past |PLAYER_SPOT|.
 
 {exits}
 
@@ -281,9 +280,7 @@ dingwood_1
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+Further in this direction the road passes through the green hills of |PLAYER_SPOT|.
 
 {exits}
 
@@ -301,9 +298,9 @@ dingwood_2
 
 {0}
 
-.. todo
+Looking South. There is nothing beyond for miles.
 
-|PLAYER_SPOT|.
+|PLAYER_NAME| has gone to |PLAYER_SPOT|.
 
 {exits}
 
