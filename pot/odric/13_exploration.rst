@@ -144,9 +144,11 @@ butchers_row_0
 
 {0}
 
-.. todo
+No one yet is around at |PLAYER_SPOT|, although it can get busy.
+The beasts which are not sold at Market end up here.
 
-|PLAYER_SPOT|.
+The whole place reeks of flesh. Even now in the wintry morning, there is a carnal stench
+from every muddy puddle.
 
 {exits}
 
@@ -164,9 +166,8 @@ butchers_row_1
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+In |PLAYER_SPOT|, long wooden trestles are set up either side of the street.
+There are frames for hanging the meat, and big butts for blood and offal.
 
 {exits}
 
@@ -184,9 +185,8 @@ butchers_row_2
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+The straw underfoot is filthy, bound with dung and blood.
+|PLAYER_SPOT| is not a place to hang around.
 
 {exits}
 
