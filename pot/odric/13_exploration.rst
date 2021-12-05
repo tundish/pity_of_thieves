@@ -243,7 +243,7 @@ cutthroat_lane_2
 {0}
 
 |PLAYER_SPOT| is a little-used track which runs from the North Gate.
-It can take you back into the village if you go far enough.
+It can take you back into the town if you go far enough.
 
 {exits}
 
@@ -318,9 +318,8 @@ gardens_0
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+|PLAYER_NAME| checks around him as he enters the |PLAYER_SPOT|.
+He's been chased out of here many times.
 
 {exits}
 
@@ -338,9 +337,9 @@ gardens_1
 
 {0}
 
-.. todo
+The |PLAYER_SPOT| is a pleasant spot away from the town.
 
-|PLAYER_SPOT|.
+It is marked out by oaken posts, bound with iron.
 
 {exits}
 
@@ -358,9 +357,10 @@ gardens_2
 
 {0}
 
-.. todo
+A gravel path splits the |PLAYER_SPOT| in two.
+At regular intervals there are wooden boxes with decorative grasses and fragrant herbs.
 
-|PLAYER_SPOT|.
+It is tended by some of the old people of the town in return for alms.
 
 {exits}
 
@@ -1161,7 +1161,7 @@ yard_0
 {0}
 
 The |PLAYER_SPOT| is damp and hung with mist. Stacks of
-logs line the way out into the village.
+logs line the way out into the town.
 
 It is Winter and the |PLAYER_SPOT| has been busy.
 
