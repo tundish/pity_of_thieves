@@ -34,9 +34,8 @@ beggars_ash_0
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+|PLAYER_SPOT| is a clearing by the road as it winds North.
+A large dead tree, white and split open, gives this place a name.
 
 {exits}
 
@@ -54,9 +53,7 @@ beggars_ash_1
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+All there is at |PLAYER_SPOT| is a large dead tree, white and split open.
 
 {exits}
 
@@ -74,9 +71,7 @@ beggars_ash_2
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+There is nothing for |PLAYER_NAME| in |PLAYER_SPOT|. No need to go on further.
 
 {exits}
 

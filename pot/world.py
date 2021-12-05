@@ -162,7 +162,7 @@ class World(WorldType):
             ).set_state(Engagement.hidden, Spot.woodshed),
             Character(
                 names=[Name("Hod", Article("", ""), Pronoun("he", "him", "himself", "his"))],
-                description="{0.names[0].noun} is sharp and nimble."
+                description="{0.names[0].noun} is a lean, gnarly man."
             ).set_state(Engagement.acting, Spot.beggars_ash),
             Item(
                 names=[Name("Arsenic"), Name("Poison"), Name("Granules")],

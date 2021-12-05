@@ -37,7 +37,7 @@ Open
 .. condition:: PLAYER.state pot.world.Spot.woodshed
 .. condition:: DRAMA.state 0
 
-Do you know the sound of Rooks in early dawn?
+Do you know the sound of Rooks at dawn?
 They should call that cackle a Mockery.
 Harsh critics of anyone still in their bed.
 
