@@ -1234,9 +1234,12 @@ woodshed_0
 
 {0}
 
-.. todo
+The |PLAYER_SPOT| is stacked nearly full of logs and kindling.
+It isn't easy to tell where the wood ends and the shed begins.
 
-|PLAYER_SPOT|.
+There is one space kept clear, and in it a wooden cot and a sort of shelf.
+
+Around the floor are bits of debris; bark and rodent droppings.
 
 {exits}
 
@@ -1254,9 +1257,10 @@ woodshed_1
 
 {0}
 
-.. todo
+The |PLAYER_SPOT| is stacked nearly full of logs and kindling.
+The bundles of wood help to block the gaps in the wall panels.
 
-|PLAYER_SPOT|.
+|PLAYER_NAME| keeps a space clear for sleeping.
 
 {exits}
 
@@ -1274,9 +1278,10 @@ woodshed_2
 
 {0}
 
-.. todo
+The |PLAYER_SPOT| is draughty but dry. There is thatch in the roof space.
 
-|PLAYER_SPOT|.
+Around the floor are bits of debris; bark and rodent droppings.
+
 
 {exits}
 
