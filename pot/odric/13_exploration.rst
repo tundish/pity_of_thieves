@@ -923,9 +923,10 @@ tower_street_e_0
 
 {0}
 
-.. todo
+Tower Street proceeds straight eastward. Here it is clean and well ordered.
+The way is paved with stone chippings and cobbles, neatly aranged.
 
-|PLAYER_SPOT|.
+|PLAYER_NAME| smells smoke from some of the buildings as folk begin to stir.
 
 {exits}
 
@@ -943,9 +944,9 @@ tower_street_e_1
 
 {0}
 
-.. todo
+Tower Street proceeds straight eastward.
 
-|PLAYER_SPOT|.
+The way is paved with stone chippings and cobbles, neatly aranged.
 
 {exits}
 
@@ -963,9 +964,9 @@ tower_street_e_2
 
 {0}
 
-.. todo
+Tower Street proceeds straight eastward.
 
-|PLAYER_SPOT|.
+Here it is clean and well ordered.
 
 {exits}
 
@@ -983,9 +984,11 @@ tower_street_0
 
 {0}
 
-.. todo
+|PLAYER_NAME| envies the folk in |PLAYER_SPOT|.
 
-|PLAYER_SPOT|.
+Here people meet with friends to swap news.
+
+This is where all the scandal and gossip comes from.
 
 {exits}
 
@@ -1003,9 +1006,9 @@ tower_street_1
 
 {0}
 
-.. todo
+|PLAYER_SPOT| is narrow at this point, just near the Tavern.
 
-|PLAYER_SPOT|.
+Here people meet with friends to swap news.
 
 {exits}
 
@@ -1023,9 +1026,9 @@ tower_street_2
 
 {0}
 
-.. todo
+|PLAYER_SPOT| is narrow at this point, just near the Tavern.
 
-|PLAYER_SPOT|.
+This is where all the scandal and gossip comes from.
 
 {exits}
 
@@ -1043,9 +1046,10 @@ tower_street_w_0
 
 {0}
 
-.. todo
+At this point are placed several big bundles of cut straw. People coming from
+the Market can scrape off the mud before they go on up the street.
 
-|PLAYER_SPOT|.
+Beneath is mostly stone. Cobbles and chippings make for firm footing.
 
 {exits}
 
@@ -1063,9 +1067,9 @@ tower_street_w_1
 
 {0}
 
-.. todo
+This is the easter end of Tower Street.
 
-|PLAYER_SPOT|.
+This street is made straight and well-paved with stone.
 
 {exits}
 
@@ -1083,9 +1087,9 @@ tower_street_w_2
 
 {0}
 
-.. todo
+This is the Easter end of Tower Street.
 
-|PLAYER_SPOT|.
+No animals are permitted here. There are thick posts placed close together to keep them out.
 
 {exits}
 
