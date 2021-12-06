@@ -380,11 +380,11 @@ market_0
 
 It is so early, that no one is yet at the |PLAYER_SPOT|.
 
-It is a square stockade; there is a single-barred fence at waist height.
+It is a square stockade. There is a single-barred fence at waist height.
 Behind that a shamble of stout cages and pens.
 
 The whole assembly is a baffling maze; some pathways blocked by
-barrels or toolboxes or coils of heavy hemp ropes.
+barrels or toolboxes or coils of heavy hemp roping.
 
 {exits}
 
@@ -846,7 +846,7 @@ tavern_2
 
 From the beams of the |PLAYER_SPOT| hang carvings of the old Gods.
 
-There are benches against the wall and several barrels on the dirt floow to serve as tables.
+There are benches against the wall and several barrels on the dirt floor to serve as tables.
 
 {exits}
 
@@ -1107,9 +1107,9 @@ tower_wall_0
 
 {0}
 
-.. todo
+The cobbles of Tower Street were left over from the constructioon of the Tower itself.
 
-|PLAYER_SPOT|.
+This place was built by an ancient power. That power bides here still.
 
 {exits}
 
@@ -1127,9 +1127,9 @@ tower_wall_1
 
 {0}
 
-.. todo
+|PLAYER_NAME| has no business beyond the |PLAYER_SPOT|.
 
-|PLAYER_SPOT|.
+It's not good to be here for too long.
 
 {exits}
 
@@ -1147,9 +1147,7 @@ tower_wall_2
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+The Tower dominates the town, and can be seen for miles around.
 
 {exits}
 
