@@ -864,7 +864,7 @@ top_cross_0
 
 {0}
 
-The road widens out to a broad thoroughfare, where meet several paths through the houses
+The road widens out to a broad thoroughfare, where meet several paths through the houses.
 This is the spot called |PLAYER_SPOT|.
 
 {exits}

@@ -130,6 +130,12 @@ class Character(Named, Mobile): pass
 class Item(Named, Located): pass
 class Location(Named, Located): pass
 
+# Items have a home spot.
+# They don't move by themselves; they have to be carried by a Character
+# They can pass from one Character to another.
+# When dropped, They pass to a Location.
+# But when Trigger is reset, they revert to their home spot (removed from Location)?
+# So associations between Named objects is temporary, but the Spot endures.
 
 class World(WorldType):
 
