@@ -440,9 +440,11 @@ market_house_0
 
 {0}
 
-.. todo
+The |PLAYER_SPOT| is a favourite spot for |PLAYER_NAME| whenever he can
+spare the time to go there.
 
-|PLAYER_SPOT|.
+He loves watching the merchants banter and argue, the auctioneer call for bids,
+and the cryer announce the names of defaulters.
 
 {exits}
 
@@ -460,9 +462,8 @@ market_house_1
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+The |PLAYER_SPOT| is raised on stout pillars. The ground floor is just a plinth of stone,
+with steep steps leading up above.
 
 {exits}
 
@@ -480,9 +481,11 @@ market_house_2
 
 {0}
 
-.. todo
+|PLAYER_NAME| has never seen inside the upper floor of the |PLAYER_SPOT|.
+He knows important people meet there, because he watches them come and go.
 
-|PLAYER_SPOT|.
+The merchants and drovers are summoned here every month before Dolphus the Reeve.
+At Christmas comes the Aeldorman, Simon of Dene.
 
 {exits}
 
@@ -500,9 +503,11 @@ mordiford_quay_0
 
 {0}
 
-.. todo
+|PLAYER_NAME| knows the little river well. Since a little boy, he would go to Mordiford
+bridge to swim and fish.
 
-|PLAYER_SPOT|.
+Downstream of there is |PLAYER_SPOT|. A jetty built on a gravel spit where the boats
+pull up and unload.
 
 {exits}
 
@@ -520,9 +525,8 @@ mordiford_quay_1
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+|PLAYER_SPOT| sits below the confluence of two rivers. There is a great
+jetty there, where boats tie up and unload.
 
 {exits}
 
@@ -540,9 +544,8 @@ mordiford_quay_2
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+Piled up all along |PLAYER_SPOT| are goods of every kind. The are barrels of drink, bags of grain
+and crates of all sizes, full of produce.
 
 {exits}
 
@@ -560,9 +563,11 @@ north_gate_0
 
 {0}
 
-.. todo
 
-|PLAYER_SPOT|.
+|PLAYER_NAME| has wandered up to |PLAYER_SPOT|.
+
+There is no real gate here, only two iron-bound posts to mark the edge of the town.
+A carved board welcomes travellers from the North.
 
 {exits}
 
@@ -580,9 +585,9 @@ north_gate_1
 
 {0}
 
-.. todo
-
 |PLAYER_SPOT|.
+
+There is no real gate here, only two iron-bound posts to mark the edge of the town.
 
 {exits}
 
@@ -600,9 +605,7 @@ north_gate_2
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+|PLAYER_SPOT|. A carved board welcomes travellers from the North.
 
 {exits}
 
