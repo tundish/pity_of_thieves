@@ -623,9 +623,11 @@ orchard_0
 
 {0}
 
-.. todo
+As a boy, |PLAYER_NAME| loved to come to the |PLAYER_SPOT| and swing from
+the low branches of the apple trees.
 
-|PLAYER_SPOT|.
+He would keep a safe distance from the pigs.
+They will chase away an intruder from their windfall.
 
 {exits}
 
@@ -643,9 +645,7 @@ orchard_1
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+It is Winter, and the branches of the |PLAYER_SPOT| are bare.
 
 {exits}
 
@@ -663,9 +663,7 @@ orchard_2
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+Here in the |PLAYER_SPOT| there are several pigs who shamble about among the trees.
 
 {exits}
 
