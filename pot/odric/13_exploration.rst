@@ -804,9 +804,9 @@ tavern_0
 
 {0}
 
-.. todo
+It is quiet this morning in the |PLAYER_SPOT|. No fire yet in the grate.
 
-|PLAYER_SPOT|.
+The sound of shifting and cleaning in the room at the back.
 
 {exits}
 
@@ -824,9 +824,9 @@ tavern_1
 
 {0}
 
-.. todo
+The |PLAYER_SPOT| welcomes anyone with a coin.
 
-|PLAYER_SPOT|.
+If not, you can get out.
 
 {exits}
 
@@ -844,9 +844,9 @@ tavern_2
 
 {0}
 
-.. todo
+From the beams of the |PLAYER_SPOT| hang carvings of the old Gods.
 
-|PLAYER_SPOT|.
+There are benches against the wall and several barrels on the dirt floow to serve as tables.
 
 {exits}
 
@@ -864,9 +864,8 @@ top_cross_0
 
 {0}
 
-.. todo
-
-|PLAYER_SPOT|.
+The road widens out to a broad thoroughfare, where meet several paths through the houses
+This is the spot called |PLAYER_SPOT|.
 
 {exits}
 
@@ -884,9 +883,9 @@ top_cross_1
 
 {0}
 
-.. todo
+The road at this point is a broad thoroughfare.
 
-|PLAYER_SPOT|.
+From |PLAYER_SPOT| you can look back down the hill into town.
 
 {exits}
 
@@ -904,9 +903,9 @@ top_cross_2
 
 {0}
 
-.. todo
+The road at this point is a broad thoroughfare.
 
-|PLAYER_SPOT|.
+There are routes from here out into the country.
 
 {exits}
 
