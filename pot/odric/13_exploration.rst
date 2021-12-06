@@ -681,9 +681,10 @@ ross_road_0
 
 {0}
 
-.. todo
+Away south and to the west runs the |PLAYER_SPOT|.
+It snakes for many miles over bluffs and through valleys until it reaches the deep Forest.
 
-|PLAYER_SPOT|.
+This is a way to Mordiford.
 
 {exits}
 
@@ -701,9 +702,9 @@ ross_road_1
 
 {0}
 
-.. todo
+Away south and to the west runs the |PLAYER_SPOT|.
 
-|PLAYER_SPOT|.
+This is a way to Mordiford.
 
 {exits}
 
@@ -721,9 +722,9 @@ ross_road_2
 
 {0}
 
-.. todo
+Away south and to the west runs the |PLAYER_SPOT|.
 
-|PLAYER_SPOT|.
+It snakes for many miles over bluffs and through valleys until it reaches the deep Forest.
 
 {exits}
 
@@ -741,9 +742,11 @@ south_end_0
 
 {0}
 
-.. todo
+Away from the working part of town is |PLAYER_SPOT|.
 
-|PLAYER_SPOT|.
+The dwellings here are larger than elsewhere.
+
+Old families with wealth and standing.
 
 {exits}
 
@@ -761,9 +764,9 @@ south_end_1
 
 {0}
 
-.. todo
+Away from the working part of town is |PLAYER_SPOT|.
 
-|PLAYER_SPOT|.
+The dwellings here are larger than elsewhere.
 
 {exits}
 
@@ -781,9 +784,9 @@ south_end_2
 
 {0}
 
-.. todo
+Away from the working part of town is |PLAYER_SPOT|.
 
-|PLAYER_SPOT|.
+Old families with wealth and standing.
 
 {exits}
 
