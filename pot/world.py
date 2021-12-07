@@ -129,12 +129,9 @@ class Character(Named, Mobile): pass
 class Item(Named, Located): pass
 class Location(Named, Located): pass
 
-# Items have a home spot.
-# They don't move by themselves; they have to be carried by a Character
-# They can pass from one Character to another.
-# When dropped, They pass to a Location.
-# But when Trigger is reset, they revert to their home spot (removed from Location)?
-# So associations between Named objects is temporary, but the Spot endures.
+# When dropped, items pass to a Location.
+# But when Trigger is reset, they revert to being held by their home-spot Location.
+
 
 class World(WorldType):
 
@@ -169,6 +166,9 @@ class World(WorldType):
                 names=[Name("Hod", Article("", ""), Pronoun("he", "him", "himself", "his"))],
                 description="{0.names[0].noun} is a lean, gnarly man."
             ).set_state(Engagement.acting, Spot.beggars_ash),
+        ]
+
+        yield from [
             Item(
                 names=[Name("Arsenic"), Name("Poison"), Name("Granules")],
                 description="A small waxed leather bag, full of crunchy white granules.",
@@ -184,6 +184,16 @@ class World(WorldType):
                 description="A chunk of hard {0.names[0].noun}, about the size of a fist.",
                 holder=next(iter(self.lookup["tavern"]))
             ).set_state(Engagement.placed, Spot.tavern),
+            Item(
+                names=[Name("Briony"), Name("Flower")],
+                description="A small yellow {0.names[1].noun} with a long green stem.",
+                holder=next(iter(self.lookup["niall"]))
+            ).set_state(Engagement.placed, Spot.cutthroat_lane),
+            Item(
+                names=[Name("Teasel"), Name("Stem")],
+                description="A dry {0.names[1].noun} with a large brown seed head.",
+                holder=next(iter(self.lookup["niall"]))
+            ).set_state(Engagement.placed, Spot.mordiford_quay),
         ]
 
 

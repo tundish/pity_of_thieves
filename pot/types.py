@@ -42,8 +42,6 @@ class Operation(enum.Enum):
 class Signifier(enum.Enum):
 
     aelfric = ["Aelfric", "Dene", "Aelfric of Dene"]
-    briony = ["briony", "flower", "sprig"]
     dolphus = ["Dolphus", "Bifling", "Dolphus Bifling"]
-    teasel = ["teasel", "plant", "stalk"]
     hand = ["fingers", "hand", "stumps"]
     veil = ["mask", "veil"]
