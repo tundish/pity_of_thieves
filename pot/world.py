@@ -63,7 +63,6 @@ class Map(MapType):
         "tower_wall":  ["tower wall"],
         "yard":  ["yard", "wood yard"],
         "woodshed":  ["wood shed", "woodshed", "shed"],
-        "inventory": []
     }
 
     Into = enum.Enum("Into", spots, type=Waypoint)
@@ -172,7 +171,7 @@ class World(WorldType):
             ).set_state(Engagement.acting, Spot.beggars_ash),
             Item(
                 names=[Name("Arsenic"), Name("Poison"), Name("Granules")],
-                description="A small waxed leather bag, full of crunchy white granules."
+                description="A small waxed leather bag, full of crunchy white granules.",
                 holder=next(iter(self.lookup["woodshed"]))
             ).set_state(Engagement.hidden, Spot.woodshed),
             Item(
@@ -182,7 +181,7 @@ class World(WorldType):
             ).set_state(Engagement.placed, Spot.orchard),
             Item(
                 names=[Name("Cheese"), Name("Food")],
-                description="A chunk of hard {0.names[0].noun}, about the size of a fist."
+                description="A chunk of hard {0.names[0].noun}, about the size of a fist.",
                 holder=next(iter(self.lookup["tavern"]))
             ).set_state(Engagement.placed, Spot.tavern),
         ]

@@ -31,10 +31,10 @@ class MapTests(unittest.TestCase):
         self.map = Map()
 
     def test_spots(self):
-        self.assertEqual(22, len(self.map.Spot))
+        self.assertEqual(21, len(self.map.Spot))
 
     def test_vias(self):
-        self.assertEqual(22, len(self.map.Spot))
+        self.assertEqual(21, len(self.map.Spot))
 
     def test_transits(self):
         transits = [t for c, l, t in self.map.options(self.map.Spot.north_gate)]
