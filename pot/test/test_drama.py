@@ -42,7 +42,7 @@ class DramaTests(unittest.TestCase):
     def setUp(self):
         world = World(Map())
         self.assertTrue(world.map)
-        self.drama = Drama("pot.odric", world)
+        self.drama = Drama("pot.dlg.odric", world)
 
     def test_spots(self):
         self.assertEqual(2, len(self.drama.folder), self.drama.folder)

@@ -46,7 +46,7 @@ setup(
     package_data={
         "pot": [
             "css/*.css",
-            "dlg/*.rst",
+            "dlg/*/*.rst",
         ]
     },
     install_requires=[
