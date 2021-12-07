@@ -173,14 +173,17 @@ class World(WorldType):
             Item(
                 names=[Name("Arsenic"), Name("Poison"), Name("Granules")],
                 description="A small waxed leather bag, full of crunchy white granules."
+                holder=next(iter(self.lookup["woodshed"]))
             ).set_state(Engagement.hidden, Spot.woodshed),
             Item(
                 names=[Name("Knife"), Name("Seax")],
-                description="A hefty blade. A tool rather than a weapon; it has a plain wooden handle."
+                description="A hefty blade. A tool rather than a weapon; it has a plain wooden handle.",
+                holder=next(iter(self.lookup["orchard"]))
             ).set_state(Engagement.placed, Spot.orchard),
             Item(
                 names=[Name("Cheese"), Name("Food")],
                 description="A chunk of hard {0.names[0].noun}, about the size of a fist."
+                holder=next(iter(self.lookup["tavern"]))
             ).set_state(Engagement.placed, Spot.tavern),
         ]
 

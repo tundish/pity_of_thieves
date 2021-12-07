@@ -66,3 +66,8 @@ class WorldTests(unittest.TestCase):
     def test_locations(self):
         self.assertIn("tower st", self.world.lookup)
 
+    def test_ownership(self):
+        knife = next(iter(self.world.lookup["knife"]))
+        orchard = next(iter(self.world.lookup["orchard"]))
+        self.assertIs(orchard, knife.holder)
+        self.assertEqual(Map.Spot.orchard, knife.get_state(Map.Spot))
