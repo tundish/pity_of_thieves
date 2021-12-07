@@ -47,9 +47,19 @@ class DramaTests(unittest.TestCase):
     def test_spots(self):
         self.assertEqual(2, len(self.drama.folder), self.drama.folder)
 
+    def test_ensemble(self):
+        hod = next(iter(self.drama.world.lookup["hod"])).set_state(Engagement.acting)
+
+        self.assertNotIn(hod, self.drama.ensemble)
+        self.assertIn(self.drama.player, self.drama.ensemble)
+
+        hod.set_state(Spot.woodshed)
+        self.assertIn(hod, self.drama.ensemble)
+
     def test_local(self):
         isla = next(iter(self.drama.world.lookup["isla"])).set_state(Engagement.acting)
         poison = next(iter(self.drama.world.lookup["poison"])).set_state(Engagement.acting)
+        self.assertNotIn(self.drama.player, self.drama.local["Character"])
         self.assertIn(isla, self.drama.local["Character"])
         self.assertIn(poison, self.drama.local["Item"])
 

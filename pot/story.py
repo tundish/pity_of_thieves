@@ -52,7 +52,11 @@ class Story(StoryType):
 
     @property
     def context(self):
-        return self.drama["odric"]
+        npc = next(
+            (i.names[0].noun.lower() for i in self.drama["odric"].local["Character"]),
+            "odric"
+        )
+        return self.drama.get(npc, self.drama["odric"])
 
 def parser():
     rv = argparse.ArgumentParser()
@@ -67,6 +71,8 @@ def parser():
     return rv
 
 
+from balladeer import Model
+
 def main(opts):
     story = Story(**vars(opts))
     text = ""
@@ -78,6 +84,7 @@ def main(opts):
             print(*presenter.frames, sep="\n", file=sys.stderr)
 
         for frame in filter(None, presenter.frames):
+            print(frame[Model.Property])
             animation = presenter.animate(
                 frame, dwell=presenter.dwell, pause=presenter.pause
             )
