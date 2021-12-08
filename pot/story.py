@@ -84,7 +84,6 @@ def main(opts):
             print(*presenter.frames, sep="\n", file=sys.stderr)
 
         for frame in filter(None, presenter.frames):
-            print(frame[Model.Property])
             animation = presenter.animate(
                 frame, dwell=presenter.dwell, pause=presenter.pause
             )

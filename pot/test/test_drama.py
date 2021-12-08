@@ -105,6 +105,44 @@ class DramaTests(unittest.TestCase):
 
                 moves = list(self.drama.if_mobile(self.drama.ensemble))
 
+    def test_if_mobile_patrolling(self):
+        Spot = self.drama.world.map.Spot
+        player = next(iter(self.drama.world.lookup["odric"])).set_state(Spot.yard)
+        niall = next(iter(self.drama.world.lookup["niall"]))
+        moves = []
+        for n in range(16):
+            with self.subTest(n=n):
+                if n == 0:
+                    self.assertTrue(niall.in_transit)
+                    self.assertEqual(Spot.south_end, niall.get_state(Spot))
+                elif n == 1:
+                    self.assertTrue(niall.in_transit)
+                    self.assertEqual(Spot.top_cross, niall.get_state(Spot))
+                elif n == 2:
+                    self.assertTrue(niall.in_transit)
+                    self.assertEqual(Spot.butchers_row, niall.get_state(Spot))
+                elif n == 3:
+                    self.assertTrue(niall.in_transit)
+                    self.assertEqual(Spot.yard, niall.get_state(Spot))
+                elif n == 4:
+                    self.assertFalse(niall.in_transit)
+                    self.assertEqual(Spot.north_gate, niall.get_state(Spot))
+                elif n == 5:
+                    self.assertFalse(niall.in_transit)
+                    self.assertEqual(Spot.north_gate, niall.get_state(Spot))
+                elif n == 6:
+                    self.assertTrue(niall.in_transit)
+                    self.assertEqual(Spot.yard, niall.get_state(Spot))
+                elif n == 7:
+                    self.assertTrue(niall.in_transit)
+                    self.assertEqual(Spot.butchers_row, niall.get_state(Spot))
+                elif n == 12:
+                    self.assertTrue(niall.in_transit)
+                    self.assertEqual(Spot.yard, niall.get_state(Spot))
+
+                shift = list(self.drama.if_patrol(self.drama.ensemble))
+                moves = list(self.drama.if_mobile(self.drama.ensemble))
+
     def test_if_mobile_routing(self):
         player = next(iter(self.drama.world.lookup["odric"]))
         self.assertIsInstance(player, Mobile)

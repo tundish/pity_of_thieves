@@ -116,8 +116,18 @@ class Drama(DramaType):
                 ):
                     i.set_state(Proximity.outside)
 
+    def if_patrol(self, ensemble=None):
+        ensemble = sorted(ensemble or self.ensemble, key=lambda x: x is not self.player)
+        for n, i in enumerate(ensemble):
+            if isinstance(i, Mobile) and getattr(i, "patrol", None):
+                if not i.in_transit and i.get_state(Engagement) != Engagement.static:
+                    i.patrol.rotate()
+                    i.set_state(i.patrol[0])
+                    yield i
+
     def interlude(self, folder, index, *args, **kwargs):
-        moved = list(self.if_mobile())  # self.if_patrolling(list(if_mobile))
+        shift = list(self.if_patrol())
+        moved = list(self.if_mobile())
         exits = {c: t for c, _, t in self.world.map.options(self.player.spot)}
         return {
             "events": "", # eg: mobile arrives
