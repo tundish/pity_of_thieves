@@ -41,11 +41,7 @@ class Drama(DramaType):
     @property
     def ensemble(self):
         transits = {t for c, l, t in self.world.map.options(self.player.spot)}
-        objects = [
-            i for i in self.world.lookup.each
-            if getattr(i, "holder", i).get_state(Map.Spot) == self.player.spot
-        ]
-        return objects + list(transits)
+        return list(self.world.lookup.each) + list(transits)
 
     @property
     def folder(self):
@@ -104,11 +100,12 @@ class Drama(DramaType):
                 spot = i.get_state(Map.Spot)
                 if not spot: continue
 
+                hops = []
                 if spot.name == player_spot.name:
                     i.set_state(Proximity.present)
                 else:
                     hops = list(self.world.map.route(spot, player_spot))
-                    print(i, spot, player_spot, len(hops))
+                print(i, spot, player_spot, len(hops))
 
 
                 """

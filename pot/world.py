@@ -155,7 +155,7 @@ class World(WorldType):
                 names=[Name("Niall", Article("", ""), Pronoun("he", "him", "himself", "his"))],
                 description="{0.names[0].noun} is a fit young man with long hair and wild eyes.",
                 patrol=deque([Into.south_end, Into.north_gate])
-            ).set_state(Engagement.acting, Spot.top_cross, Into.north_gate),
+            ).set_state(Engagement.acting, Spot.south_end, Into.north_gate),
             Character(
                 names=[Name("Freda", Article("", ""), Pronoun("she", "her", "herself", "her"))],
                 description="{0.names[0].noun} is a tall girl, graceful and fair."

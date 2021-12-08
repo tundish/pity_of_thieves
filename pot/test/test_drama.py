@@ -25,6 +25,7 @@ from turberfield.catchphrase.parser import CommandParser
 
 from pot.drama import Drama
 from pot.types import Engagement
+from pot.types import Proximity
 from pot.world import Character
 from pot.world import Spot
 from pot.world import Map
@@ -50,7 +51,7 @@ class DramaTests(unittest.TestCase):
     def test_ensemble(self):
         gerod = next(iter(self.drama.world.lookup["gerod"])).set_state(Engagement.acting)
 
-        self.assertNotIn(gerod, self.drama.ensemble)
+        self.assertIn(gerod, self.drama.ensemble)
         self.assertIn(self.drama.player, self.drama.ensemble)
 
         gerod.set_state(Spot.woodshed)
@@ -73,32 +74,33 @@ class DramaTests(unittest.TestCase):
         Spot = self.drama.world.map.Spot
         player = next(iter(self.drama.world.lookup["odric"])).set_state(Spot.yard)
         niall = next(iter(self.drama.world.lookup["niall"]))
+        moves = []
         for n in range(4):
-            print("N: ", niall.get_state(Spot))
-            print("P: ", player.get_state(Spot))
-            moves = list(self.drama.if_mobile(self.drama.ensemble))
+            print(n, "N: ", niall.get_state(Spot))
+            print(n, "P: ", player.get_state(Spot))
             with self.subTest(n=n):
-                if n < 4:
+                if n == 0:
                     self.assertTrue(niall.in_transit)
-                    self.assertEqual(2, len(moves))
-                elif n == 5:
+                    self.assertEqual(Spot.south_end, niall.get_state(Spot))
+                elif n == 1:
+                    self.assertTrue(niall.in_transit)
+                    self.assertEqual(1, len(moves))
                     self.assertIs(niall, moves[0])
-                    self.assertEqual(
-                        Spot.north_gate,
-                        niall.get_state(Spot)
-                    )
-                elif n == 6:
-                    self.assertFalse(moves)
-                    self.assertEqual(
-                        Spot.north_gate,
-                        niall.get_state(Spot)
-                    )
-                else:
+                    self.assertEqual(Spot.top_cross, niall.get_state(Spot))
+                elif n == 2:
+                    self.assertTrue(niall.in_transit)
+                    self.assertEqual(1, len(moves))
                     self.assertIs(niall, moves[0])
-                    self.assertNotEqual(
-                        Spot.north_gate,
-                        player.get_state(Spot)
-                    )
+                    self.assertEqual(Spot.butchers_row, niall.get_state(Spot))
+                    self.assertEqual(Proximity.inbound, niall.get_state(Proximity))
+                elif n == 3:
+                    self.assertTrue(niall.in_transit)
+                    self.assertEqual(1, len(moves))
+                    self.assertIs(niall, moves[0])
+                    self.assertEqual(Spot.yard, niall.get_state(Spot))
+                    self.assertEqual(Proximity.present, niall.get_state(Proximity))
+
+                moves = list(self.drama.if_mobile(self.drama.ensemble))
 
     def test_if_mobile_routing(self):
         player = next(iter(self.drama.world.lookup["odric"]))
