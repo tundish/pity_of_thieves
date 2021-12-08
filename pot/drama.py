@@ -112,7 +112,7 @@ class Drama(DramaType):
                     i.set_state(Proximity.present)
                 elif (
                     len(hops) > 1 and hops[1].name == player_spot.name
-                    and i.get_state(Proximity) != Proximity.inbound
+                    and i.get_state(Proximity) not in (Proximity.inbound, Proximity.outward)
                 ):
                     i.set_state(Proximity.outside)
 

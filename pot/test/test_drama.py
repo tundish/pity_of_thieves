@@ -76,8 +76,6 @@ class DramaTests(unittest.TestCase):
         niall = next(iter(self.drama.world.lookup["niall"]))
         moves = []
         for n in range(5):
-            print(n, "N: ", niall.get_state(Spot))
-            print(n, "P: ", player.get_state(Spot))
             with self.subTest(n=n):
                 if n == 0:
                     self.assertTrue(niall.in_transit)
@@ -106,7 +104,6 @@ class DramaTests(unittest.TestCase):
                     self.assertEqual(Proximity.outward, niall.get_state(Proximity))
 
                 moves = list(self.drama.if_mobile(self.drama.ensemble))
-        print(list(self.drama.world.map.route(Spot.south_end, Spot.north_gate)))
 
     def test_if_mobile_routing(self):
         player = next(iter(self.drama.world.lookup["odric"]))
