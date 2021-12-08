@@ -17,7 +17,7 @@
 
 .. entity:: ITEM
    :types:  pot.world.Item
-   :states: pot.types.Engagement.placed
+   :states: pot.types.Engagement.static
 
 .. entity:: DRAMA
    :types:  balladeer.Drama

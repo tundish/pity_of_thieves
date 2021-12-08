@@ -24,9 +24,9 @@ class Engagement(enum.Enum):
 
     acting = enum.auto()
     hidden = enum.auto()
-    placed = enum.auto()
     player = enum.auto()
     silent = enum.auto()
+    static = enum.auto()
 
 
 class Operation(enum.Enum):
@@ -37,6 +37,15 @@ class Operation(enum.Enum):
     prompt = enum.auto()
     ending = enum.auto()
     finish = enum.auto()
+
+
+class Proximity(enum.Enum):
+
+    distant = enum.auto()
+    inbound = enum.auto()
+    outside = enum.auto()
+    outward = enum.auto()
+    present = enum.auto()
 
 
 class Signifier(enum.Enum):

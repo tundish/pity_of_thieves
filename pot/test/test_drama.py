@@ -69,7 +69,38 @@ class DramaTests(unittest.TestCase):
         local = next(iter(self.drama.world.lookup["quay"]))
         self.assertIn(local, self.drama.ensemble)
 
-    def test_if_mobile(self):
+    def test_if_mobile_proximity(self):
+        Spot = self.drama.world.map.Spot
+        player = next(iter(self.drama.world.lookup["odric"])).set_state(Spot.yard)
+        niall = next(iter(self.drama.world.lookup["niall"]))
+        for n in range(4):
+            print("N: ", niall.get_state(Spot))
+            print("P: ", player.get_state(Spot))
+            moves = list(self.drama.if_mobile(self.drama.ensemble))
+            with self.subTest(n=n):
+                if n < 4:
+                    self.assertTrue(niall.in_transit)
+                    self.assertEqual(2, len(moves))
+                elif n == 5:
+                    self.assertIs(niall, moves[0])
+                    self.assertEqual(
+                        Spot.north_gate,
+                        niall.get_state(Spot)
+                    )
+                elif n == 6:
+                    self.assertFalse(moves)
+                    self.assertEqual(
+                        Spot.north_gate,
+                        niall.get_state(Spot)
+                    )
+                else:
+                    self.assertIs(niall, moves[0])
+                    self.assertNotEqual(
+                        Spot.north_gate,
+                        player.get_state(Spot)
+                    )
+
+    def test_if_mobile_routing(self):
         player = next(iter(self.drama.world.lookup["odric"]))
         self.assertIsInstance(player, Mobile)
         player.set_state(
@@ -79,22 +110,22 @@ class DramaTests(unittest.TestCase):
         )
         Spot = self.drama.world.map.Spot
         for n in range(7):
-            rv = next(self.drama.if_mobile(self.drama.ensemble), None)
+            moves = list(self.drama.if_mobile(self.drama.ensemble))
             with self.subTest(n=n):
                 if n == 5:
-                    self.assertIs(player, rv)
+                    self.assertIs(player, moves[0])
                     self.assertEqual(
                         Spot.cutthroat_lane,
                         player.get_state(Spot)
                     )
                 elif n == 6:
-                    self.assertIsNone(rv)
+                    self.assertFalse(moves)
                     self.assertEqual(
                         Spot.cutthroat_lane,
                         player.get_state(Spot)
                     )
                 else:
-                    self.assertIs(player, rv)
+                    self.assertIs(player, moves[0])
                     self.assertNotEqual(
                         Spot.cutthroat_lane,
                         player.get_state(Spot)

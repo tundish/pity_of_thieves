@@ -18,6 +18,7 @@
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 import enum
+from collections import deque
 
 from balladeer import Grouping
 from balladeer import Stateful
@@ -152,8 +153,9 @@ class World(WorldType):
             ).set_state(Engagement.player, Spot.woodshed),
             Character(
                 names=[Name("Niall", Article("", ""), Pronoun("he", "him", "himself", "his"))],
-                description="{0.names[0].noun} is a fit young man with long hair and wild eyes."
-            ).set_state(Engagement.acting, Spot.top_cross),
+                description="{0.names[0].noun} is a fit young man with long hair and wild eyes.",
+                patrol=deque([Into.south_end, Into.north_gate])
+            ).set_state(Engagement.acting, Spot.top_cross, Into.north_gate),
             Character(
                 names=[Name("Freda", Article("", ""), Pronoun("she", "her", "herself", "her"))],
                 description="{0.names[0].noun} is a tall girl, graceful and fair."
@@ -178,22 +180,22 @@ class World(WorldType):
                 names=[Name("Knife"), Name("Seax")],
                 description="A hefty blade. A tool rather than a weapon; it has a plain wooden handle.",
                 holder=next(iter(self.lookup["orchard"]))
-            ).set_state(Engagement.placed, Spot.orchard),
+            ).set_state(Engagement.static, Spot.orchard),
             Item(
                 names=[Name("Cheese"), Name("Food")],
                 description="A chunk of hard {0.names[0].noun}, about the size of a fist.",
                 holder=next(iter(self.lookup["tavern"]))
-            ).set_state(Engagement.placed, Spot.tavern),
+            ).set_state(Engagement.static, Spot.tavern),
             Item(
                 names=[Name("Briony"), Name("Flower")],
                 description="A small yellow {0.names[1].noun} with a long green stem.",
                 holder=next(iter(self.lookup["niall"]))
-            ).set_state(Engagement.placed, Spot.cutthroat_lane),
+            ).set_state(Engagement.static, Spot.cutthroat_lane),
             Item(
                 names=[Name("Teasel"), Name("Stem")],
                 description="A dry {0.names[1].noun} with a large brown seed head.",
                 holder=next(iter(self.lookup["niall"]))
-            ).set_state(Engagement.placed, Spot.mordiford_quay),
+            ).set_state(Engagement.static, Spot.mordiford_quay),
         ]
 
 

@@ -30,6 +30,7 @@ from balladeer.cartography import Compass
 
 from pot.types import Engagement
 from pot.types import Operation
+from pot.types import Proximity
 from pot.world import Map
 from pot.world import Location
 from pot.world import Mobile
@@ -81,23 +82,61 @@ class Drama(DramaType):
         self.default_fn = self.do_next
 
     def if_mobile(self, ensemble=None):
-        ensemble = ensemble or self.ensemble
-        for i in ensemble:
-            if isinstance(i, Mobile) and i.in_transit:
+        ensemble = sorted(ensemble or self.ensemble, key=lambda x: x is not self.player)
+        assert ensemble[0] is self.player
+
+        for n, i in enumerate(ensemble):
+            if isinstance(i, Mobile):
+                if i.in_transit and i.get_state(Engagement) != Engagement.static:
+                    spot = i.get_state(Map.Spot)
+                    route = list(self.world.map.route(spot, i.get_state(Map.Into)))
+                    if len(route) > 1:
+                        # Still moving
+                        i.set_state(route[1])
+                    else:
+                        # Arrived
+                        i.set_state(Map.Exit[spot.name])
+
+                    yield i
+
+                # proximity
+                player_spot = self.player.get_state(Map.Spot)
                 spot = i.get_state(Map.Spot)
-                route = list(self.world.map.route(
-                    spot, i.get_state(Map.Into)
-                ))
-                if len(route) > 1:
-                    # Still moving
-                    i.set_state(route[1])
+                if not spot: continue
+
+                if spot.name == player_spot.name:
+                    i.set_state(Proximity.present)
                 else:
-                    # Arrived
-                    i.set_state(Map.Exit[spot.name])
+                    hops = list(self.world.map.route(spot, player_spot))
+                    print(i, spot, player_spot, len(hops))
+
+
+                """
+                spot = i.get_state(Map.Spot)
+                hops = list(self.world.map.route(
+                    i.get_state(v.Location), self.player.get_state(Map.Spot)
+                ))
+                continue
+                prox = Proximity.outside
+                if (mob.get_state(self.nav.Departed)
+                    and mob.get_state(self.nav.Departed).name == self.player.get_state(self.nav.Location).name
+                ):
+                    prox = Proximity.outward
+                elif (mob.get_state(self.nav.Arriving)
+                    and mob.get_state(self.nav.Arriving).name == self.player.get_state(self.nav.Location).name
+                ):
+                    prox = Proximity.inbound
+
+                mob.state = {
+                    0: Proximity.unknown,
+                    1: Proximity.present,
+                    2: prox,
+                }.get(len(hops), Proximity.distant)
                 yield i
+                """
 
     def interlude(self, folder, index, *args, **kwargs):
-        moved = list(self.if_mobile())
+        moved = list(self.if_mobile())  # self.if_patrolling(list(if_mobile))
         exits = {c: t for c, _, t in self.world.map.options(self.player.spot)}
         return {
             "events": "", # eg: mobile arrives
