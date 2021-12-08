@@ -89,48 +89,26 @@ class Drama(DramaType):
                     if len(route) > 1:
                         # Still moving
                         i.set_state(route[1])
+                        if route[0].name == self.player.get_state(Map.Spot).name:
+                            i.set_state(Proximity.outward)
+                        else:
+                            i.set_state(Proximity.distant)
                     else:
                         # Arrived
                         i.set_state(Map.Exit[spot.name])
 
                     yield i
 
-                # proximity
+                # Proximity
                 player_spot = self.player.get_state(Map.Spot)
                 spot = i.get_state(Map.Spot)
                 if not spot: continue
 
-                hops = []
-                if spot.name == player_spot.name:
+                hops = list(self.world.map.route(spot, player_spot))
+                if hops[0] == player_spot.name:
                     i.set_state(Proximity.present)
-                else:
-                    hops = list(self.world.map.route(spot, player_spot))
-                print(i, spot, player_spot, len(hops))
-
-
-                """
-                spot = i.get_state(Map.Spot)
-                hops = list(self.world.map.route(
-                    i.get_state(v.Location), self.player.get_state(Map.Spot)
-                ))
-                continue
-                prox = Proximity.outside
-                if (mob.get_state(self.nav.Departed)
-                    and mob.get_state(self.nav.Departed).name == self.player.get_state(self.nav.Location).name
-                ):
-                    prox = Proximity.outward
-                elif (mob.get_state(self.nav.Arriving)
-                    and mob.get_state(self.nav.Arriving).name == self.player.get_state(self.nav.Location).name
-                ):
-                    prox = Proximity.inbound
-
-                mob.state = {
-                    0: Proximity.unknown,
-                    1: Proximity.present,
-                    2: prox,
-                }.get(len(hops), Proximity.distant)
-                yield i
-                """
+                elif len(hops) > 1 and hops[1].name == player_spot.name:
+                    i.set_state(Proximity.outside)
 
     def interlude(self, folder, index, *args, **kwargs):
         moved = list(self.if_mobile())  # self.if_patrolling(list(if_mobile))
