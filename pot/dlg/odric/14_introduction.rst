@@ -88,7 +88,7 @@ Exit
 
 .. property:: DRAMA.state 0
 .. property:: RAT.state pot.types.Engagement.acting
-.. property:: POISON.state pot.types.Engagement.placed
+.. property:: POISON.state pot.types.Engagement.static
 .. property:: DRAMA.prompt Type a command or press Return to wait
 
 .. |PLAYER_NAME| property:: PLAYER.name

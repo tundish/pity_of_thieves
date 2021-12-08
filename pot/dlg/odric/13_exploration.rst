@@ -11,6 +11,11 @@
 .. entity:: LOCAL
    :types:  pot.world.Location
 
+.. entity:: RAT
+   :types:  pot.world.Character
+   :states: pot.types.Engagement.acting
+            pot.world.Spot.woodshed
+
 .. entity:: DRAMA
    :types:  balladeer.Drama
    :states: pot.types.Operation.prompt

@@ -41,7 +41,9 @@ class Drama(DramaType):
     @property
     def ensemble(self):
         transits = {t for c, l, t in self.world.map.options(self.player.spot)}
-        return list(self.world.lookup.each) + list(transits)
+        return [
+            i for i in self.world.lookup.each if not isinstance(i, Location)
+        ] + list(transits) + self.local["Location"]
 
     @property
     def folder(self):
