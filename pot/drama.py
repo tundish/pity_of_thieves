@@ -89,8 +89,11 @@ class Drama(DramaType):
                     if len(route) > 1:
                         # Still moving
                         i.set_state(route[1])
-                        if route[0].name == self.player.get_state(Map.Spot).name:
+                        player_spot = self.player.get_state(Map.Spot)
+                        if route[0].name == player_spot.name:
                             i.set_state(Proximity.outward)
+                        elif len(route) > 2 and route[2].name == player_spot.name:
+                            i.set_state(Proximity.inbound)
                         else:
                             i.set_state(Proximity.distant)
                     else:
@@ -105,9 +108,12 @@ class Drama(DramaType):
                 if not spot: continue
 
                 hops = list(self.world.map.route(spot, player_spot))
-                if hops[0] == player_spot.name:
+                if hops[0].name == player_spot.name:
                     i.set_state(Proximity.present)
-                elif len(hops) > 1 and hops[1].name == player_spot.name:
+                elif (
+                    len(hops) > 1 and hops[1].name == player_spot.name
+                    and i.get_state(Proximity) != Proximity.inbound
+                ):
                     i.set_state(Proximity.outside)
 
     def interlude(self, folder, index, *args, **kwargs):
