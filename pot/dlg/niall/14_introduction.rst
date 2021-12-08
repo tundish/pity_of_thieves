@@ -1,5 +1,5 @@
 :author:    D E Haynes
-:made_at:   2021-11-30
+:made_at:   2021-12-07
 :project:   The Pity of Thieves
 :dwell: 0.2
 :pause: 0.9
@@ -34,9 +34,8 @@ Test
 
 |NPC_NAME| gives |PLAYER_NAME| the |ITEM_NAME|.
 
-.. property:: ITEM.holder |PLAYER_OBJ|
+.. property:: ITEM.holder PLAYER
 
-.. |PLAYER_OBJ| property:: DRAMA.player
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |NPC_NAME| property:: NPC.name
 .. |ITEM_NAME| property:: ITEM.names[0].noun

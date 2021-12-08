@@ -159,11 +159,11 @@ class World(WorldType):
                 description="{0.names[0].noun} is a tall girl, graceful and fair."
             ).set_state(Engagement.acting, Spot.tavern),
             Character(
-                names=[Name("Isla", Article("", ""), Pronoun("she", "her", "herself", "her"))],
+                names=[Name("Iysla", Article("", ""), Pronoun("she", "her", "herself", "her"))],
                 description="{0.names[0].noun} is sharp and nimble. Because she's a Rat."
             ).set_state(Engagement.hidden, Spot.woodshed),
             Character(
-                names=[Name("Hod", Article("", ""), Pronoun("he", "him", "himself", "his"))],
+                names=[Name("Gerod", Article("", ""), Pronoun("he", "him", "himself", "his"))],
                 description="{0.names[0].noun} is a lean, gnarly man."
             ).set_state(Engagement.acting, Spot.beggars_ash),
         ]

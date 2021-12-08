@@ -236,7 +236,7 @@ class Drama(DramaType):
             try:
                 yield "* {0.names[0].noun}".format(i)
             except (AttributeError, IndexError):
-                pass  # Expect inventory
+                pass
 
     def do_next(self, this, text, presenter, *args, **kwargs):
         """
