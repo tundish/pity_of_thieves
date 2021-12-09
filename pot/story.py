@@ -39,10 +39,10 @@ class Story(StoryType):
         m = Map()
         world = World(m, **kwargs)
         self.drama = {
-            "freda": Drama("pot.dlg.freda", world, **kwargs).set_state(Operation.prompt),
-            "hod": Drama("pot.dlg.hod", world, **kwargs).set_state(Operation.prompt),
-            "isla": Drama("pot.dlg.isla", world, **kwargs).set_state(Operation.prompt),
-            "niall": Drama("pot.dlg.niall", world, **kwargs).set_state(Operation.prompt),
+            #"freda": Drama("pot.dlg.freda", world, **kwargs).set_state(Operation.prompt),
+            #"hod": Drama("pot.dlg.hod", world, **kwargs).set_state(Operation.prompt),
+            #"isla": Drama("pot.dlg.isla", world, **kwargs).set_state(Operation.prompt),
+            #"niall": Drama("pot.dlg.niall", world, **kwargs).set_state(Operation.prompt),
             "odric": Drama("pot.dlg.odric", world, **kwargs).set_state(Operation.prompt),
         }
 

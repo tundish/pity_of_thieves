@@ -30,8 +30,13 @@ class Witness(Presenter):
 
     @classmethod
     def represent(cls, story, *args, facts=None, previous=None, **kwargs):
+        rv = story.context.interlude(
+            story.context.folder,
+            previous and previous.index,
+            previous and previous.ensemble
+        )
         return cls.build_presenter(
-            story.context.folder, *args,
+            story.context.folder, *args, facts=facts or rv,
             ensemble=story.context.ensemble + [story.context, story.settings],
             **kwargs
         )

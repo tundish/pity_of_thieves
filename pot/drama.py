@@ -131,6 +131,7 @@ class Drama(DramaType):
     def interlude(self, folder, index, *args, **kwargs):
         shift = list(self.if_patrol())
         moved = list(self.if_mobile())
+        print("Moved: ", moved)
         exits = {c: t for c, _, t in self.world.map.options(self.player.spot)}
         return {
             "events": "", # eg: mobile arrives
