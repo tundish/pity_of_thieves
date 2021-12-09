@@ -41,6 +41,7 @@ class Witness(Presenter):
         rv = None
         paths = getattr(folder, "paths", folder)
         pkg = getattr(folder, "pkg", None)
+        print("Paths", paths, pkg)
         for n, p in enumerate(paths):
             text = Presenter.load_dialogue(pkg, p)
             text = string.Formatter().vformat(text, args, facts or defaultdict(str))
@@ -56,9 +57,11 @@ class Witness(Presenter):
     def build_from_text(text, index=None, ensemble=[], strict=True, roles=1, path="inline"):
         script = SceneScript(path, doc=SceneScript.read(text))
         selection = script.select(ensemble, roles=roles)
+        print(list(selection.keys()), all(selection.values()))
         if all(selection.values()) or (not strict and any(selection.values())):
             script.cast(selection)
             casting = {next(iter(i.attributes.get("names", [])), None): i.persona for i in selection}
+            print(list(casting.keys()), all(casting.values()))
             model = script.run()
             rv = Presenter(model, index=index, casting=casting, ensemble=ensemble, text=text)
             for k, v in model.metadata:
@@ -73,16 +76,16 @@ class StoryTests(unittest.TestCase):
 
     def test_story(self):
         reply = ""
-        for n, cmd in enumerate(["w", "look"]):
+        for n, cmd in enumerate(["go w", "look", "look"]):
             with self.subTest(n=n, cmd=cmd):
-                presenter = self.story.represent(reply)
+                presenter = Witness.represent(self.story, reply)
                 self.assertTrue(
                     presenter, "\n".join(f"{i!s} {i._states}" for i in self.story.context.ensemble)
                 )
+                print("Player:", vars(self.story.context.player))
+                print("World:", list(self.story.context.world.lookup.keys()))
 
-                animation = next(filter(None, (a:=presenter.animate(f) for f in presenter.frames if f)))
+                animation = next(filter(None, (presenter.animate(f) for f in presenter.frames if f)))
                 text = "\n".join(l for l, d in self.story.render_frame_to_terminal(animation))
                 reply = self.story.context.deliver(cmd, presenter=presenter)
-
-                check = Witness.represent(self.story, reply, previous=presenter)
-                self.assertTrue(check)
+                print(reply)
