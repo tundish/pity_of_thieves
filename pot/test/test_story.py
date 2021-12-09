@@ -17,9 +17,53 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+from collections import defaultdict
+import string
 import unittest
 
+from turberfield.catchphrase.presenter import Presenter
+from turberfield.dialogue.model import SceneScript
+
 from pot.story import Story
+
+class Witness(Presenter):
+
+    @classmethod
+    def represent(cls, story, *args, facts=None, previous=None, **kwargs):
+        return cls.build_presenter(
+            story.context.folder, *args,
+            ensemble=story.context.ensemble + [story.context, story.settings],
+            **kwargs
+        )
+
+    @staticmethod
+    def build_presenter(folder, *args, facts=None, ensemble=None, strict=True, roles=1):
+        rv = None
+        paths = getattr(folder, "paths", folder)
+        pkg = getattr(folder, "pkg", None)
+        for n, p in enumerate(paths):
+            text = Presenter.load_dialogue(pkg, p)
+            text = string.Formatter().vformat(text, args, facts or defaultdict(str))
+            rv = Witness.build_from_text(
+                text, index=n, ensemble=ensemble or [], strict=strict, roles=roles, path=p
+            )
+            if rv:
+                break
+
+        return rv
+
+    @staticmethod
+    def build_from_text(text, index=None, ensemble=[], strict=True, roles=1, path="inline"):
+        script = SceneScript(path, doc=SceneScript.read(text))
+        selection = script.select(ensemble, roles=roles)
+        if all(selection.values()) or (not strict and any(selection.values())):
+            script.cast(selection)
+            casting = {next(iter(i.attributes.get("names", [])), None): i.persona for i in selection}
+            model = script.run()
+            rv = Presenter(model, index=index, casting=casting, ensemble=ensemble, text=text)
+            for k, v in model.metadata:
+                rv.metadata[k].append(v)
+            return rv
 
 
 class StoryTests(unittest.TestCase):
@@ -28,4 +72,17 @@ class StoryTests(unittest.TestCase):
         self.story = Story()
 
     def test_story(self):
-        self.assertFalse(self.story)
+        reply = ""
+        for n, cmd in enumerate(["w", "look"]):
+            with self.subTest(n=n, cmd=cmd):
+                presenter = self.story.represent(reply)
+                self.assertTrue(
+                    presenter, "\n".join(f"{i!s} {i._states}" for i in self.story.context.ensemble)
+                )
+
+                animation = next(filter(None, (a:=presenter.animate(f) for f in presenter.frames if f)))
+                text = "\n".join(l for l, d in self.story.render_frame_to_terminal(animation))
+                reply = self.story.context.deliver(cmd, presenter=presenter)
+
+                check = Witness.represent(self.story, reply, previous=presenter)
+                self.assertTrue(check)
