@@ -13,8 +13,7 @@
 
 .. entity:: RAT
    :types:  pot.world.Character
-   :states: pot.types.Engagement.acting
-            pot.world.Spot.woodshed
+   :states: pot.world.Spot.woodshed
 
 .. entity:: DRAMA
    :types:  balladeer.Drama
@@ -1179,6 +1178,7 @@ It is Winter and the |PLAYER_SPOT| has been busy.
    :duration: 3
 
 .. property:: LOCAL.state 1
+.. property:: RAT.state pot.types.Engagement.acting
 
 yard_1
 ------

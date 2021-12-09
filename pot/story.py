@@ -81,7 +81,6 @@ def main(opts):
         if opts.debug:
             print(story.context.folder, file=sys.stderr)
             print(story.context._states, file=sys.stderr)
-            print(*[f"{i.name} {i._states}" for i in story.context.ensemble], sep="\n", file=sys.stderr)
 
         presenter = story.represent(text, previous=presenter)
 

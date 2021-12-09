@@ -14,7 +14,7 @@
 .. entity:: RAT
    :types:  pot.world.Character
    :states: pot.types.Engagement.hidden
-            pot.world.Spot.woodshed
+            pot.types.Proximity.present
 
 .. entity:: POISON
    :types:  pot.world.Item
@@ -76,20 +76,6 @@ Bored
 {exits}
 
 .. property:: DRAMA.state 1
-
-Exit
-----
-
-.. condition:: PLAYER.state pot.world.Into.yard
-
-{0}
-
-|PLAYER_NAME| steps out and breathes the early mist of the new day.
-
-.. property:: DRAMA.state 0
-.. property:: RAT.state pot.types.Engagement.acting
-.. property:: POISON.state pot.types.Engagement.static
-.. property:: DRAMA.prompt Type a command or press Return to wait
 
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |PLAYER_SPOT| property:: PLAYER.spot.title
