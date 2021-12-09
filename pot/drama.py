@@ -32,7 +32,7 @@ from pot.types import Engagement
 from pot.types import Operation
 from pot.types import Proximity
 from pot.world import Map
-from pot.world import Location
+from pot.world import Character
 from pot.world import Mobile
 
 
@@ -41,9 +41,10 @@ class Drama(DramaType):
     @property
     def ensemble(self):
         transits = {t for c, l, t in self.world.map.options(self.player.spot)}
+        local = self.local
         return [
-            i for i in self.world.lookup.each if not isinstance(i, Location)
-        ] + list(transits) + self.local["Location"]
+            i for i in self.world.lookup.each if isinstance(i, Character)
+        ] + list(transits) + local["Location"] + local["Item"]
 
     @property
     def folder(self):

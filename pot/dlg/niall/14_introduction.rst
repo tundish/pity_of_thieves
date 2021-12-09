@@ -11,6 +11,7 @@
 .. entity:: NPC
    :types:  pot.world.Character
    :states: pot.types.Engagement.acting
+            pot.types.Proximity.present
 
 .. entity:: LOCAL
    :types:  pot.world.Location
