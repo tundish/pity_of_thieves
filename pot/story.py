@@ -78,6 +78,9 @@ def main(opts):
     text = ""
     presenter = None
     while story.active:
+        if opts.debug:
+            print(story.context, file=sys.stderr)
+            print(*story.context.ensemble, sep="\n", file=sys.stderr)
         presenter = story.represent(text, facts=story.context.facts, previous=presenter)
         if opts.debug:
             print(presenter.text, file=sys.stderr)

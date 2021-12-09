@@ -74,10 +74,13 @@ class DramaTests(unittest.TestCase):
     def test_if_mobile_proximity(self):
         Spot = self.drama.world.map.Spot
         player = next(iter(self.drama.world.lookup["odric"])).set_state(Spot.yard)
+        iysla = next(iter(self.drama.world.lookup["iysla"])).set_state(Spot.yard)
         niall = next(iter(self.drama.world.lookup["niall"]))
         moves = []
         for n in range(5):
             with self.subTest(n=n):
+                if n:
+                    self.assertEqual(Proximity.present, iysla.get_state(Proximity))
                 if n == 0:
                     self.assertTrue(niall.in_transit)
                     self.assertEqual(Spot.south_end, niall.get_state(Spot))
