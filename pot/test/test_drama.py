@@ -17,6 +17,7 @@
 # You should have received a copy of the GNU Affero General Public License
 # along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+import timeit
 import unittest
 
 from balladeer.speech import Name
@@ -173,6 +174,14 @@ class DramaTests(unittest.TestCase):
                         Spot.cutthroat_lane,
                         player.get_state(Spot)
                     )
+
+    def test_routing_penalty(self):
+        timer = timeit.Timer(
+            'list(Drama("pot.dlg.odric", World(Map())).if_mobile())',
+            setup="from pot.drama import Drama; from pot.world import Map, World"
+        )
+        t = timer.timeit(6)
+        self.assertLess(t, 1.0)
 
     def test_interlude(self):
         facts = self.drama.interlude(self.drama.folder, 0)
