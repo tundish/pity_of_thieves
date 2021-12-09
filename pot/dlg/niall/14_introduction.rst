@@ -30,10 +30,21 @@
 Introduction
 ============
 
-Test
+Give
 ----
 
+.. condition:: ITEM.holder.name |NPC_NAME|
+
 |NPC_NAME| gives |PLAYER_NAME| the |ITEM_NAME|.
+
+.. property:: ITEM.holder PLAYER
+
+Gave
+----
+
+.. condition:: ITEM.holder.name |PLAYER_NAME|
+
+|PLAYER_NAME| has the |ITEM_NAME|.
 
 .. property:: ITEM.holder PLAYER
 
