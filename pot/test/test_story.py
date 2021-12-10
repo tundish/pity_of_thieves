@@ -95,10 +95,10 @@ class StoryTests(unittest.TestCase):
 
     def test_errand(self):
         reply = ""
-        briony, niall, odric = [
-            next(iter(self.story.context.world.lookup[i])) for i in ("briony", "niall", "odric")
+        briony, niall, odric, teasel = [
+            next(iter(self.story.context.world.lookup[i])) for i in ("briony", "niall", "odric", "teasel")
         ]
-        for n, cmd in enumerate(["w", "", "", "", "", "inspect niall", "inspect briony"]):
+        for n, cmd in enumerate(["w", "", "", "", ""]):
             with self.subTest(n=n, cmd=cmd):
                 presenter = Witness.represent(self.story, reply)
                 path = self.story.context.folder[presenter.index]
@@ -108,11 +108,8 @@ class StoryTests(unittest.TestCase):
                     self.assertIs(niall, briony.holder)
                 elif n == 2:
                     self.assertIn("niall", str(path))
-                elif n == 4:
-                    self.assertIs(odric, briony.holder)
-                else:
-                    print(reply)
+                elif n >= 4:
+                    self.assertIn(odric, (briony.holder, teasel.holder))
 
                 text = "\n".join(l for l, d in self.story.render_frame_to_terminal(animation))
-                print(reply)
                 reply = self.story.context.deliver(cmd, presenter=presenter)
