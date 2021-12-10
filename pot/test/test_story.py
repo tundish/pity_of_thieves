@@ -76,15 +76,16 @@ class StoryTests(unittest.TestCase):
     def setUp(self):
         self.story = Story()
 
-    def test_story(self):
+    def test_switch_to_niall(self):
         reply = ""
-        for n, cmd in enumerate(["w", "s", "look"]):
+        for n, cmd in enumerate(["w", "", "", ]):
             with self.subTest(n=n, cmd=cmd):
                 presenter = Witness.represent(self.story, reply)
-                self.assertEqual(len(self.story.context.ensemble), len(set(self.story.context.ensemble)))
-                self.assertTrue(
-                    presenter, "\n".join(f"{i!s} {i._states}" for i in self.story.context.ensemble)
-                )
+                path = self.story.context.folder[presenter.index]
+                if n in (0, 1):
+                    self.assertIn("odric", str(path))
+                elif n == 2:
+                    self.assertIn("niall", str(path))
 
                 animation = next(filter(None, (presenter.animate(f) for f in presenter.frames if f)))
                 text = "\n".join(l for l, d in self.story.render_frame_to_terminal(animation))

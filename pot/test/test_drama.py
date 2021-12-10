@@ -47,7 +47,7 @@ class DramaTests(unittest.TestCase):
         self.drama = Drama("pot.dlg.odric", world)
 
     def test_spots(self):
-        self.assertEqual(2, len(self.drama.folder), self.drama.folder)
+        self.assertEqual(3, len(self.drama.folder), self.drama.folder)
 
     def test_ensemble(self):
         gerod = next(iter(self.drama.world.lookup["gerod"])).set_state(Engagement.acting)
