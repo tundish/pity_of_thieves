@@ -10,8 +10,7 @@
 
 .. entity:: NPC
    :types:  pot.world.Character
-   :states: pot.types.Engagement.acting
-            pot.types.Proximity.present
+   :states: pot.types.Proximity.present
 
 .. entity:: LOCAL
    :types:  pot.world.Location
@@ -30,6 +29,27 @@
 Introduction
 ============
 
+First impression
+----------------
+
+.. condition:: NPC.state 0
+
+|NPC_NAME| is here.
+
+.. property:: NPC.state 1
+.. property:: NPC.state pot.types.Engagement.static
+.. property:: DRAMA.prompt Press Return to talk with |NPC_NAME|
+
+Second look
+-----------
+
+.. condition:: NPC.state 1
+
+|NPC_NAME| is here.
+
+.. property:: NPC.state 2
+.. property:: DRAMA.prompt Type a command to continue.
+
 Give
 ----
 
@@ -47,6 +67,7 @@ Gave
 |PLAYER_NAME| has the |ITEM_NAME|.
 
 .. property:: ITEM.holder PLAYER
+.. property:: NPC.state pot.types.Engagement.acting
 
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |NPC_NAME| property:: NPC.name
