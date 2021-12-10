@@ -7,6 +7,7 @@
 .. entity:: PLAYER
    :types:  pot.world.Character
    :states: pot.types.Engagement.player
+            0
 
 .. entity:: LOCAL
    :types:  pot.world.Location
@@ -35,7 +36,7 @@ Open
 ----
 
 .. condition:: PLAYER.state pot.world.Spot.woodshed
-.. condition:: DRAMA.state 0
+.. condition:: LOCAL.state 0
 
 Do you know the sound of Rooks at dawn?
 
@@ -48,13 +49,13 @@ So wakes |PLAYER_NAME|.
 He is in the |PLAYER_SPOT|. Where he sleeps, and when not sleeping, where he works.
 
 .. property:: DRAMA.prompt Type 'look'. Or 'help' for other commands.
-.. property:: DRAMA.state 1
+.. property:: LOCAL.state 1
 
 Listen
 ------
 
 .. condition:: PLAYER.state pot.world.Spot.woodshed
-.. condition:: DRAMA.state 1
+.. condition:: LOCAL.state 1
 
 {0}
 
@@ -63,19 +64,20 @@ Listen
 {exits}
 
 .. property:: DRAMA.prompt Type a command to continue.
-.. property:: DRAMA.state 2
+.. property:: LOCAL.state 2
 
 Bored
 -----
 
 .. condition:: PLAYER.state pot.world.Spot.woodshed
-.. condition:: DRAMA.state 2
+.. condition:: LOCAL.state 2
 
 |PLAYER_NAME| isn't doing anything. He looks toward the door.
 
 {exits}
 
-.. property:: DRAMA.state 1
+.. property:: LOCAL.state 0
+.. property:: PLAYER.state 1
 
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |PLAYER_SPOT| property:: PLAYER.spot.title

@@ -37,7 +37,7 @@ First impression
 Here in |LOCN_ARTICLE| |LOCN_NAME|, |PLAYER_NAME| meets |NPC_NAME|.
 
 He's a young man in his late teens, solidly built.
-He is one of the Tithings, who patrol the homesteads and try to keep order.
+He is one of the Tithingmen, who patrol the homesteads and try to keep order.
 
 He carries a light spear, which he plants in the ground as he pauses to talk.
 
@@ -62,7 +62,7 @@ Second look
 
     Can you give this to Freda for me?
 
-He holds out what looks to be |ITEM_NAME|.
+He holds out what seems to be a |ITEM_AKA| of some kind.
 
 .. property:: NPC.state 2
 .. property:: DRAMA.prompt Type a command to continue.
@@ -81,7 +81,9 @@ Gave
 
 .. condition:: ITEM.holder.name |PLAYER_NAME|
 
-|PLAYER_NAME| has the |ITEM_NAME|.
+|PLAYER_NAME| looks down at the |ITEM_NAME| he's holding.
+
+|NPC_NAME| continues on his patrol.
 
 .. property:: ITEM.holder PLAYER
 .. property:: NPC.state pot.types.Engagement.acting
@@ -89,5 +91,6 @@ Gave
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |NPC_NAME| property:: NPC.name
 .. |ITEM_NAME| property:: ITEM.names[0].noun
+.. |ITEM_AKA| property:: ITEM.names[1].noun
 .. |LOCN_NAME| property:: LOCAL.names[0].noun
 .. |LOCN_ARTICLE| property:: LOCAL.names[0].article.definite

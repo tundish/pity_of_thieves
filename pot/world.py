@@ -187,12 +187,12 @@ class World(WorldType):
                 holder=next(iter(self.lookup["tavern"]))
             ).set_state(Engagement.static, Spot.tavern),
             Item(
-                names=[Name("Briony"), Name("Flower")],
+                names=[Name("Briony"), Name("flower")],
                 description="A small yellow {0.names[1].noun} with a long green stem.",
                 holder=next(iter(self.lookup["niall"]))
             ).set_state(Engagement.static, Spot.cutthroat_lane),
             Item(
-                names=[Name("Teasel"), Name("Stem")],
+                names=[Name("Teasel"), Name("stem")],
                 description="A dry {0.names[1].noun} with a large brown seed head.",
                 holder=next(iter(self.lookup["niall"]))
             ).set_state(Engagement.static, Spot.mordiford_quay),
