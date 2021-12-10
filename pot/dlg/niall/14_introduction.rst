@@ -81,9 +81,10 @@ Gave
 
 .. condition:: ITEM.holder.name |PLAYER_NAME|
 
-|PLAYER_NAME| looks down at the |ITEM_NAME| he's holding.
+|ITEM_HOLDER| looks down at the |ITEM_NAME| he's holding.
 
 |NPC_NAME| continues on his patrol.
+
 
 .. property:: ITEM.holder PLAYER
 .. property:: NPC.state pot.types.Engagement.acting
@@ -92,5 +93,6 @@ Gave
 .. |NPC_NAME| property:: NPC.name
 .. |ITEM_NAME| property:: ITEM.names[0].noun
 .. |ITEM_AKA| property:: ITEM.names[1].noun
+.. |ITEM_HOLDER| property:: ITEM.holder.names[0].noun
 .. |LOCN_NAME| property:: LOCAL.names[0].noun
 .. |LOCN_ARTICLE| property:: LOCAL.names[0].article.definite

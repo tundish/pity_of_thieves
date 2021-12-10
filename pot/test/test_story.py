@@ -22,9 +22,11 @@ import string
 import unittest
 
 from turberfield.catchphrase.presenter import Presenter
+from turberfield.dialogue.model import Model
 from turberfield.dialogue.model import SceneScript
 
 from pot.story import Story
+
 
 class Witness(Presenter):
 
@@ -89,4 +91,28 @@ class StoryTests(unittest.TestCase):
 
                 animation = next(filter(None, (presenter.animate(f) for f in presenter.frames if f)))
                 text = "\n".join(l for l, d in self.story.render_frame_to_terminal(animation))
+                reply = self.story.context.deliver(cmd, presenter=presenter)
+
+    def test_errand(self):
+        reply = ""
+        briony, niall, odric = [
+            next(iter(self.story.context.world.lookup[i])) for i in ("briony", "niall", "odric")
+        ]
+        for n, cmd in enumerate(["w", "", "", "", "", "inspect niall", "inspect briony"]):
+            with self.subTest(n=n, cmd=cmd):
+                presenter = Witness.represent(self.story, reply)
+                path = self.story.context.folder[presenter.index]
+                animation = next(filter(None, (presenter.animate(f) for f in presenter.frames if f)))
+                if n in (0, 1):
+                    self.assertIn("odric", str(path))
+                    self.assertIs(niall, briony.holder)
+                elif n == 2:
+                    self.assertIn("niall", str(path))
+                elif n == 4:
+                    self.assertIs(odric, briony.holder)
+                else:
+                    print(reply)
+
+                text = "\n".join(l for l, d in self.story.render_frame_to_terminal(animation))
+                print(reply)
                 reply = self.story.context.deliver(cmd, presenter=presenter)

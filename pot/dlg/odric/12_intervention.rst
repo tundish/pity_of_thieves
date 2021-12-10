@@ -54,6 +54,32 @@ History
 
 .. property:: DRAMA.state pot.types.Operation.prompt
 
+Inspect Character
+-----------------
+
+.. condition:: DRAMA.history[0].name do_inspect_character
+
+[DRAMA]_
+
+    |INPUT_TEXT|
+
+{0}
+
+.. property:: DRAMA.state pot.types.Operation.prompt
+
+Inspect Item
+------------
+
+.. condition:: DRAMA.history[0].name do_inspect_item
+
+[DRAMA]_
+
+    |INPUT_TEXT|
+
+{0}
+
+.. property:: DRAMA.state pot.types.Operation.prompt
+
 Look
 ----
 
