@@ -34,7 +34,12 @@ First impression
 
 .. condition:: NPC.state 0
 
-|NPC_NAME| is here.
+Here in |LOCN_ARTICLE| |LOCN_NAME|, |PLAYER_NAME| meets |NPC_NAME|.
+
+He's a young man in his late teens, solidly built.
+He is one of the Tithings, who patrol the homesteads and try to keep order.
+
+He carries a light spear, which he plants in the ground as he pauses to talk.
 
 .. property:: NPC.state 1
 .. property:: NPC.state pot.types.Engagement.static
@@ -45,7 +50,19 @@ Second look
 
 .. condition:: NPC.state 1
 
-|NPC_NAME| is here.
+[NPC]_
+
+    Hi, |PLAYER_NAME|, can you do me a favour?
+
+[PLAYER]_
+
+    Sure.
+
+[NPC]_
+
+    Can you give this to Freda for me?
+
+He holds out what looks to be |ITEM_NAME|.
 
 .. property:: NPC.state 2
 .. property:: DRAMA.prompt Type a command to continue.
@@ -72,3 +89,5 @@ Gave
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |NPC_NAME| property:: NPC.name
 .. |ITEM_NAME| property:: ITEM.names[0].noun
+.. |LOCN_NAME| property:: LOCAL.names[0].noun
+.. |LOCN_ARTICLE| property:: LOCAL.names[0].article.definite
