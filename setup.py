@@ -27,12 +27,12 @@ except ImportError:
 
 
 setup(
-    name="tea_and_sympathy",
+    name="pity_of_thieves",
     version=version,
-    description="An interactive screenplay.",
+    description="A simple text adventure.",
     author="D E Haynes",
     author_email="tundish@gigeconomy.org.uk",
-    url="https://github.com/tundish/tea_and_sympathy",
+    url="https://github.com/tundish/pity_of_thieves",
     long_description=__doc__,
     classifiers=[
         "Operating System :: OS Independent",

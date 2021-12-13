@@ -6,11 +6,13 @@
 Change Log
 ::::::::::
 
-0.5.0 unreleased
-================
+0.5.0
+=====
 
-* Aligned with balladeer 0.20.0
-* Good basis for a new project.
+* Aligned with balladeer 0.23.0
+* Add Dockerfile.
+* Unit tests work well now.
+* Added first location images.
 
 0.4.0
 =====
