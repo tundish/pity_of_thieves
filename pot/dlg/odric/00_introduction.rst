@@ -38,15 +38,20 @@ Open
 .. condition:: PLAYER.state pot.world.Spot.woodshed
 .. condition:: LOCAL.state 0
 
-Do you know the sound of Rooks at dawn?
+Can you hear the sound of Rooks at dawn?
 
-Harsh critics of anyone still in their bed.
+If not, allow your browser to play audio and `begin again </>`_.
 
-They should call that cackle a Mockery.
+That cackle sounds like mockery. They are harsh critics of anyone still in bed.
 
 So wakes |PLAYER_NAME|.
 
 He is in the |PLAYER_SPOT|. Where he sleeps, and when not sleeping, where he works.
+
+.. fx:: pot.mp3  crow_call-3s.mp3
+   :offset: 0
+   :duration: 3000
+   :loop: 1
 
 .. property:: DRAMA.prompt Type 'look'. Or 'help' for other commands.
 .. property:: LOCAL.state 1
@@ -59,11 +64,15 @@ Listen
 
 {0}
 
-|PLAYER_NAME| listens for a moment. The Rooks are settling down again. There's no other sound to be heard.
+|PLAYER_NAME| listens for a moment. The Rooks are settling down again.
 
 {exits}
 
-.. property:: DRAMA.prompt Type a command to continue.
+.. fx:: pot.mp3  crow_call-3s.mp3
+   :offset: 0
+   :duration: 3000
+   :loop: 1
+
 .. property:: LOCAL.state 2
 
 Bored
@@ -78,6 +87,7 @@ Bored
 
 .. property:: LOCAL.state 0
 .. property:: PLAYER.state 1
+.. property:: DRAMA.prompt Type a command to continue.
 
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |PLAYER_SPOT| property:: PLAYER.spot.title

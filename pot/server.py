@@ -184,6 +184,10 @@ def build_app(args):
         "/img/",
         pkg_resources.resource_filename("pot", "img")
     )
+    app.router.add_static(
+        "/audio/",
+        pkg_resources.resource_filename("pot", "mp3")
+    )
     app["sessions"] = {}
     app.on_startup.append(start_tasks)
     app.on_cleanup.append(cleanup_tasks)
