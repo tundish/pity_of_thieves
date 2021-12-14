@@ -6,6 +6,13 @@
 Change Log
 ::::::::::
 
+0.6.0
+=====
+
+* Add README file.
+* Add `/audio` endpoint and first media file.
+* Prep for ops.
+
 0.5.0
 =====
 
