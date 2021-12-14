@@ -73,10 +73,10 @@ async def janitor(app):
         now = datetime.datetime.now()
         orphans = [
             i for i in app["sessions"].values()
-            if (now - i.ts) > limit and i.story.context.turns < 2
+            if (now - i.ts) > limit and i.story.turns < 4
         ]
         for i in orphans:
-            log.info("Discard {0.story.id} after turn {0.story.context.turns}".format(i))
+            log.info("Discard {0.story.id} after turn {0.story.turns}".format(i))
             del app["sessions"][i.story.id]
         await asyncio.sleep(10)
 

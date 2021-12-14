@@ -6,6 +6,11 @@
 Change Log
 ::::::::::
 
+0.8.0 unreleased
+================
+
+* Fix calculation of game turns.
+
 0.7.0
 =====
 

@@ -40,8 +40,8 @@ class Story(StoryType):
         world = World(m, **kwargs)
         self.drama = {
             "freda": Drama("pot.dlg.freda", world, **kwargs).set_state(Operation.prompt),
-            "hod": Drama("pot.dlg.hod", world, **kwargs).set_state(Operation.prompt),
-            "isla": Drama("pot.dlg.isla", world, **kwargs).set_state(Operation.prompt),
+            "gerod": Drama("pot.dlg.gerod", world, **kwargs).set_state(Operation.prompt),
+            "iysla": Drama("pot.dlg.iysla", world, **kwargs).set_state(Operation.prompt),
             "niall": Drama("pot.dlg.niall", world, **kwargs).set_state(Operation.prompt),
             "odric": Drama("pot.dlg.odric", world, **kwargs).set_state(Operation.prompt),
         }
@@ -58,6 +58,10 @@ class Story(StoryType):
         )
         return self.drama.get(npc, self.drama["odric"])
 
+    @property
+    def turns(self):
+        return sum(i.turns for i in self.drama.values())
+
 def parser():
     rv = argparse.ArgumentParser()
     rv.add_argument(
@@ -70,8 +74,6 @@ def parser():
     )
     return rv
 
-
-from balladeer import Model
 
 def main(opts):
     story = Story(**vars(opts))
@@ -106,7 +108,7 @@ def main(opts):
         if story.context.get_state(Operation) == Operation.finish:
             break
 
-        cmd = input("{0} ".format(story.context.prompt))
+        cmd = input("[{0.turns:02d}] {0.context.prompt}".format(story))
         text = story.context.deliver(cmd, presenter=presenter)
 
 
