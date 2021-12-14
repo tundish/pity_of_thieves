@@ -6,6 +6,11 @@
 Change Log
 ::::::::::
 
+0.7.0
+=====
+
+* Fixed a packaging issue which prevented discovery of dialogue.
+
 0.6.0
 =====
 
