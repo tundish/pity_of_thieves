@@ -47,6 +47,8 @@ setup(
         "pot": [
             "css/*.css",
             "dlg/*/*.rst",
+            "img/*.png",
+            "mp3/*.mp3",
         ]
     },
     install_requires=[
