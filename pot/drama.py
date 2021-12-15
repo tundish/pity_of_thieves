@@ -77,6 +77,7 @@ class Drama(DramaType):
             self.do_hop, self.do_transit,
             self.do_help, self.do_hint, self.do_history,
             self.do_inspect_character, self.do_inspect_item,
+            self.do_inspect_player,
             self.do_quit
         })
         self.default_fn = self.do_next
@@ -253,15 +254,6 @@ class Drama(DramaType):
         self.state = Operation.paused
         yield obj.description.format(obj, **self.facts)
 
-        if obj is self.player:
-            items = [
-                i for i in self.local.each
-                if getattr(i, "holder", i).get_state(Map.Spot) == self.player.spot
-            ]
-            if items:
-                yield "\nCarrying:\n"
-                yield from ("* {0}".format(i) for i in items)
-
     def do_inspect_item(self, this, text, presenter, obj: "local[Item]", *args, **kwargs):
         """
         inspect {obj.names[0].noun}
@@ -269,6 +261,20 @@ class Drama(DramaType):
         """
         self.state = Operation.paused
         yield obj.description.format(obj, **self.facts)
+
+    def do_inspect_player(self, this, text, presenter, obj: "player", *args, **kwargs):
+        """
+        i
+        inspect {obj.names[0].noun}
+        inventory
+
+        """
+        self.state = Operation.paused
+        yield obj.description.format(obj, **self.facts)
+
+        if self.local["Item"]:
+            yield "\nCarrying:\n"
+            yield from ("* {0.names[0].noun}".format(i) for i in self.local["Item"])
 
     def do_look(self, this, text, presenter, *args, **kwargs):
         """

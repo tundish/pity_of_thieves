@@ -80,6 +80,15 @@ Inspect Item
 
 .. property:: DRAMA.state pot.types.Operation.prompt
 
+Inspect Player
+--------------
+
+.. condition:: DRAMA.history[0].name do_inspect_player
+
+{0}
+
+.. property:: DRAMA.state pot.types.Operation.prompt
+
 Look
 ----
 
