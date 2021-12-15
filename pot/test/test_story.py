@@ -93,6 +93,21 @@ class StoryTests(unittest.TestCase):
                 text = "\n".join(l for l, d in self.story.render_frame_to_terminal(animation))
                 reply = self.story.context.deliver(cmd, presenter=presenter)
 
+    def test_switch_to_iysla(self):
+        reply = ""
+        for n, cmd in enumerate(["w", "e", "", ]):
+            with self.subTest(n=n, cmd=cmd):
+                presenter = Witness.represent(self.story, reply)
+                path = self.story.context.folder[presenter.index]
+                if n == 0:
+                    self.assertIn("odric", str(path))
+                elif n in (1, 2):
+                    self.assertIn("iysla", str(path))
+
+                animation = next(filter(None, (presenter.animate(f) for f in presenter.frames if f)))
+                text = "\n".join(l for l, d in self.story.render_frame_to_terminal(animation))
+                reply = self.story.context.deliver(cmd, presenter=presenter)
+
     def test_errand(self):
         reply = ""
         briony, niall, odric, teasel = [

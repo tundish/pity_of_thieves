@@ -81,8 +81,8 @@ def main(opts):
     presenter = None
     while story.active:
         if opts.debug:
+            print(story.context.local["Character"], file=sys.stderr)
             print(story.context.folder, file=sys.stderr)
-            print(story.context._states, file=sys.stderr)
 
         presenter = story.represent(text, previous=presenter)
 
@@ -108,7 +108,7 @@ def main(opts):
         if story.context.get_state(Operation) == Operation.finish:
             break
 
-        cmd = input("[{0.turns:02d}] {0.context.prompt}".format(story))
+        cmd = input("[{0.turns:02d}] {0.context.prompt} ".format(story))
         text = story.context.deliver(cmd, presenter=presenter)
 
 
