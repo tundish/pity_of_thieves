@@ -17,7 +17,6 @@
 
 .. entity:: ITEM
    :types:  pot.world.Item
-   :states: pot.types.Engagement.static
 
 .. entity:: DRAMA
    :types:  balladeer.Drama
@@ -45,6 +44,7 @@ The rat sits up straight, paws on her hips in an indignant fashion.
 
 .. property:: NPC.state 1
 .. property:: NPC.state pot.types.Engagement.static
+.. property:: ITEM.state pot.types.Engagement.static
 .. property:: DRAMA.prompt Press Return to talk with |NPC_NAME|
 
 Second look
@@ -56,7 +56,7 @@ Second look
 
     |PLAYER_NAME|, would you mind getting rid of that please?
 
-She nods over to the |ITEM_NAME|.
+She nods over to something on a shelf.
 
 [NPC]_
 
@@ -65,14 +65,29 @@ She nods over to the |ITEM_NAME|.
 .. property:: NPC.state 2
 .. property:: DRAMA.prompt Type a command to continue.
 
-Gave
-----
+Untaken
+-------
+
+.. condition:: ITEM.holder.names[0].noun (Wood.Shed)
+
+{0}
+
+.. property:: NPC.state 1
+
+Taken
+-----
 
 .. condition:: ITEM.holder.name |PLAYER_NAME|
 
-|ITEM_HOLDER| looks down at the |ITEM_NAME| he's holding.
+[NPC]_
 
-.. todo Explain and activate travel
+    Thank you.
+
+    By the way, did you know you don't have to keep typing compass directions all the time?
+
+    If you know the name of a place to go to, just use that name instead.
+
+    See you later.
 
 .. property:: ITEM.holder PLAYER
 .. property:: NPC.state pot.types.Engagement.acting
@@ -82,5 +97,6 @@ Gave
 .. |ITEM_NAME| property:: ITEM.names[0].noun
 .. |ITEM_AKA| property:: ITEM.names[1].noun
 .. |ITEM_HOLDER| property:: ITEM.holder.names[0].noun
+.. |ITEM_DEBUG| property:: ITEM.holder
 .. |LOCN_NAME| property:: LOCAL.names[0].noun
 .. |LOCN_ARTICLE| property:: LOCAL.names[0].article.definite

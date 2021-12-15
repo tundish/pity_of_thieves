@@ -73,7 +73,7 @@ class Drama(DramaType):
 
         self.active = self.active.union({
             self.do_again, self.do_look,
-            # self.do_go, self.do_hop,
+            self.do_get,
             self.do_hop, self.do_transit,
             self.do_help, self.do_hint, self.do_history,
             self.do_inspect_character, self.do_inspect_item,
@@ -130,6 +130,10 @@ class Drama(DramaType):
                     yield i
 
     def interlude(self, folder, index, *args, **kwargs):
+        arsenic = next(iter(self.world.lookup["arsenic"]))
+        if arsenic.holder == self.player:
+            self.active.add(self.do_go)
+
         shift = list(self.if_patrol())
         moved = list(self.if_mobile())
         exits = {c: t for c, _, t in self.world.map.options(self.player.spot)}
@@ -155,7 +159,7 @@ class Drama(DramaType):
         self.state = self.next_states(n)[0]
         return "again..."
 
-    def do_get(self, this, text, presenter, obj: "world.local[Container]", *args, **kwargs):
+    def do_get(self, this, text, presenter, obj: "local[Item]", *args, **kwargs):
         """
         get {obj.names[0].noun}
         grab {obj.names[0].noun}
@@ -163,9 +167,8 @@ class Drama(DramaType):
         pick up {obj.names[0].noun}
 
         """
-        obj.state = Spot.inventory
-        self.active.discard(this)
-        return f"{self.world.player.name} picks up {obj.names[0].article.definite} {obj.names[0].noun}.",
+        obj.holder = self.player
+        return f"{self.player.name} picks up {obj.names[0].article.definite} {obj.names[0].noun}.",
 
     def do_go(self, this, text, presenter, *args, spot: Map.Into, **kwargs):
         """

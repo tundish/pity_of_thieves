@@ -26,6 +26,7 @@ from turberfield.dialogue.model import Model
 from turberfield.dialogue.model import SceneScript
 
 from pot.story import Story
+from pot.types import Engagement
 
 
 class Witness(Presenter):
@@ -95,13 +96,27 @@ class StoryTests(unittest.TestCase):
 
     def test_switch_to_iysla(self):
         reply = ""
+        iysla = next(iter(self.story.context.world.lookup["iysla"]))
         for n, cmd in enumerate(["w", "e", "", ]):
             with self.subTest(n=n, cmd=cmd):
                 presenter = Witness.represent(self.story, reply)
+                self.assertTrue(presenter, self.story.context.folder)
                 path = self.story.context.folder[presenter.index]
+
                 if n == 0:
+                    # Introduction
+                    self.assertEqual(self.story.context.world.map.Spot.woodshed, self.story.context.player.spot)
+                    self.assertEqual(Engagement.hidden, iysla.get_state(Engagement))
+                    self.assertNotIn(iysla, self.story.context.local["Character"])
                     self.assertIn("odric", str(path))
-                elif n in (1, 2):
+                elif n == 1:
+                    # Yard
+                    self.assertEqual(self.story.context.world.map.Spot.yard, self.story.context.player.spot)
+                    self.assertIn("odric", str(path))
+                elif n == 2:
+                    # Woodshed
+                    self.assertEqual(Engagement.acting, iysla.get_state(Engagement))
+                    self.assertIn(iysla, self.story.context.local["Character"])
                     self.assertIn("iysla", str(path))
 
                 animation = next(filter(None, (presenter.animate(f) for f in presenter.frames if f)))
