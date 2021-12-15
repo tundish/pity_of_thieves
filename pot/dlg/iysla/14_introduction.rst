@@ -90,6 +90,7 @@ Taken
     See you later.
 
 .. property:: ITEM.holder PLAYER
+.. property:: ITEM.state pot.types.Engagement.silent
 .. property:: NPC.state pot.types.Engagement.acting
 
 .. |PLAYER_NAME| property:: PLAYER.name
