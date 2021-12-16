@@ -56,7 +56,7 @@ class Drama(DramaType):
             i for i in self.world.lookup.each
             if i.get_state(Engagement) not in (Engagement.hidden, Engagement.player)
             and getattr(i, "holder", i).get_state(Map.Spot) == self.player.spot
-        ]
+        ] + list({t for c, l, t in self.world.map.options(self.player.spot)})
         return Grouping(list, {k.__name__: v for k, v in self.world.arrange(objects).items()})
 
     @functools.cached_property
@@ -306,7 +306,7 @@ class Drama(DramaType):
             f"{self.player.name} waits in the {self.player.spot.title} for a moment.",
         ])
 
-    def do_transit(self, this, text, presenter, transit: "world.map.transits", *args, **kwargs):
+    def do_transit(self, this, text, presenter, transit: "local[Transit]", *args, **kwargs):
         """
         follow {transit.names[0].noun} | follow {transit.names[1].noun}
         go {transit.names[0].noun} | go {transit.names[1].noun}
