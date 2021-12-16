@@ -6,10 +6,12 @@
 Change Log
 ::::::::::
 
-0.8.0 unreleased
-================
+0.8.0
+=====
 
 * Fix calculation of game turns.
+* Dialogue sufficiently populated for each character.
+* First soft release.
 
 0.7.0
 =====
