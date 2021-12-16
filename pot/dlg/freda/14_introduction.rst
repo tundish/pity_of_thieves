@@ -15,9 +15,6 @@
 .. entity:: LOCAL
    :types:  pot.world.Location
 
-.. entity:: ITEM
-   :types:  pot.world.Item
-
 .. entity:: DRAMA
    :types:  balladeer.Drama
    :states: pot.types.Operation.prompt
@@ -52,32 +49,21 @@ Second look
 
 [NPC]_
 
-    Hi, |PLAYER_NAME|, you can come in if you don't steal anything.
+    Hi |PLAYER_NAME|, you can come in if you don't steal anything.
 
 .. property:: NPC.state 2
 .. property:: DRAMA.prompt Type a command to continue.
 
-Ungiven
--------
+Busy
+----
 
-.. condition:: ITEM.holder.name |PLAYER_NAME|
+.. condition:: NPC.state 2
 
-|ITEM_HOLDER| looks down at the |ITEM_NAME| he's holding.
+[NPC]_
 
-|NPC_NAME| continues on his patrol.
+    I'm busy though, |PLAYER_NAME|. What do you want?
 
-Given
------
-
-.. condition:: ITEM.holder.name |NPC_NAME|
-
-|PLAYER_NAME| gives |NPC_NAME| the |ITEM_NAME|.
-
-.. property:: ITEM.holder PLAYER
-
-
-.. property:: ITEM.holder PLAYER
-.. property:: NPC.state pot.types.Engagement.acting
+.. property:: NPC.state 1
 
 .. |PLAYER_NAME| property:: PLAYER.name
 .. |NPC_NAME| property:: NPC.name
