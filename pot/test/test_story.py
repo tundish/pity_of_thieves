@@ -126,7 +126,7 @@ class StoryTests(unittest.TestCase):
     def test_switch_to_freda(self):
         reply = ""
         freda = next(iter(self.story.context.world.lookup["freda"]))
-        for n, cmd in enumerate(["w", "s", "e", "e", "e", "open door", ""]):
+        for n, cmd in enumerate(["w", "wait", "wait", "wait", "s", "e", "e", "e", "open door", ""]):
             with self.subTest(n=n, cmd=cmd):
                 presenter = Witness.represent(self.story, reply)
                 self.assertTrue(presenter, self.story.context.folder)
@@ -134,10 +134,15 @@ class StoryTests(unittest.TestCase):
 
                 if n == 0:
                     self.assertIn("odric", str(path))
-                elif n == 1:
+                elif n in ( 2, 3, 4):
+                    self.assertIn("niall", str(path))
+                elif n == 5:
                     self.assertIn("odric", str(path))
-                elif n == 6:
+                    self.assertEqual(1, len(self.story.context.carry["Item"]))
+                elif n == 10:
                     self.assertIn("freda", str(path))
+                    self.assertEqual(1, len(self.story.context.carry["Item"]))
+                    self.assertEqual(1, len(self.story.context.local["Item"]))
 
                 animation = next(filter(None, (presenter.animate(f) for f in presenter.frames if f)))
                 text = "\n".join(l for l, d in self.story.render_frame_to_terminal(animation))

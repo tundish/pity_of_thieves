@@ -51,6 +51,11 @@ class Drama(DramaType):
         return sorted(importlib.resources.files(self.package).glob("*.rst"))
 
     @property
+    def carry(self):
+        objects = [i for i in self.world.lookup.each if getattr(i, "holder", None) is self.player]
+        return Grouping(list, {k.__name__: v for k, v in self.world.arrange(objects).items()})
+
+    @property
     def local(self):
         objects = [
             i for i in self.world.lookup.each
@@ -171,7 +176,7 @@ class Drama(DramaType):
         obj.holder = self.player
         return f"{self.player.name} picks up {obj.names[0].article.definite} {obj.names[0].noun}.",
 
-    def do_give(self, this, text, presenter, obj: "local[Item]", holder: "local[Character]", *args, **kwargs):
+    def do_give(self, this, text, presenter, obj: "carry[Item]", holder: "local[Character]", *args, **kwargs):
         """
         give {obj.names[0].noun} to {holder.names[0].noun}
 
@@ -303,7 +308,7 @@ class Drama(DramaType):
 
     def do_next(self, this, text, presenter, *args, **kwargs):
         """
-        more | next
+        more | next | wait
 
         """
         try:
