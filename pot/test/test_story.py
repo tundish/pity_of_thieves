@@ -123,6 +123,26 @@ class StoryTests(unittest.TestCase):
                 text = "\n".join(l for l, d in self.story.render_frame_to_terminal(animation))
                 reply = self.story.context.deliver(cmd, presenter=presenter)
 
+    def test_switch_to_freda(self):
+        reply = ""
+        freda = next(iter(self.story.context.world.lookup["freda"]))
+        for n, cmd in enumerate(["w", "s", "e", "e", "e", "n", ""]):
+            with self.subTest(n=n, cmd=cmd):
+                presenter = Witness.represent(self.story, reply)
+                self.assertTrue(presenter, self.story.context.folder)
+                path = self.story.context.folder[presenter.index]
+
+                if n == 0:
+                    self.assertIn("odric", str(path))
+                elif n == 1:
+                    self.assertIn("odric", str(path))
+                elif n == 6:
+                    self.assertIn("freda", str(path))
+
+                animation = next(filter(None, (presenter.animate(f) for f in presenter.frames if f)))
+                text = "\n".join(l for l, d in self.story.render_frame_to_terminal(animation))
+                reply = self.story.context.deliver(cmd, presenter=presenter)
+
     def test_errand(self):
         reply = ""
         briony, niall, odric, teasel = [

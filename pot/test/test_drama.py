@@ -257,7 +257,7 @@ class DramaTests(unittest.TestCase):
         fn, args, kwargs = self.drama.interpret(self.drama.match("open door"))
         self.assertEqual(self.drama.do_transit, fn)
 
-        fn, args, kwargs =self.drama.interpret(self.drama.match("try shed door"))
+        fn, args, kwargs = self.drama.interpret(self.drama.match("try shed door"))
         self.assertEqual(self.drama.do_transit, fn)
 
         response = self.drama(fn, *args, **kwargs)
