@@ -71,7 +71,7 @@ Given
 
 .. condition:: ITEM.holder.name |NPC_NAME|
 
-|NPC_NAME| gives |PLAYER_NAME| the |ITEM_NAME|.
+|PLAYER_NAME| gives |NPC_NAME| the |ITEM_NAME|.
 
 .. property:: ITEM.holder PLAYER
 

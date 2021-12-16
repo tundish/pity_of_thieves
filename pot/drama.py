@@ -73,7 +73,7 @@ class Drama(DramaType):
 
         self.active = self.active.union({
             self.do_again, self.do_look,
-            self.do_get,
+            self.do_get, self.do_give,
             self.do_hop, self.do_transit,
             self.do_help, self.do_hint, self.do_history,
             self.do_inspect_character, self.do_inspect_item,
@@ -170,6 +170,17 @@ class Drama(DramaType):
         """
         obj.holder = self.player
         return f"{self.player.name} picks up {obj.names[0].article.definite} {obj.names[0].noun}.",
+
+    def do_give(self, this, text, presenter, obj: "local[Item]", holder: "local[Character]", *args, **kwargs):
+        """
+        give {obj.names[0].noun} to {holder.names[0].noun}
+
+        """
+        obj.holder = holder
+        return (
+            f"{self.player.name} gives {obj.names[0].article.definite} {obj.names[0].noun} "
+            f"to {holder.names[0].noun}."
+        )
 
     def do_go(self, this, text, presenter, *args, spot: Map.Into, **kwargs):
         """
