@@ -272,9 +272,10 @@ class Drama(DramaType):
         self.state = Operation.paused
         yield obj.description.format(obj, **self.facts)
 
-        if self.local["Item"]:
+        items = [i for i in self.local["Item"] if i.holder is self.player]
+        if items:
             yield "\nCarrying:\n"
-            yield from ("* {0.names[0].noun}".format(i) for i in self.local["Item"])
+            yield from ("* {0.names[0].noun}".format(i) for i in items)
 
     def do_look(self, this, text, presenter, *args, **kwargs):
         """

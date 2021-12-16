@@ -126,7 +126,7 @@ class StoryTests(unittest.TestCase):
     def test_switch_to_freda(self):
         reply = ""
         freda = next(iter(self.story.context.world.lookup["freda"]))
-        for n, cmd in enumerate(["w", "s", "e", "e", "e", "n", ""]):
+        for n, cmd in enumerate(["w", "s", "e", "e", "e", "open door", ""]):
             with self.subTest(n=n, cmd=cmd):
                 presenter = Witness.represent(self.story, reply)
                 self.assertTrue(presenter, self.story.context.folder)
