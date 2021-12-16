@@ -89,6 +89,15 @@ Inspect Player
 
 .. property:: DRAMA.state pot.types.Operation.prompt
 
+Given
+-----
+
+.. condition:: DRAMA.history[0].name do_give
+
+{0}
+
+.. property:: DRAMA.state pot.types.Operation.prompt
+
 Look
 ----
 

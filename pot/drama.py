@@ -181,6 +181,7 @@ class Drama(DramaType):
         give {obj.names[0].noun} to {holder.names[0].noun}
 
         """
+        self.state = Operation.paused
         obj.holder = holder
         return (
             f"{self.player.name} gives {obj.names[0].article.definite} {obj.names[0].noun} "
