@@ -6,6 +6,11 @@
 Change Log
 ::::::::::
 
+0.9.0 TODO
+==========
+
+* Align with balladeer 0.24.0.
+
 0.8.0
 =====
 

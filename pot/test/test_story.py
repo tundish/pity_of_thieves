@@ -32,20 +32,7 @@ from pot.types import Engagement
 class Witness(Presenter):
 
     @classmethod
-    def represent(cls, story, *args, facts=None, previous=None, **kwargs):
-        rv = story.context.interlude(
-            story.context.folder,
-            previous and previous.index,
-            previous and previous.ensemble
-        )
-        return cls.build_presenter(
-            story.context.folder, *args, facts=facts or rv,
-            ensemble=story.context.ensemble + [story.context, story.settings],
-            **kwargs
-        )
-
-    @staticmethod
-    def build_presenter(folder, *args, facts=None, ensemble=None, strict=True, roles=1):
+    def build_presenter(cls, folder, *args, facts=None, ensemble=None, strict=True, roles=1):
         rv = None
         paths = getattr(folder, "paths", folder)
         pkg = getattr(folder, "pkg", None)
@@ -60,8 +47,8 @@ class Witness(Presenter):
 
         return rv
 
-    @staticmethod
-    def build_from_text(text, index=None, ensemble=[], strict=True, roles=1, path="inline"):
+    @classmethod
+    def build_from_text(cls, text, index=None, ensemble=[], strict=True, roles=1, path="inline"):
         script = SceneScript(path, doc=SceneScript.read(text))
         selection = script.select(ensemble, roles=roles)
         if all(selection.values()) or (not strict and any(selection.values())):
@@ -83,7 +70,7 @@ class StoryTests(unittest.TestCase):
         reply = ""
         for n, cmd in enumerate(["w", "", "", ]):
             with self.subTest(n=n, cmd=cmd):
-                presenter = Witness.represent(self.story, reply)
+                presenter = self.story.represent(reply, factory=Witness)
                 path = self.story.context.folder[presenter.index]
                 if n in (0, 1):
                     self.assertIn("odric", str(path))
@@ -99,7 +86,7 @@ class StoryTests(unittest.TestCase):
         iysla = next(iter(self.story.context.world.lookup["iysla"]))
         for n, cmd in enumerate(["w", "e", "", ]):
             with self.subTest(n=n, cmd=cmd):
-                presenter = Witness.represent(self.story, reply)
+                presenter = self.story.represent(reply, factory=Witness)
                 self.assertTrue(presenter, self.story.context.folder)
                 path = self.story.context.folder[presenter.index]
 
@@ -128,7 +115,7 @@ class StoryTests(unittest.TestCase):
         freda = next(iter(self.story.context.world.lookup["freda"]))
         for n, cmd in enumerate(["w", "wait", "wait", "wait", "s", "e", "e", "e", "open door", ""]):
             with self.subTest(n=n, cmd=cmd):
-                presenter = Witness.represent(self.story, reply)
+                presenter = self.story.represent(reply, factory=Witness)
                 self.assertTrue(presenter, self.story.context.folder)
                 path = self.story.context.folder[presenter.index]
 
@@ -155,7 +142,7 @@ class StoryTests(unittest.TestCase):
         ]
         for n, cmd in enumerate(["w", "", "", "", ""]):
             with self.subTest(n=n, cmd=cmd):
-                presenter = Witness.represent(self.story, reply)
+                presenter = self.story.represent(reply, factory=Witness)
                 path = self.story.context.folder[presenter.index]
                 animation = next(filter(None, (presenter.animate(f) for f in presenter.frames if f)))
                 if n in (0, 1):

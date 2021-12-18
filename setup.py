@@ -52,8 +52,8 @@ setup(
         ]
     },
     install_requires=[
-        "aiohttp>=3.6.1",
-        "balladeer>=0.23.0",
+        "aiohttp>=3.8.1",
+        "balladeer==0.24.0",
     ],
     extras_require={
         "dev": [
