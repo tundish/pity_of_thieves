@@ -227,6 +227,11 @@ Here and there are pathways off to remote dwellings.
 
 {exits}
 
+.. fx:: pot.mp3  pot_arp_slow.mp3
+   :offset: 0
+   :duration: 14370
+   :loop: 3
+
 .. fx:: pot.img |SPOT_NAME|.png
    :offset: 1
    :duration: 3
@@ -406,6 +411,11 @@ Behind that a shamble of stout cages and pens.
 
 {exits}
 
+.. fx:: pot.mp3  pot_arp_slow.mp3
+   :offset: 0
+   :duration: 14370
+   :loop: 3
+
 .. fx:: pot.img |SPOT_NAME|.png
    :offset: 1
    :duration: 3
@@ -529,6 +539,11 @@ jetty there, where boats tie up and unload.
 
 {exits}
 
+.. fx:: pot.mp3  pot_arp_slow.mp3
+   :offset: 0
+   :duration: 14370
+   :loop: 3
+
 .. fx:: pot.img |SPOT_NAME|.png
    :offset: 1
    :duration: 3
@@ -647,6 +662,11 @@ orchard_1
 It is Winter, and the branches of the |PLAYER_SPOT| are bare.
 
 {exits}
+
+.. fx:: pot.mp3  pot_arp_slow.mp3
+   :offset: 0
+   :duration: 14370
+   :loop: 3
 
 .. fx:: pot.img |SPOT_NAME|.png
    :offset: 1
@@ -1010,6 +1030,11 @@ tower_street_1
 Here people meet with friends to swap news.
 
 {exits}
+
+.. fx:: pot.mp3  pot_arp_slow.mp3
+   :offset: 0
+   :duration: 14370
+   :loop: 3
 
 .. fx:: pot.img |SPOT_NAME|.png
    :offset: 1
