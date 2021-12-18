@@ -6,10 +6,11 @@
 Change Log
 ::::::::::
 
-0.9.0 TODO
-==========
+0.9.0
+=====
 
 * Align with balladeer 0.24.0.
+* Add background music in some locations.
 
 0.8.0
 =====
