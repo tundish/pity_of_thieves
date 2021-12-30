@@ -96,7 +96,7 @@ async def get_metrics(request):
             {
                 "uid": str(s.story.id),
                 "start": s.ts.isoformat(),
-                "turns": s.story.context.turns
+                "turns": s.story.turns
             }
             for s in request.app["sessions"].values()
         ]
